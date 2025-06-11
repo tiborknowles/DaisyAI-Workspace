@@ -55,8 +55,8 @@ resource "google_storage_bucket" "data_ingestion_pipeline_gcs_root" {
 resource "google_discovery_engine_data_store" "data_store_staging" {
   location                    = var.data_store_region
   project                     = var.staging_project_id
-  data_store_id               = "${var.project_name}-datastore"
-  display_name                = "${var.project_name}-datastore"
+  data_store_id               = "${var.project_name}-datastore-v2"
+  display_name                = "${var.project_name}-datastore-v2"
   industry_vertical           = "GENERIC"
   content_config              = "NO_CONTENT"
   solution_types              = ["SOLUTION_TYPE_SEARCH"]
@@ -81,8 +81,8 @@ resource "google_discovery_engine_search_engine" "search_engine_staging" {
 resource "google_discovery_engine_data_store" "data_store_prod" {
   location                    = var.data_store_region
   project                     = var.prod_project_id
-  data_store_id               = "${var.project_name}-datastore"
-  display_name                = "${var.project_name}-datastore"
+  data_store_id               = "${var.project_name}-datastore-v2"
+  display_name                = "${var.project_name}-datastore-v2"
   industry_vertical           = "GENERIC"
   content_config              = "NO_CONTENT"
   solution_types              = ["SOLUTION_TYPE_SEARCH"]

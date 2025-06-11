@@ -41,8 +41,8 @@ resource "google_storage_bucket" "data_ingestion_PIPELINE_GCS_ROOT" {
 resource "google_discovery_engine_data_store" "data_store_dev" {
   location                    = var.data_store_region
   project                     = var.dev_project_id
-  data_store_id               = "${var.project_name}-datastore"
-  display_name                = "${var.project_name}-datastore"
+  data_store_id               = "${var.project_name}-datastore-v2"
+  display_name                = "${var.project_name}-datastore-v2"
   industry_vertical           = "GENERIC"
   content_config              = "NO_CONTENT"
   solution_types              = ["SOLUTION_TYPE_SEARCH"]

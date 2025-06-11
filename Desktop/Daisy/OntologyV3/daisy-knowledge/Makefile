@@ -29,7 +29,7 @@ data-ingestion:
 	(cd data_ingestion && uv run data_ingestion_pipeline/submit_pipeline.py \
 		--project-id=$$PROJECT_ID \
 		--region="us-central1" \
-		--data-store-id="daisy-knowledge-datastore" \
+		--data-store-id="daisy-knowledge-datastore-v2" \
 		--data-store-region="us" \
 		--service-account="daisy-knowledge-rag@$$PROJECT_ID.iam.gserviceaccount.com" \
 		--pipeline-root="gs://$$PROJECT_ID-daisy-knowledge-rag" \
