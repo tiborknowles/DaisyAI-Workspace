@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rdf:RDF xmlns:ns1="http://www.w3.org/2002/07/owl#" xmlns:ns2="http://www.w3.org/2000/01/rdf-schema#" xmlns:ns3="http://www.autonomousrecordlabel.com/ontology#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <ns1:Ontology rdf:about="http://www.autonomousrecordlabel.com/ontology#RightsAndLicensingOntology">
+    <ns2:label>RightsAndLicensing Ontology</ns2:label>
+    <ns2:comment>Ontology module for RightsAndLicensing  concepts.</ns2:comment>
+    <ns1:versionInfo>0.1.0</ns1:versionInfo>
+    <ns1:imports rdf:resource="DaisyCoreOntology.owl" />
+    <ns1:imports rdf:resource="BusinessDomainCoreOntology.owl" />
+    <ns1:imports rdf:resource="ContractsAndLegalOntology.owl" />
+  </ns1:Ontology>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#Copyright">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#Right" />
+    <ns2:label xml:lang="en">Copyright</ns2:label>
+    <ns2:comment xml:lang="en">A legal right granted to the creator of original works of authorship, including literary, dramatic, musical, and certain other intellectual works.</ns2:comment>
+    <ns3:passmanReference>Part V</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#MusicalWorkCopyright">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#Copyright" />
+    <ns2:label xml:lang="en">Musical Work Copyright (PA Copyright)</ns2:label>
+    <ns2:comment xml:lang="en">Copyright in the underlying musical composition (melody, lyrics, harmony). Often referred to as the 'song' copyright or PA (Performing Arts) copyright.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#SoundRecordingCopyright">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#Copyright" />
+    <ns2:label xml:lang="en">Sound Recording Copyright (SR Copyright)</ns2:label>
+    <ns2:comment xml:lang="en">Copyright in the specific fixation of sounds in a recording (the master). Often referred to as the 'master' copyright or SR (Sound Recording) copyright.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#ExclusiveRight">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#Right" />
+    <ns2:label xml:lang="en">Exclusive Right</ns2:label>
+    <ns2:comment xml:lang="en">A right granted exclusively to a copyright holder or their assignee, such as the right to reproduce, distribute, perform, or display the work.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#UsageRight">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#Right" />
+    <ns2:label xml:lang="en">Usage Right</ns2:label>
+    <ns2:comment xml:lang="en">Permission to use a copyrighted work in a specific manner, often granted via a license.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#ReproductionRight">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#UsageRight" />
+    <ns2:label xml:lang="en">Reproduction Right</ns2:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#DistributionRight">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#UsageRight" />
+    <ns2:label xml:lang="en">Distribution Right</ns2:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#PublicPerformanceRight">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#UsageRight" />
+    <ns2:label xml:lang="en">Public Performance Right</ns2:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#PublicDisplayRight">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#UsageRight" />
+    <ns2:label xml:lang="en">Public Display Right</ns2:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#DerivativeWorkRight">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#UsageRight" />
+    <ns2:label xml:lang="en">Derivative Work Right</ns2:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#SynchronizationRight">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#UsageRight" />
+    <ns2:label xml:lang="en">Synchronization Right</ns2:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#MechanicalLicense">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#LicenseAgreement" />
+    <ns2:label xml:lang="en">Mechanical License</ns2:label>
+    <ns2:comment xml:lang="en">Grants permission to reproduce and distribute a copyrighted musical work in recordings (CDs, downloads, streams).</ns2:comment>
+    <ns3:passmanReference>Ch. 15, Ch. 21</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#PerformanceLicense">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#LicenseAgreement" />
+    <ns2:label xml:lang="en">Performance License</ns2:label>
+    <ns2:comment xml:lang="en">Grants permission to publicly perform a copyrighted musical work (e.g., radio, TV, concerts, streaming services).</ns2:comment>
+    <ns3:passmanReference>Ch. 15</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#SynchronizationLicense">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#LicenseAgreement" />
+    <ns2:label xml:lang="en">Synchronization License (Sync License)</ns2:label>
+    <ns2:comment xml:lang="en">Grants permission to use a musical work in timed synchronization with visual media (film, TV, commercials, video games).</ns2:comment>
+    <ns3:passmanReference>Ch. 16</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#PrintLicense">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#LicenseAgreement" />
+    <ns2:label xml:lang="en">Print License</ns2:label>
+    <ns2:comment xml:lang="en">Grants permission to reproduce and distribute sheet music or lyrics.</ns2:comment>
+    <ns3:passmanReference>Ch. 16</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#copyrightForWork">
+    <ns2:label xml:lang="en">copyright for work</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Copyright" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#CreativeWork" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#ownedBy">
+    <ns2:label xml:lang="en">owned by</ns2:label>
+    <ns2:comment xml:lang="en">Indicates the EPMO that owns a right or asset.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Right" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#EPMO" />
+    <ns1:inverseOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#ownsAssetOrRight" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#ownsAssetOrRight">
+    <ns2:label xml:lang="en">owns asset or right</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#EPMO" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#Right" />
+    <ns1:inverseOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#ownedBy" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#licenseGrantsSpecificRight">
+    <ns2:label xml:lang="en">license grants specific right</ns2:label>
+    <ns2:comment xml:lang="en">Specifies the particular UsageRight granted by a LicenseAgreement.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#LicenseAgreement" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#UsageRight" />
+  </ns1:ObjectProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#copyrightTermDetails">
+    <ns2:label xml:lang="en">copyright term details</ns2:label>
+    <ns2:comment xml:lang="en">Specifies the duration or conditions of the copyright term.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Copyright" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#licenseScopeDescription">
+    <ns2:label xml:lang="en">license scope description</ns2:label>
+    <ns2:comment xml:lang="en">A textual description of the scope of the license (e.g., specific uses, limitations).</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#LicenseAgreement" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#isExclusiveLicense">
+    <ns2:label xml:lang="en">is exclusive license</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#LicenseAgreement" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean" />
+  </ns1:DatatypeProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#licensedForMediaType">
+    <ns2:label xml:lang="en">licensed for media type</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#SynchronizationLicense" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#MediaType" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#copyrightRegisteredFor">
+    <ns2:label xml:lang="en">copyright registered for</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#CopyrightRegistration" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#CreativeWork" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#copyrightAppliesToTerritory">
+    <ns2:label xml:lang="en">copyright applies to territory</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Copyright" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#Territory" />
+  </ns1:ObjectProperty>
+</rdf:RDF>

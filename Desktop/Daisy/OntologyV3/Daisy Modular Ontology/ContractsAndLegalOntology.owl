@@ -1,0 +1,216 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rdf:RDF xmlns:ns1="http://www.w3.org/2002/07/owl#" xmlns:ns2="http://www.w3.org/2000/01/rdf-schema#" xmlns:ns3="http://www.autonomousrecordlabel.com/ontology#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <ns1:Ontology rdf:about="http://www.autonomousrecordlabel.com/ontology#ContractsAndLegalOntology">
+    <ns2:label>ContractsAndLegal Ontology</ns2:label>
+    <ns2:comment>Ontology module for ContractsAndLegal  concepts.</ns2:comment>
+    <ns1:versionInfo>0.1.0</ns1:versionInfo>
+    <ns1:imports rdf:resource="DaisyCoreOntology.owl" />
+    <ns1:imports rdf:resource="BusinessDomainCoreOntology.owl" />
+    <ns1:imports rdf:resource="ContextAndFeedbackOntology.owl" />
+  </ns1:Ontology>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#RecordingContract">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#Contract" />
+    <ns2:label xml:lang="en">Recording Contract</ns2:label>
+    <ns2:comment xml:lang="en">A contract between a record label and an artist/group for the creation and exploitation of sound recordings.</ns2:comment>
+    <ns3:passmanReference>Part II</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#PublishingContract">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#Contract" />
+    <ns2:label xml:lang="en">Publishing Contract (Abstract Parent)</ns2:label>
+    <ns2:comment xml:lang="en">An abstract parent for various types of music publishing agreements.</ns2:comment>
+    <ns3:passmanReference>Part III</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#SongwriterAgreement">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#PublishingContract" />
+    <ns2:label xml:lang="en">Songwriter Agreement</ns2:label>
+    <ns2:comment xml:lang="en">A contract where a songwriter assigns copyright ownership of their songs to a music publisher in exchange for a share of income.</ns2:comment>
+    <ns3:passmanReference>Ch. 18</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#CoPublishingAgreement">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#PublishingContract" />
+    <ns2:label xml:lang="en">Co-Publishing Agreement</ns2:label>
+    <ns2:comment xml:lang="en">A publishing agreement where the songwriter retains a portion of the publisher's share of income, effectively co-owning the publishing rights.</ns2:comment>
+    <ns3:passmanReference>Ch. 18</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#AdministrationAgreement">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#PublishingContract" />
+    <ns2:label xml:lang="en">Administration Agreement (Publishing)</ns2:label>
+    <ns2:comment xml:lang="en">A contract where a publisher handles administrative tasks for song copyrights (registration, licensing, royalty collection) for a fee/percentage, without taking ownership.</ns2:comment>
+    <ns3:passmanReference>Ch. 19</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#SubPublishingAgreement">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#PublishingContract" />
+    <ns2:label xml:lang="en">Sub-Publishing Agreement</ns2:label>
+    <ns2:comment xml:lang="en">A contract where a primary publisher grants a publisher in a foreign territory the right to administer songs in that territory.</ns2:comment>
+    <ns3:passmanReference>Ch. 17</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#LicenseAgreement">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#Contract" />
+    <ns2:label xml:lang="en">License Agreement (Abstract Parent)</ns2:label>
+    <ns2:comment xml:lang="en">An agreement granting permission to use a copyrighted work under specified conditions.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#ProfessionalServiceAgreement">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#Contract" />
+    <ns2:label xml:lang="en">Professional Service Agreement</ns2:label>
+    <ns2:comment xml:lang="en">A contract for services provided by professionals like managers, attorneys, business managers.</ns2:comment>
+    <ns3:passmanReference>Ch. 2-6</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#ProducerAgreement">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#Contract" />
+    <ns2:label xml:lang="en">Producer Agreement</ns2:label>
+    <ns2:comment xml:lang="en">A contract between an artist/label and a music producer for their services in creating recordings.</ns2:comment>
+    <ns3:passmanReference>Ch. 12</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#MixerAgreement">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#Contract" />
+    <ns2:label xml:lang="en">Mixer Agreement</ns2:label>
+    <ns2:comment xml:lang="en">A contract for services of a mix engineer.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#MerchandisingAgreement">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#Contract" />
+    <ns2:label xml:lang="en">Merchandising Agreement</ns2:label>
+    <ns2:comment xml:lang="en">A contract granting rights to create and sell merchandise bearing an artist's name/likeness.</ns2:comment>
+    <ns3:passmanReference>Ch. 24</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#DistributionDeal">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#Contract" />
+    <ns2:label xml:lang="en">Distribution Deal</ns2:label>
+    <ns2:comment xml:lang="en">An agreement where a company distributes an artist's or label's recordings without full label services.</ns2:comment>
+    <ns3:passmanReference>Ch. 13</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#MusicGroupInternalAgreement">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#Contract" />
+    <ns2:label xml:lang="en">Music Group Internal Agreement</ns2:label>
+    <ns2:comment xml:lang="en">An agreement between members of a music group defining their rights, responsibilities, profit splits, etc.</ns2:comment>
+    <ns3:passmanReference>Ch. 25</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#PerformanceAgreement">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#Contract" />
+    <ns2:label xml:lang="en">Performance Agreement (Concert)</ns2:label>
+    <ns2:comment xml:lang="en">A contract for an artist to perform at a specific event or venue.</ns2:comment>
+    <ns3:passmanReference>Part IV</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#ContractTerm">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#ContractualProvision" />
+    <ns2:label xml:lang="en">Contract Term (General)</ns2:label>
+    <ns2:comment xml:lang="en">A general term or condition within a contract, broader than just the duration/DealTerm.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#ContractTermProposal">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#Recommendation" />
+    <ns2:label xml:lang="en">Contract Term Proposal</ns2:label>
+    <ns2:comment xml:lang="en">Represents a specific term or clause being proposed, countered, or evaluated during contract negotiation.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#LegalObligation">
+    <ns2:label xml:lang="en">Legal Obligation</ns2:label>
+    <ns2:comment xml:lang="en">A duty or commitment imposed by a contract or law.</ns2:comment>
+    <ns2:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#ControlledCompositionClause">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#ContractualProvision" />
+    <ns2:label xml:lang="en">Controlled Composition Clause</ns2:label>
+    <ns3:passmanReference>p.275-283</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#PayOrPlayProvision">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#ContractualProvision" />
+    <ns2:label xml:lang="en">Pay Or Play Provision</ns2:label>
+    <ns3:passmanReference>p.110</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#ThreeSixtyRightProvision">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#ContractualProvision" />
+    <ns2:label xml:lang="en">360 Right Provision</ns2:label>
+    <ns3:passmanReference>p.91-93</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#ReversionClause">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#ContractualProvision" />
+    <ns2:label xml:lang="en">Reversion Clause</ns2:label>
+    <ns3:passmanReference>p.307-309</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#KeyMemberProvision">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#ContractualProvision" />
+    <ns2:label xml:lang="en">Key Member Provision</ns2:label>
+    <ns3:passmanReference>p.361</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#LeavingMemberProvision">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#ContractualProvision" />
+    <ns2:label xml:lang="en">Leaving Member Provision</ns2:label>
+    <ns3:passmanReference>p.370</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#ExclusivityProvision">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#ContractualProvision" />
+    <ns2:label xml:lang="en">Exclusivity Provision</ns2:label>
+    <ns3:passmanReference>p.174</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#ReRecordingRestrictionClause">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#ContractualProvision" />
+    <ns2:label xml:lang="en">Re-Recording Restriction Clause</ns2:label>
+    <ns3:passmanReference>p.178</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#TerminationRightProvision">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#ContractualProvision" />
+    <ns2:label xml:lang="en">Termination Right Provision</ns2:label>
+    <ns3:passmanReference>p.323, p.348</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#OptionProvision">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#ContractualProvision" />
+    <ns2:label xml:lang="en">Option Provision</ns2:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#DeliveryStandardProvision">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#ContractualProvision" />
+    <ns2:label xml:lang="en">Delivery Standard Provision</ns2:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#AuditRightProvision">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#ContractualProvision" />
+    <ns2:label xml:lang="en">Audit Right Provision</ns2:label>
+    <ns3:passmanReference>p.166</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#LicenseClause">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#ContractualProvision" />
+    <ns2:label xml:lang="en">License Clause</ns2:label>
+  </ns1:Class>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#contractSpecifiesTerm">
+    <ns2:label xml:lang="en">contract specifies term</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Contract" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#ContractTerm" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#termProposedForContract">
+    <ns2:label xml:lang="en">term proposed for contract</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#ContractTermProposal" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#Contract" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#termConcernsClauseType">
+    <ns2:label xml:lang="en">term concerns clause type</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#ContractTermProposal" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#ContractualProvision" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#imposesObligation">
+    <ns2:label xml:lang="en">imposes obligation</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Contract" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#LegalObligation" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#obligationBearer">
+    <ns2:label xml:lang="en">obligation bearer</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#LegalObligation" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#EPMO" />
+  </ns1:ObjectProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#contractTermText">
+    <ns2:label xml:lang="en">contract term text</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#ContractTerm" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#proposalRationale">
+    <ns2:label xml:lang="en">proposal rationale</ns2:label>
+    <ns2:comment xml:lang="en">Justification for a contract term proposal.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#ContractTermProposal" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#obligationDescription">
+    <ns2:label xml:lang="en">obligation description</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#LegalObligation" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#obligationDueDate">
+    <ns2:label xml:lang="en">obligation due date</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#LegalObligation" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#date" />
+  </ns1:DatatypeProperty>
+</rdf:RDF>

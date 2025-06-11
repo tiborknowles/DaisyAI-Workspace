@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rdf:RDF xmlns:owl="http://www.w3.org/2002/07/owl#" 
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+
+    <owl:Ontology rdf:about="http://www.autonomousrecordlabel.com/ontology#DaisyOnt_Umbrella">
+        <rdfs:label>DaisyOnt - Comprehensive Music Industry Ontology</rdfs:label>
+        <rdfs:comment>Umbrella ontology that imports all DaisyOnt modules using relative file paths.</rdfs:comment>
+        <owl:versionInfo>2.2</owl:versionInfo>
+        
+        <!-- Core ontologies - Direct relative file imports -->
+        <owl:imports rdf:resource="DaisyCoreOntology.owl" />
+        <owl:imports rdf:resource="BusinessDomainCoreOntology.owl" />
+        <owl:imports rdf:resource="AgentDefinitionOntology.owl" />
+        
+        <!-- Functional ontologies -->
+        <owl:imports rdf:resource="GoalAndPerformanceOntology.owl" />
+        <owl:imports rdf:resource="AgentCognitiveFrameworkOntology.owl" />
+        <owl:imports rdf:resource="ContextAndFeedbackOntology.owl" />
+        <owl:imports rdf:resource="SimulationAndStrategyOntology.owl" />
+        
+        <!-- Business domain ontologies -->
+        <owl:imports rdf:resource="ContractsAndLegalOntology.owl" />
+        <owl:imports rdf:resource="RightsAndLicensingOntology.owl" />
+        <owl:imports rdf:resource="FinancialsAndRoyaltiesOntology.owl" />
+        <owl:imports rdf:resource="ArtistDevelopmentAndMarketingOntology.owl" />
+        <owl:imports rdf:resource="ProductionAndDistributionOntology.owl" />
+        <owl:imports rdf:resource="TouringAndLivePerformanceOntology.owl" />
+        <owl:imports rdf:resource="Web3AndDigitalAssetsOntology.owl" />
+    </owl:Ontology>
+</rdf:RDF>

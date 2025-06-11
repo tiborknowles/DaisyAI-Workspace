@@ -1,0 +1,155 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rdf:RDF xmlns:ns1="http://www.w3.org/2002/07/owl#" xmlns:ns2="http://www.w3.org/2000/01/rdf-schema#" xmlns:ns3="http://www.autonomousrecordlabel.com/ontology#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <ns1:Ontology rdf:about="http://www.autonomousrecordlabel.com/ontology#TouringAndLivePerformanceOntology">
+    <ns2:label>TouringAndLivePerformance Ontology</ns2:label>
+    <ns2:comment>Ontology module for TouringAndLivePerformance  concepts.</ns2:comment>
+    <ns1:versionInfo>0.1.0</ns1:versionInfo>
+    <ns1:imports rdf:resource="DaisyCoreOntology.owl" />
+    <ns1:imports rdf:resource="BusinessDomainCoreOntology.owl" />
+    <ns1:imports rdf:resource="ContractsAndLegalOntology.owl" />
+  </ns1:Ontology>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#Venue">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#EPMO" />
+    <ns2:label xml:lang="en">Venue</ns2:label>
+    <ns2:comment xml:lang="en">A physical location where live performances or events take place.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#Tour">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#Event" />
+    <ns2:label xml:lang="en">Tour</ns2:label>
+    <ns2:comment xml:lang="en">A series of live performances by an artist or group across multiple locations over a period.</ns2:comment>
+    <ns3:passmanReference>Part IV</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#Concert">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#Event" />
+    <ns2:label xml:lang="en">Concert</ns2:label>
+    <ns2:comment xml:lang="en">A single live music performance event.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#FestivalAppearance">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#Concert" />
+    <ns2:label xml:lang="en">Festival Appearance</ns2:label>
+    <ns2:comment xml:lang="en">A live performance by an artist as part of a larger music festival.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#Promoter">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#EPMO" />
+    <ns2:label xml:lang="en">Promoter</ns2:label>
+    <ns2:comment xml:lang="en">An individual or organization that finances and organizes live music events.</ns2:comment>
+    <ns3:passmanReference>Ch. 22</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#TicketingAgent">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#EPMO" />
+    <ns2:label xml:lang="en">Ticketing Agent</ns2:label>
+    <ns2:comment xml:lang="en">An organization that sells tickets for events on behalf of venues or promoters.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#Ticket">
+    <ns2:label xml:lang="en">Ticket</ns2:label>
+    <ns2:comment xml:lang="en">A pass granting admission to an event, such as a concert.</ns2:comment>
+    <ns2:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#TravelLogistics">
+    <ns2:label xml:lang="en">Travel Logistics</ns2:label>
+    <ns2:comment xml:lang="en">Information related to travel arrangements for a tour or event, including transportation and accommodation.</ns2:comment>
+    <ns2:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#EquipmentManifest">
+    <ns2:label xml:lang="en">Equipment Manifest</ns2:label>
+    <ns2:comment xml:lang="en">A list of musical equipment, stage gear, and other technical apparatus required for a performance or tour.</ns2:comment>
+    <ns2:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+  </ns1:Class>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#venueName">
+    <ns2:label xml:lang="en">venue name</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Venue" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#venueCapacity">
+    <ns2:label xml:lang="en">venue capacity</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Venue" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#venueAddress">
+    <ns2:label xml:lang="en">venue address</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Venue" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#tourIncludesConcert">
+    <ns2:label xml:lang="en">tour includes concert</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Tour" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#Concert" />
+    <ns1:inverseOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#concertPartOfTour" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#concertPartOfTour">
+    <ns2:label xml:lang="en">concert part of tour</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Concert" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#Tour" />
+    <ns1:inverseOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#tourIncludesConcert" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#eventTakesPlaceAtVenue">
+    <ns2:label xml:lang="en">event takes place at venue</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Event" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#Venue" />
+    <ns1:inverseOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#venueHostsEvent" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#venueHostsEvent">
+    <ns2:label xml:lang="en">venue hosts event</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Venue" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#Event" />
+    <ns1:inverseOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#eventTakesPlaceAtVenue" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#eventOrganizedByPromoter">
+    <ns2:label xml:lang="en">event organized by promoter</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Event" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#Promoter" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#ticketForEvent">
+    <ns2:label xml:lang="en">ticket for event</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Ticket" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#Event" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#ticketSoldByAgent">
+    <ns2:label xml:lang="en">ticket sold by agent</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Ticket" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#TicketingAgent" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#tourHasTravelLogistics">
+    <ns2:label xml:lang="en">tour has travel logistics</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Tour" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#TravelLogistics" />
+  </ns1:ObjectProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#transportationDetails">
+    <ns2:label xml:lang="en">transportation details</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#TravelLogistics" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#accommodationDetails">
+    <ns2:label xml:lang="en">accommodation details</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#TravelLogistics" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#performanceRequiresEquipment">
+    <ns2:label xml:lang="en">performance requires equipment</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Event" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#EquipmentManifest" />
+  </ns1:ObjectProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#manifestItem">
+    <ns2:label xml:lang="en">manifest item</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#EquipmentManifest" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#hallFeePercentage">
+    <ns2:label xml:lang="en">hall fee percentage</ns2:label>
+    <ns2:comment xml:lang="en">The percentage of merchandise gross sales retained by the venue.</ns2:comment>
+    <ns3:passmanReference>p.424</ns3:passmanReference>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#PerformanceAgreement" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal" />
+  </ns1:DatatypeProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#performanceGuaranteeAmountObject">
+    <ns2:label xml:lang="en">performance guarantee amount object</ns2:label>
+    <ns2:comment xml:lang="en">The guaranteed amount paid to an artist for a performance, represented as a MonetaryAmount.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#PerformanceAgreement" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#MonetaryAmount" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#ticketHasPriceObject">
+    <ns2:label xml:lang="en">ticket has price object</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Ticket" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#MonetaryAmount" />
+  </ns1:ObjectProperty>
+</rdf:RDF>

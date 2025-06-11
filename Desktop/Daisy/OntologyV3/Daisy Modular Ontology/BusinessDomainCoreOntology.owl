@@ -1,0 +1,261 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rdf:RDF xmlns:ns1="http://www.w3.org/2002/07/owl#" xmlns:ns2="http://www.w3.org/2000/01/rdf-schema#" xmlns:ns3="http://www.autonomousrecordlabel.com/ontology#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <ns1:Ontology rdf:about="http://www.autonomousrecordlabel.com/ontology#BusinessDomainCoreOntology">
+    <ns2:label>BusinessDomainCore Ontology</ns2:label>
+    <ns2:comment>Ontology module for BusinessDomainCore  concepts.</ns2:comment>
+    <ns1:versionInfo>0.1.0</ns1:versionInfo>
+    <ns1:imports rdf:resource="DaisyCoreOntology.owl" />
+  </ns1:Ontology>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#Artist">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#Person" />
+    <ns2:label xml:lang="en">Artist (Performer)</ns2:label>
+    <ns2:comment xml:lang="en">A performing artist or group in the music industry.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#MusicWork">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#CreativeWork" />
+    <ns2:label xml:lang="en">Music Work (Song/Composition)</ns2:label>
+    <ns2:comment xml:lang="en">The underlying musical composition (melody, harmony, lyrics).</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#Recording">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#CreativeWork" />
+    <ns2:label xml:lang="en">Recording (Master)</ns2:label>
+    <ns2:comment xml:lang="en">A specific fixation of sounds, often embodying a MusicWork. Also known as a master recording.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#MusicRelease">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#CreativeWork" />
+    <ns2:label xml:lang="en">Music Release</ns2:label>
+    <ns2:comment xml:lang="en">A product released to the public containing one or more recordings (e.g., Album, Single, EP).</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#Contract">
+    <ns2:label xml:lang="en">Contract (Abstract)</ns2:label>
+    <ns2:comment xml:lang="en">An abstract representation of a legally binding agreement between parties.</ns2:comment>
+    <ns2:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#RevenueStream">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#FinancialConcept" />
+    <ns2:label xml:lang="en">Revenue Stream (Abstract)</ns2:label>
+    <ns2:comment xml:lang="en">An abstract category or source from which revenue is generated.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#Right">
+    <ns2:label xml:lang="en">Right (Abstract)</ns2:label>
+    <ns2:comment xml:lang="en">An abstract representation of a legal or contractual entitlement or privilege.</ns2:comment>
+    <ns2:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#Territory">
+    <ns2:label xml:lang="en">Territory</ns2:label>
+    <ns2:comment xml:lang="en">A geographical region relevant for contracts, rights, and distribution.</ns2:comment>
+    <ns2:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#MonetaryAmount">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#FinancialConcept" />
+    <ns2:label xml:lang="en">Monetary Amount</ns2:label>
+    <ns2:comment xml:lang="en">Represents a quantity of money, with a value and a currency. Defined here as it's a core business concept often tied to contracts, advances etc.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#CurrencyCode">
+    <ns2:label xml:lang="en">Currency Code</ns2:label>
+    <ns2:comment xml:lang="en">Represents a currency (e.g., USD, EUR, JPY), often using ISO 4217 codes.</ns2:comment>
+    <ns2:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#Genre">
+    <ns2:label xml:lang="en">Genre</ns2:label>
+    <ns2:comment xml:lang="en">A musical genre.</ns2:comment>
+    <ns2:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#MusicReleaseFormat">
+    <ns2:label xml:lang="en">Music Release Format</ns2:label>
+    <ns2:comment xml:lang="en">The physical or digital format of a music release (e.g., Vinyl, CD, Digital Stream).</ns2:comment>
+    <ns2:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#MediaType">
+    <ns2:label xml:lang="en">Media Type</ns2:label>
+    <ns2:comment xml:lang="en">The type of media in which music is used (e.g., Film, TV, Game).</ns2:comment>
+    <ns2:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#CopyrightRegistration">
+    <ns2:label xml:lang="en">Copyright Registration</ns2:label>
+    <ns2:comment xml:lang="en">Represents the formal registration of a copyright.</ns2:comment>
+    <ns2:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#PerformanceMetricThreshold">
+    <ns2:label xml:lang="en">Performance Metric Threshold</ns2:label>
+    <ns2:comment xml:lang="en">A threshold based on a performance metric (e.g., sales, streams) that can trigger contractual changes like royalty escalations.</ns2:comment>
+    <ns3:passmanReference>p.97</ns3:passmanReference>
+    <ns2:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+  </ns1:Class>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#artistName">
+    <ns2:label xml:lang="en">artist name</ns2:label>
+    <ns2:comment xml:lang="en">The professional or stage name of the artist.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Artist" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#artistID">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty" />
+    <ns2:label xml:lang="en">artist ID</ns2:label>
+    <ns2:comment xml:lang="en">A unique internal identifier for the artist.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Artist" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#workTitle">
+    <ns2:label xml:lang="en">work title</ns2:label>
+    <ns2:comment xml:lang="en">The title of the musical work/composition.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#MusicWork" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#iswc">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty" />
+    <ns2:label xml:lang="en">ISWC</ns2:label>
+    <ns2:comment xml:lang="en">International Standard Musical Work Code.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#MusicWork" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#recordingTitle">
+    <ns2:label xml:lang="en">recording title</ns2:label>
+    <ns2:comment xml:lang="en">The title of the specific recording (master).</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Recording" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#isrc">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty" />
+    <ns2:label xml:lang="en">ISRC</ns2:label>
+    <ns2:comment xml:lang="en">International Standard Recording Code.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Recording" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#releaseTitle">
+    <ns2:label xml:lang="en">release title</ns2:label>
+    <ns2:comment xml:lang="en">The title of the music release (e.g., album title).</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#MusicRelease" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#catalogNumber">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty" />
+    <ns2:label xml:lang="en">catalog number</ns2:label>
+    <ns2:comment xml:lang="en">The record label's catalog number for the release.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#MusicRelease" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#contractID">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty" />
+    <ns2:label xml:lang="en">contract ID</ns2:label>
+    <ns2:comment xml:lang="en">A unique identifier for the contract.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Contract" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#effectiveDate">
+    <ns2:label xml:lang="en">effective date</ns2:label>
+    <ns2:comment xml:lang="en">The date on which the contract becomes effective.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Contract" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#date" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#contractStatus">
+    <ns2:label xml:lang="en">contract status</ns2:label>
+    <ns2:comment xml:lang="en">The current status of the contract (e.g., Draft, Active, Expired).</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Contract" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#revenueStreamName">
+    <ns2:label xml:lang="en">revenue stream name</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#RevenueStream" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#revenueStreamDescription">
+    <ns2:label xml:lang="en">revenue stream description</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#RevenueStream" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#rightName">
+    <ns2:label xml:lang="en">right name</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Right" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#rightDescription">
+    <ns2:label xml:lang="en">right description</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Right" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#territoryName">
+    <ns2:label xml:lang="en">territory name</ns2:label>
+    <ns2:comment xml:lang="en">Human-readable name of the territory (e.g., Worldwide, North America).</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Territory" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#territoryCode">
+    <ns2:label xml:lang="en">territory code</ns2:label>
+    <ns2:comment xml:lang="en">Standardized code for the territory (e.g., ISO country code, or internal codes for regions like 'NA' for North America).</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Territory" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#currencyValue">
+    <ns2:label xml:lang="en">currency value</ns2:label>
+    <ns2:comment xml:lang="en">The numerical value of a monetary amount.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#MonetaryAmount" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#genreName">
+    <ns2:label xml:lang="en">genre name</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Genre" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#hasParty">
+    <ns2:label xml:lang="en">has party</ns2:label>
+    <ns2:comment xml:lang="en">Relates a contract to an EPMO (person or organization) that is a party to it.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Contract" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#EPMO" />
+    <ns1:inverseOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#isPartyTo" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#isPartyTo">
+    <ns2:label xml:lang="en">is party to</ns2:label>
+    <ns2:comment xml:lang="en">Relates an EPMO to a contract they are a party to. Inverse of hasParty.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#EPMO" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#Contract" />
+    <ns1:inverseOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#hasParty" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#performsOnRecording">
+    <ns2:label xml:lang="en">performs on recording</ns2:label>
+    <ns2:comment xml:lang="en">Relates an Artist to a Recording they performed on.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Artist" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#Recording" />
+    <ns1:inverseOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#hasPerformer" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#hasPerformer">
+    <ns2:label xml:lang="en">has performer</ns2:label>
+    <ns2:comment xml:lang="en">Relates a Recording to an Artist who performed on it. Inverse of performsOnRecording.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Recording" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#Artist" />
+    <ns1:inverseOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#performsOnRecording" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#isRecordingOf">
+    <ns2:label xml:lang="en">is recording of</ns2:label>
+    <ns2:comment xml:lang="en">Relates a Recording (master) to the MusicWork (song/composition) it embodies.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Recording" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#MusicWork" />
+    <ns1:inverseOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#hasRecording" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#hasRecording">
+    <ns2:label xml:lang="en">has recording</ns2:label>
+    <ns2:comment xml:lang="en">Relates a MusicWork to the Recording(s) that embody it. Inverse of isRecordingOf.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#MusicWork" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#Recording" />
+    <ns1:inverseOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#isRecordingOf" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#containsRecording">
+    <ns2:label xml:lang="en">contains recording</ns2:label>
+    <ns2:comment xml:lang="en">Relates a MusicRelease to a Recording it includes.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#MusicRelease" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#Recording" />
+    <ns1:inverseOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#appearsOnRelease" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#appearsOnRelease">
+    <ns2:label xml:lang="en">appears on release</ns2:label>
+    <ns2:comment xml:lang="en">Relates a Recording to a MusicRelease it is part of. Inverse of containsRecording.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Recording" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#MusicRelease" />
+    <ns1:inverseOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#containsRecording" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#hasCurrencyCode">
+    <ns2:label xml:lang="en">has currency code</ns2:label>
+    <ns2:comment xml:lang="en">Specifies the currency code for a monetary amount.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#MonetaryAmount" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#CurrencyCode" />
+  </ns1:ObjectProperty>
+</rdf:RDF>

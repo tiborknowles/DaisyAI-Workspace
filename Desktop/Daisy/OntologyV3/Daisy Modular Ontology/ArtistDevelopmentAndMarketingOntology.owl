@@ -1,0 +1,217 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rdf:RDF xmlns:ns1="http://www.w3.org/2002/07/owl#" xmlns:ns2="http://www.w3.org/2000/01/rdf-schema#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <ns1:Ontology rdf:about="http://www.autonomousrecordlabel.com/ontology#ArtistDevelopmentAndMarketingOntology">
+    <ns2:label>ArtistDevelopmentAndMarketing Ontology</ns2:label>
+    <ns2:comment>Ontology module for ArtistDevelopmentAndMarketing  concepts.</ns2:comment>
+    <ns1:versionInfo>0.1.0</ns1:versionInfo>
+    <ns1:imports rdf:resource="DaisyCoreOntology.owl" />
+    <ns1:imports rdf:resource="BusinessDomainCoreOntology.owl" />
+  </ns1:Ontology>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#ArtistCareerStage">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#ArtistCareerState" />
+    <ns2:label xml:lang="en">Artist Career Stage</ns2:label>
+    <ns2:comment xml:lang="en">A defined stage in an artist's career lifecycle (e.g., Undiscovered, Buzzing, Developing, Established, Legacy).</ns2:comment>
+  </ns1:Class>
+  <ns1:NamedIndividual rdf:about="http://www.autonomousrecordlabel.com/ontology#CareerStage_Undiscovered">
+    <rdf:type rdf:resource="http://www.autonomousrecordlabel.com/ontology#ArtistCareerStage" />
+    <ns2:label>Undiscovered</ns2:label>
+  </ns1:NamedIndividual>
+  <ns1:NamedIndividual rdf:about="http://www.autonomousrecordlabel.com/ontology#CareerStage_Buzzing">
+    <rdf:type rdf:resource="http://www.autonomousrecordlabel.com/ontology#ArtistCareerStage" />
+    <ns2:label>Buzzing</ns2:label>
+  </ns1:NamedIndividual>
+  <ns1:NamedIndividual rdf:about="http://www.autonomousrecordlabel.com/ontology#CareerStage_Developing">
+    <rdf:type rdf:resource="http://www.autonomousrecordlabel.com/ontology#ArtistCareerStage" />
+    <ns2:label>Developing</ns2:label>
+  </ns1:NamedIndividual>
+  <ns1:NamedIndividual rdf:about="http://www.autonomousrecordlabel.com/ontology#CareerStage_Established">
+    <rdf:type rdf:resource="http://www.autonomousrecordlabel.com/ontology#ArtistCareerStage" />
+    <ns2:label>Established</ns2:label>
+  </ns1:NamedIndividual>
+  <ns1:NamedIndividual rdf:about="http://www.autonomousrecordlabel.com/ontology#CareerStage_Legacy">
+    <rdf:type rdf:resource="http://www.autonomousrecordlabel.com/ontology#ArtistCareerStage" />
+    <ns2:label>Legacy</ns2:label>
+  </ns1:NamedIndividual>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#BrandElement">
+    <ns2:label xml:lang="en">Brand Element</ns2:label>
+    <ns2:comment xml:lang="en">A component of an artist's or label's brand identity (e.g., logo, color scheme, typical imagery, brand voice).</ns2:comment>
+    <ns2:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#MarketingCampaign">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#MarketingConcept" />
+    <ns2:label xml:lang="en">Marketing Campaign</ns2:label>
+    <ns2:comment xml:lang="en">A planned set of coordinated marketing activities designed to achieve a specific objective, often for a MusicRelease or Artist promotion.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#PromotionalActivity">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#MarketingConcept" />
+    <ns2:label xml:lang="en">Promotional Activity</ns2:label>
+    <ns2:comment xml:lang="en">A specific action or tactic used within a marketing campaign (e.g., social media push, playlist pitching, ad buy).</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#RadioCampaign">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#PromotionalActivity" />
+    <ns2:label xml:lang="en">Radio Campaign</ns2:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#PlaylistPitchingActivity">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#PromotionalActivity" />
+    <ns2:label xml:lang="en">Playlist Pitching Activity</ns2:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#SocialMediaPushActivity">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#PromotionalActivity" />
+    <ns2:label xml:lang="en">Social Media Push Activity</ns2:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#PublicRelationsActivity">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#PromotionalActivity" />
+    <ns2:label xml:lang="en">Public Relations Activity</ns2:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#AdvertisingCampaign">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#PromotionalActivity" />
+    <ns2:label xml:lang="en">Advertising Campaign</ns2:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#AudienceSegment">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#MarketingConcept" />
+    <ns2:label xml:lang="en">Audience Segment</ns2:label>
+    <ns2:comment xml:lang="en">A distinct group of potential or existing fans/consumers, characterized by shared demographics, psychographics, or behaviors.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#FanEngagementMetric">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#PerformanceMetric" />
+    <ns2:label xml:lang="en">Fan Engagement Metric</ns2:label>
+    <ns2:comment xml:lang="en">A metric specifically designed to measure the level and quality of interaction between fans and an artist or their content.</ns2:comment>
+  </ns1:Class>
+  <ns1:NamedIndividual rdf:about="http://www.autonomousrecordlabel.com/ontology#Metric_SocialMediaLikes">
+    <rdf:type rdf:resource="http://www.autonomousrecordlabel.com/ontology#FanEngagementMetric" />
+    <ns2:label>Social Media Likes</ns2:label>
+  </ns1:NamedIndividual>
+  <ns1:NamedIndividual rdf:about="http://www.autonomousrecordlabel.com/ontology#Metric_StreamToSaveRatio">
+    <rdf:type rdf:resource="http://www.autonomousrecordlabel.com/ontology#FanEngagementMetric" />
+    <ns2:label>Stream-to-Save Ratio</ns2:label>
+  </ns1:NamedIndividual>
+  <ns1:NamedIndividual rdf:about="http://www.autonomousrecordlabel.com/ontology#Metric_ConcertAttendance">
+    <rdf:type rdf:resource="http://www.autonomousrecordlabel.com/ontology#FanEngagementMetric" />
+    <ns2:label>Concert Attendance</ns2:label>
+  </ns1:NamedIndividual>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#MarketTrend">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#MarketingConcept" />
+    <ns2:label xml:lang="en">Market Trend</ns2:label>
+    <ns2:comment xml:lang="en">A perceived direction or pattern of change in market preferences, consumption habits, or industry dynamics.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#CampaignLifecycleStage">
+    <ns2:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+    <ns2:label xml:lang="en">Campaign Lifecycle Stage</ns2:label>
+    <ns2:comment xml:lang="en">A defined stage in the lifecycle of a marketing campaign (e.g., Planning, Pre-Launch, Active, Post-Mortem).</ns2:comment>
+  </ns1:Class>
+  <ns1:NamedIndividual rdf:about="http://www.autonomousrecordlabel.com/ontology#CampaignStage_Planning">
+    <rdf:type rdf:resource="http://www.autonomousrecordlabel.com/ontology#CampaignLifecycleStage" />
+    <ns2:label>Planning</ns2:label>
+  </ns1:NamedIndividual>
+  <ns1:NamedIndividual rdf:about="http://www.autonomousrecordlabel.com/ontology#CampaignStage_Active">
+    <rdf:type rdf:resource="http://www.autonomousrecordlabel.com/ontology#CampaignLifecycleStage" />
+    <ns2:label>Active</ns2:label>
+  </ns1:NamedIndividual>
+  <ns1:NamedIndividual rdf:about="http://www.autonomousrecordlabel.com/ontology#CampaignStage_PostMortem">
+    <rdf:type rdf:resource="http://www.autonomousrecordlabel.com/ontology#CampaignLifecycleStage" />
+    <ns2:label>Post-Mortem</ns2:label>
+  </ns1:NamedIndividual>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#hasCurrentCareerStage">
+    <ns2:label xml:lang="en">has current career stage</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Artist" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#ArtistCareerStage" />
+  </ns1:ObjectProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#careerStageStartDate">
+    <ns2:label xml:lang="en">career stage start date</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#ArtistCareerStage" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#date" />
+  </ns1:DatatypeProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#artistHasBrandElement">
+    <ns2:label xml:lang="en">artist has brand element</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Artist" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#BrandElement" />
+  </ns1:ObjectProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#brandElementDescription">
+    <ns2:label xml:lang="en">brand element description</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#BrandElement" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#campaignTargetsArtist">
+    <ns2:subPropertyOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#campaignTargetsGenericAsset" />
+    <ns2:label xml:lang="en">campaign targets artist</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#MarketingCampaign" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#Artist" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#campaignTargetsRelease">
+    <ns2:subPropertyOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#campaignTargetsGenericAsset" />
+    <ns2:label xml:lang="en">campaign targets release</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#MarketingCampaign" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#MusicRelease" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#campaignComprisesActivity">
+    <ns2:label xml:lang="en">campaign comprises activity</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#MarketingCampaign" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#PromotionalActivity" />
+    <ns1:inverseOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#activityPartOfCampaign" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#activityPartOfCampaign">
+    <ns2:label xml:lang="en">activity part of campaign</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#PromotionalActivity" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#MarketingCampaign" />
+    <ns1:inverseOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#campaignComprisesActivity" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#campaignTargetsAudience">
+    <ns2:label xml:lang="en">campaign targets audience</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#MarketingCampaign" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#AudienceSegment" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#campaignHasMetric">
+    <ns2:label xml:lang="en">campaign has metric</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#MarketingCampaign" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#FanEngagementMetric" />
+  </ns1:ObjectProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#audienceSegmentCharacteristics">
+    <ns2:label xml:lang="en">audience segment characteristics</ns2:label>
+    <ns2:comment xml:lang="en">Description of the demographics, psychographics, and behaviors of an audience segment.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#AudienceSegment" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#trendDescription">
+    <ns2:label xml:lang="en">trend description</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#MarketTrend" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#trendAffectsGenre">
+    <ns2:label xml:lang="en">trend affects genre</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#MarketTrend" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#Genre" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#hasCampaignLifecycleStage">
+    <ns2:label xml:lang="en">has campaign lifecycle stage</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#MarketingCampaign" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#CampaignLifecycleStage" />
+  </ns1:ObjectProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#campaignStartDate">
+    <ns2:label xml:lang="en">campaign start date</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#MarketingCampaign" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#date" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#campaignEndDate">
+    <ns2:label xml:lang="en">campaign end date</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#MarketingCampaign" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#date" />
+  </ns1:DatatypeProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#campaignHasBudget">
+    <ns2:label xml:lang="en">campaign has budget</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#MarketingCampaign" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#MonetaryAmount" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#campaignTargetsGenericAsset">
+    <ns2:label xml:lang="en">campaign targets generic asset</ns2:label>
+    <ns2:comment xml:lang="en">A general property indicating a marketing campaign targets some asset (Artist or MusicRelease). To be specialized by campaignTargetsArtist and campaignTargetsRelease.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#MarketingCampaign" />
+    <ns2:range>
+      <ns1:Class>
+        <ns1:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.autonomousrecordlabel.com/ontology#MusicRelease" />
+          <rdf:Description rdf:about="http://www.autonomousrecordlabel.com/ontology#Artist" />
+        </ns1:unionOf>
+      </ns1:Class>
+    </ns2:range>
+  </ns1:ObjectProperty>
+</rdf:RDF>

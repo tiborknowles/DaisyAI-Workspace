@@ -1,0 +1,272 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rdf:RDF xmlns:ns1="http://www.w3.org/2002/07/owl#" xmlns:ns2="http://www.w3.org/2000/01/rdf-schema#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <ns1:Ontology rdf:about="http://www.autonomousrecordlabel.com/ontology#ProductionAndDistributionOntology">
+    <ns2:label>ProductionAndDistribution Ontology</ns2:label>
+    <ns2:comment>Ontology module for ProductionAndDistribution concepts.</ns2:comment>
+    <ns1:versionInfo>0.1.0</ns1:versionInfo>
+    <ns1:imports rdf:resource="DaisyCoreOntology.owl" />
+    <ns1:imports rdf:resource="BusinessDomainCoreOntology.owl" />
+    <ns1:imports rdf:resource="AgentCognitiveFrameworkOntology.owl" />
+  </ns1:Ontology>
+  
+  <!-- ADDED: Missing class definition that was being referenced -->
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#MusicReleaseFormat">
+    <ns2:label xml:lang="en">Music Release Format</ns2:label>
+    <ns2:comment xml:lang="en">The physical or digital format of a music release (e.g., Vinyl, CD, Digital Stream, MP3, FLAC).</ns2:comment>
+    <ns2:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+  </ns1:Class>
+  
+  <!-- Core Classes -->
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#MusicProductionProcess">
+    <ns2:label xml:lang="en">Music Production Process</ns2:label>
+    <ns2:comment xml:lang="en">Represents the overall process or a specific stage in creating a sound recording, from songwriting to mastering.</ns2:comment>
+    <ns2:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+  </ns1:Class>
+  
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#CreativeBrief">
+    <ns2:label xml:lang="en">Creative Brief</ns2:label>
+    <ns2:comment xml:lang="en">A document or set of parameters outlining the creative direction, goals, and constraints for a music production task.</ns2:comment>
+    <ns2:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+  </ns1:Class>
+  
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#MusicGenerationTool">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#Tool" />
+    <ns2:label xml:lang="en">Music Generation Tool</ns2:label>
+    <ns2:comment xml:lang="en">An AI tool or system capable of generating original musical content or elements.</ns2:comment>
+  </ns1:Class>
+  
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#RemixingTool">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#Tool" />
+    <ns2:label xml:lang="en">Remixing Tool</ns2:label>
+    <ns2:comment xml:lang="en">An AI tool or system capable of creating remixes from existing audio material.</ns2:comment>
+  </ns1:Class>
+  
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#DAWIntegrationTool">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#Tool" />
+    <ns2:label xml:lang="en">DAW Integration Tool</ns2:label>
+    <ns2:comment xml:lang="en">A tool or plugin that integrates with Digital Audio Workstations.</ns2:comment>
+  </ns1:Class>
+  
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#ReleaseCycleStage">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#MusicReleaseLifecycleState" />
+    <ns2:label xml:lang="en">Release Cycle Stage</ns2:label>
+    <ns2:comment xml:lang="en">A specific stage in the lifecycle of a music release, from planning to post-release.</ns2:comment>
+  </ns1:Class>
+  
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#DistributionChannel">
+    <ns2:label xml:lang="en">Distribution Channel</ns2:label>
+    <ns2:comment xml:lang="en">A platform or method through which music releases are made available to consumers (e.g., DSP, physical retail, direct-to-fan).</ns2:comment>
+    <ns2:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+  </ns1:Class>
+  
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#DigitalAssetMetadata">
+    <ns2:label xml:lang="en">Digital Asset Metadata</ns2:label>
+    <ns2:comment xml:lang="en">Descriptive information associated with a digital music asset (recording, release) required for distribution and rights management.</ns2:comment>
+    <ns2:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+  </ns1:Class>
+  
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#ProductionAIGenerateMusicTask">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#CognitiveTask" />
+    <ns2:label xml:lang="en">Production AI Generate Music Task</ns2:label>
+    <ns2:comment xml:lang="en">A specific cognitive task for the ProductionAIGenerator to create music based on a creative brief.</ns2:comment>
+  </ns1:Class>
+  
+  <!-- Named Individuals for Production Stages -->
+  <ns1:NamedIndividual rdf:about="http://www.autonomousrecordlabel.com/ontology#ProductionStage_Songwriting">
+    <rdf:type rdf:resource="http://www.autonomousrecordlabel.com/ontology#MusicProductionProcess" />
+    <ns2:label>Songwriting</ns2:label>
+  </ns1:NamedIndividual>
+  
+  <ns1:NamedIndividual rdf:about="http://www.autonomousrecordlabel.com/ontology#ProductionStage_Arrangement">
+    <rdf:type rdf:resource="http://www.autonomousrecordlabel.com/ontology#MusicProductionProcess" />
+    <ns2:label>Arrangement</ns2:label>
+  </ns1:NamedIndividual>
+  
+  <ns1:NamedIndividual rdf:about="http://www.autonomousrecordlabel.com/ontology#ProductionStage_Tracking">
+    <rdf:type rdf:resource="http://www.autonomousrecordlabel.com/ontology#MusicProductionProcess" />
+    <ns2:label>Tracking/Recording</ns2:label>
+  </ns1:NamedIndividual>
+  
+  <ns1:NamedIndividual rdf:about="http://www.autonomousrecordlabel.com/ontology#ProductionStage_Mixing">
+    <rdf:type rdf:resource="http://www.autonomousrecordlabel.com/ontology#MusicProductionProcess" />
+    <ns2:label>Mixing</ns2:label>
+  </ns1:NamedIndividual>
+  
+  <ns1:NamedIndividual rdf:about="http://www.autonomousrecordlabel.com/ontology#ProductionStage_Mastering">
+    <rdf:type rdf:resource="http://www.autonomousrecordlabel.com/ontology#MusicProductionProcess" />
+    <ns2:label>Mastering</ns2:label>
+  </ns1:NamedIndividual>
+  
+  <!-- Named Individuals for Release Cycle Stages -->
+  <ns1:NamedIndividual rdf:about="http://www.autonomousrecordlabel.com/ontology#ReleaseStage_PreProduction">
+    <rdf:type rdf:resource="http://www.autonomousrecordlabel.com/ontology#ReleaseCycleStage" />
+    <ns2:label>Pre-Production</ns2:label>
+  </ns1:NamedIndividual>
+  
+  <ns1:NamedIndividual rdf:about="http://www.autonomousrecordlabel.com/ontology#ReleaseStage_Production">
+    <rdf:type rdf:resource="http://www.autonomousrecordlabel.com/ontology#ReleaseCycleStage" />
+    <ns2:label>Production</ns2:label>
+  </ns1:NamedIndividual>
+  
+  <ns1:NamedIndividual rdf:about="http://www.autonomousrecordlabel.com/ontology#ReleaseStage_PreReleaseMarketing">
+    <rdf:type rdf:resource="http://www.autonomousrecordlabel.com/ontology#ReleaseCycleStage" />
+    <ns2:label>Pre-Release Marketing</ns2:label>
+  </ns1:NamedIndividual>
+  
+  <ns1:NamedIndividual rdf:about="http://www.autonomousrecordlabel.com/ontology#ReleaseStage_ReleaseDate">
+    <rdf:type rdf:resource="http://www.autonomousrecordlabel.com/ontology#ReleaseCycleStage" />
+    <ns2:label>Release Date</ns2:label>
+  </ns1:NamedIndividual>
+  
+  <ns1:NamedIndividual rdf:about="http://www.autonomousrecordlabel.com/ontology#ReleaseStage_PostReleasePromotion">
+    <rdf:type rdf:resource="http://www.autonomousrecordlabel.com/ontology#ReleaseCycleStage" />
+    <ns2:label>Post-Release Promotion</ns2:label>
+  </ns1:NamedIndividual>
+  
+  <ns1:NamedIndividual rdf:about="http://www.autonomousrecordlabel.com/ontology#ReleaseStage_CatalogManagement">
+    <rdf:type rdf:resource="http://www.autonomousrecordlabel.com/ontology#ReleaseCycleStage" />
+    <ns2:label>Catalog Management</ns2:label>
+  </ns1:NamedIndividual>
+  
+  <!-- Named Individuals for Distribution Channels -->
+  <ns1:NamedIndividual rdf:about="http://www.autonomousrecordlabel.com/ontology#Channel_Spotify">
+    <rdf:type rdf:resource="http://www.autonomousrecordlabel.com/ontology#DistributionChannel" />
+    <ns2:label>Spotify</ns2:label>
+  </ns1:NamedIndividual>
+  
+  <ns1:NamedIndividual rdf:about="http://www.autonomousrecordlabel.com/ontology#Channel_AppleMusic">
+    <rdf:type rdf:resource="http://www.autonomousrecordlabel.com/ontology#DistributionChannel" />
+    <ns2:label>Apple Music</ns2:label>
+  </ns1:NamedIndividual>
+  
+  <ns1:NamedIndividual rdf:about="http://www.autonomousrecordlabel.com/ontology#Channel_Bandcamp">
+    <rdf:type rdf:resource="http://www.autonomousrecordlabel.com/ontology#DistributionChannel" />
+    <ns2:label>Bandcamp</ns2:label>
+  </ns1:NamedIndividual>
+  
+  <ns1:NamedIndividual rdf:about="http://www.autonomousrecordlabel.com/ontology#Channel_PhysicalRetail">
+    <rdf:type rdf:resource="http://www.autonomousrecordlabel.com/ontology#DistributionChannel" />
+    <ns2:label>Physical Retail</ns2:label>
+  </ns1:NamedIndividual>
+  
+  <!-- Object Properties -->
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#productionProcessFor">
+    <ns2:label xml:lang="en">production process for</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#MusicProductionProcess" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#Recording" />
+  </ns1:ObjectProperty>
+  
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#hasCreativeBrief">
+    <ns2:label xml:lang="en">has creative brief</ns2:label>
+    <ns2:comment xml:lang="en">Links a production task or a recording to its guiding creative brief.</ns2:comment>
+    <ns2:domain>
+      <ns1:Class>
+        <ns1:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.autonomousrecordlabel.com/ontology#ProductionAIGenerateMusicTask" />
+          <rdf:Description rdf:about="http://www.autonomousrecordlabel.com/ontology#Recording" />
+        </ns1:unionOf>
+      </ns1:Class>
+    </ns2:domain>
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#CreativeBrief" />
+  </ns1:ObjectProperty>
+  
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#briefTargetGenre">
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#CreativeBrief" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#Genre" />
+    <ns2:label xml:lang="en">brief target genre</ns2:label>
+  </ns1:ObjectProperty>
+  
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#briefReferenceTrack">
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#CreativeBrief" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#Recording" />
+    <ns2:label xml:lang="en">brief reference track</ns2:label>
+  </ns1:ObjectProperty>
+  
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#hasReleaseCycleStage">
+    <ns2:label xml:lang="en">has release cycle stage</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#MusicRelease" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#ReleaseCycleStage" />
+  </ns1:ObjectProperty>
+  
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#distributedViaChannel">
+    <ns2:label xml:lang="en">distributed via channel</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#MusicRelease" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#DistributionChannel" />
+  </ns1:ObjectProperty>
+  
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#hasReleaseFormat">
+    <ns2:label xml:lang="en">has release format</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#MusicRelease" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#MusicReleaseFormat" />
+  </ns1:ObjectProperty>
+  
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#assetHasMetadata">
+    <ns2:label xml:lang="en">asset has metadata</ns2:label>
+    <ns2:domain>
+      <ns1:Class>
+        <ns1:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.autonomousrecordlabel.com/ontology#Recording" />
+          <rdf:Description rdf:about="http://www.autonomousrecordlabel.com/ontology#MusicRelease" />
+        </ns1:unionOf>
+      </ns1:Class>
+    </ns2:domain>
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#DigitalAssetMetadata" />
+  </ns1:ObjectProperty>
+  
+  <!-- Datatype Properties -->
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#briefTargetMood">
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#CreativeBrief" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <ns2:label xml:lang="en">brief target mood</ns2:label>
+  </ns1:DatatypeProperty>
+  
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#briefLyricalThemes">
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#CreativeBrief" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <ns2:label xml:lang="en">brief lyrical themes</ns2:label>
+  </ns1:DatatypeProperty>
+  
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#briefInstrumentationNotes">
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#CreativeBrief" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <ns2:label xml:lang="en">brief instrumentation notes</ns2:label>
+  </ns1:DatatypeProperty>
+  
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#generativeModelType">
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#MusicGenerationTool" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <ns2:label xml:lang="en">generative model type</ns2:label>
+  </ns1:DatatypeProperty>
+  
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#musicToolControllableParameters">
+    <ns2:domain>
+      <ns1:Class>
+        <ns1:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.autonomousrecordlabel.com/ontology#MusicGenerationTool" />
+          <rdf:Description rdf:about="http://www.autonomousrecordlabel.com/ontology#RemixingTool" />
+        </ns1:unionOf>
+      </ns1:Class>
+    </ns2:domain>
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <ns2:label xml:lang="en">music tool controllable parameters</ns2:label>
+    <ns2:comment>JSON string or structured list of parameters the tool accepts.</ns2:comment>
+  </ns1:DatatypeProperty>
+  
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#releaseDate">
+    <ns2:label xml:lang="en">release date</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#MusicRelease" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#date" />
+  </ns1:DatatypeProperty>
+  
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#metadataField">
+    <ns2:label xml:lang="en">metadata field</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#DigitalAssetMetadata" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#metadataValue">
+    <ns2:label xml:lang="en">metadata value</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#DigitalAssetMetadata" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+</rdf:RDF>

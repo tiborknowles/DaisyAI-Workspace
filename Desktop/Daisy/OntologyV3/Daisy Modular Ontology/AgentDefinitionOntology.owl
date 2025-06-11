@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rdf:RDF xmlns:ns1="http://www.w3.org/2002/07/owl#" xmlns:ns2="http://www.w3.org/2000/01/rdf-schema#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <ns1:Ontology rdf:about="http://www.autonomousrecordlabel.com/ontology#AgentDefinitionOntology">
+    <ns2:label>AgentDefinition Ontology</ns2:label>
+    <ns2:comment>Ontology module for AgentDefinition  concepts.</ns2:comment>
+    <ns1:versionInfo>0.1.0</ns1:versionInfo>
+    <ns1:imports rdf:resource="DaisyCoreOntology.owl" />
+  </ns1:Ontology>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#AgentCapability">
+    <ns2:label xml:lang="en">Agent Capability</ns2:label>
+    <ns2:comment xml:lang="en">A specific ability or function an AI agent can perform (e.g., AnalyzeSocialMediaData, DraftContractClause).</ns2:comment>
+    <ns2:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#AgentPermission">
+    <ns2:label xml:lang="en">Agent Permission</ns2:label>
+    <ns2:comment xml:lang="en">Defines what an agent is authorized to do, often linking an agent to a capability and potentially a data scope or context.</ns2:comment>
+    <ns2:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#AgentGoal">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#Goal" />
+    <ns2:label xml:lang="en">Agent Goal</ns2:label>
+    <ns2:comment xml:lang="en">A specific objective assigned to or adopted by an AI Agent, contributing to broader LabelGoals.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#MaestroAI">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#AIAgent" />
+    <ns2:label xml:lang="en">Maestro AI</ns2:label>
+    <ns2:comment xml:lang="en">The strategic orchestration AI, responsible for setting label goals, designing agent incentives, running strategic simulations, and acting as an AI Co-scientist.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#TalentAIScout">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#AIAgent" />
+    <ns2:label xml:lang="en">Talent AI Scout</ns2:label>
+    <ns2:comment xml:lang="en">AI agent focused on A&amp;R tasks like discovering, analyzing, and recommending new talent.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#ProductionAIGenerator">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#AIAgent" />
+    <ns2:label xml:lang="en">Production AI Music Generator</ns2:label>
+    <ns2:comment xml:lang="en">AI agent capable of generating musical ideas, drafts, or full compositions, and potentially remixing.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#MarketingAIOptimizer">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#AIAgent" />
+    <ns2:label xml:lang="en">Marketing AI Optimizer</ns2:label>
+    <ns2:comment xml:lang="en">AI agent focused on planning, executing, and optimizing marketing campaigns.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#VenuAILogistics">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#AIAgent" />
+    <ns2:label xml:lang="en">Venue AI Logistics</ns2:label>
+    <ns2:comment xml:lang="en">AI agent focused on managing tour logistics, venue bookings, and related live performance aspects.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#RightsAdminAI">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#AIAgent" />
+    <ns2:label xml:lang="en">Rights Administration AI</ns2:label>
+    <ns2:comment xml:lang="en">AI agent focused on managing music rights, licenses, and royalty administration.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#LegalComplianceAI">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#AIAgent" />
+    <ns2:label xml:lang="en">Legal Compliance AI</ns2:label>
+    <ns2:comment xml:lang="en">AI agent focused on ensuring legal and contractual compliance, assisting in drafting and reviewing agreements.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#FinancialAnalysisAI">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#AIAgent" />
+    <ns2:label xml:lang="en">Financial Analysis AI</ns2:label>
+    <ns2:comment xml:lang="en">AI agent focused on financial planning, analysis, revenue forecasting, and budget allocation.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#AudienceIntelligenceAI">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#AIAgent" />
+    <ns2:label xml:lang="en">Audience Intelligence AI</ns2:label>
+    <ns2:comment xml:lang="en">AI agent focused on analyzing audience data, identifying segments, and understanding fan behavior.</ns2:comment>
+  </ns1:Class>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#hasCapability">
+    <ns2:label xml:lang="en">has capability</ns2:label>
+    <ns2:comment xml:lang="en">Links an AI Agent to a specific capability it possesses.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#AIAgent" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#AgentCapability" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#hasPermission">
+    <ns2:label xml:lang="en">has permission</ns2:label>
+    <ns2:comment xml:lang="en">Links an AI Agent to a permission, detailing what capability it can exercise, possibly within a specific scope.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#AIAgent" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#AgentPermission" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#permissionConcernsCapability">
+    <ns2:label xml:lang="en">permission concerns capability</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#AgentPermission" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#AgentCapability" />
+  </ns1:ObjectProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#capabilityDescription">
+    <ns2:label xml:lang="en">capability description</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#AgentCapability" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#permissionDetails">
+    <ns2:label xml:lang="en">permission details</ns2:label>
+    <ns2:comment xml:lang="en">A textual description of the specifics of a permission, e.g., data scope or conditions.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#AgentPermission" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#agentPrimaryGoalDescription">
+    <ns2:label xml:lang="en">agent primary goal description</ns2:label>
+    <ns2:comment xml:lang="en">A textual description of the primary, high-level objective of a specific type of AI agent.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#AIAgent" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+</rdf:RDF>

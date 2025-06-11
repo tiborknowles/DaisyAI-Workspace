@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rdf:RDF xmlns:ns1="http://www.w3.org/2002/07/owl#" xmlns:ns2="http://www.w3.org/2000/01/rdf-schema#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <ns1:Ontology rdf:about="http://www.autonomousrecordlabel.com/ontology#GoalAndPerformanceOntology">
+    <ns2:label>GoalAndPerformance Ontology</ns2:label>
+    <ns2:comment>Ontology module for GoalAndPerformance concepts.</ns2:comment>
+    <ns1:versionInfo>0.1.0</ns1:versionInfo>
+    <ns1:imports rdf:resource="DaisyCoreOntology.owl" />
+    <ns1:imports rdf:resource="AgentDefinitionOntology.owl" />
+    <ns1:imports rdf:resource="ContextAndFeedbackOntology.owl" />
+  </ns1:Ontology>
+  
+  <!-- Classes -->
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#LabelGoal">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#Goal" />
+    <ns2:label xml:lang="en">Label Goal</ns2:label>
+    <ns2:comment xml:lang="en">A strategic or operational goal for the record label itself (e.g., FinancialGrowthGoal, MarketShareGoal, ArtistSuccessGoal).</ns2:comment>
+  </ns1:Class>
+  
+  <!-- REMOVED: Duplicate KPI class definition - KPI is already defined in DaisyCoreOntology.owl -->
+  <!-- The KPI class and its properties are inherited from the imported DaisyCoreOntology -->
+  
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#AgentIncentiveStructure">
+    <ns2:label xml:lang="en">Agent Incentive Structure</ns2:label>
+    <ns2:comment xml:lang="en">Defines how an agent's behavior is incentivized or rewarded, typically based on KPI achievement related to specific goals. Designed/managed by MaestroAI.</ns2:comment>
+    <ns2:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+  </ns1:Class>
+  
+  <!-- Object Properties -->
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#isPropagatedBy">
+    <ns2:label xml:lang="en">is propagated by</ns2:label>
+    <ns2:comment xml:lang="en">Indicates that this goal was set or propagated by MaestroAI.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Goal" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#MaestroAI" />
+  </ns1:ObjectProperty>
+  
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#assignedToAgentOrTeam">
+    <ns2:label xml:lang="en">assigned to agent or team</ns2:label>
+    <ns2:comment xml:lang="en">Links a goal to the AI Agent or Organizational Unit responsible for achieving it.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Goal" />
+    <ns2:range>
+      <ns1:Class>
+        <ns1:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.autonomousrecordlabel.com/ontology#AIAgent" />
+          <rdf:Description rdf:about="http://www.autonomousrecordlabel.com/ontology#OrganizationalUnit" />
+        </ns1:unionOf>
+      </ns1:Class>
+    </ns2:range>
+  </ns1:ObjectProperty>
+  
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#monitoringKPI">
+    <ns2:label xml:lang="en">monitoring KPI</ns2:label>
+    <ns2:comment xml:lang="en">The KPI(s) used to track progress towards and achievement of this goal.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Goal" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#KPI" />
+    <ns1:inverseOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#isTrackedForGoal" />
+  </ns1:ObjectProperty>
+  
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#isTrackedForGoal">
+    <ns2:label xml:lang="en">is tracked for goal</ns2:label>
+    <ns2:comment xml:lang="en">Links a KPI to the Goal(s) for which it serves as a progress measure. Inverse of monitoringKPI.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#KPI" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#Goal" />
+    <ns1:inverseOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#monitoringKPI" />
+  </ns1:ObjectProperty>
+  
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#influencedByContextualFactor">
+    <ns2:label xml:lang="en">influenced by contextual factor</ns2:label>
+    <ns2:comment xml:lang="en">Links a KPI to an MCPContextualFactor that is known or hypothesized to influence it.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#KPI" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#MCPContextualFactor" />
+  </ns1:ObjectProperty>
+  
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#kpiDataSource">
+    <ns2:label xml:lang="en">KPI data source</ns2:label>
+    <ns2:comment xml:lang="en">The data feed or source from which the raw data for this KPI is obtained.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#KPI" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#ContextualDataFeed" />
+  </ns1:ObjectProperty>
+  
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#responsibleAgentForMeasurement">
+    <ns2:label xml:lang="en">responsible agent for measurement</ns2:label>
+    <ns2:comment xml:lang="en">The AI agent (type or instance) responsible for executing the measurement of this KPI.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#KPI" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#AIAgent" />
+  </ns1:ObjectProperty>
+  
+  <!-- Agent Incentive Structure Properties -->
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#incentiveAppliesToAgentType">
+    <ns2:label xml:lang="en">incentive applies to agent type</ns2:label>
+    <ns2:comment xml:lang="en">The type of AI Agent this incentive structure applies to.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#AgentIncentiveStructure" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#AIAgent" />
+  </ns1:ObjectProperty>
+  
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#incentiveTriggeredByKPI">
+    <ns2:label xml:lang="en">incentive triggered by KPI</ns2:label>
+    <ns2:comment xml:lang="en">The KPI whose achievement or specific state triggers this incentive.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#AgentIncentiveStructure" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#KPI" />
+  </ns1:ObjectProperty>
+  
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#derivedFromLabelGoal">
+    <ns2:label xml:lang="en">derived from label goal</ns2:label>
+    <ns2:comment xml:lang="en">The overarching LabelGoal that this incentive structure is designed to support.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#AgentIncentiveStructure" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#LabelGoal" />
+  </ns1:ObjectProperty>
+  
+  <!-- Datatype Properties -->
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#goalTargetValueContext">
+    <ns2:label xml:lang="en">goal target value context</ns2:label>
+    <ns2:comment xml:lang="en">Provides context for the target value of a goal, often related to a specific KPI (e.g. 'Achieve 1,000,000 streams for KPI_ReleaseStreams').</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Goal" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  
+  <!-- KPI-specific properties -->
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#kpiBaselineValue">
+    <ns2:label xml:lang="en">KPI baseline value</ns2:label>
+    <ns2:comment xml:lang="en">The value of the KPI at the start of a measurement period or before an intervention.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#KPI" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal" />
+  </ns1:DatatypeProperty>
+  
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#kpiTargetValue">
+    <ns2:label xml:lang="en">KPI target value</ns2:label>
+    <ns2:comment xml:lang="en">The desired value for this KPI, often linked to a goal.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#KPI" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal" />
+  </ns1:DatatypeProperty>
+  
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#kpiActualValue">
+    <ns2:label xml:lang="en">KPI actual value</ns2:label>
+    <ns2:comment xml:lang="en">The current measured value of the KPI.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#KPI" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal" />
+  </ns1:DatatypeProperty>
+  
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#kpiCalculationLogicDescription">
+    <ns2:label xml:lang="en">KPI calculation logic description</ns2:label>
+    <ns2:comment xml:lang="en">A human-readable description of how the KPI is calculated from its data sources.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#KPI" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#kpiCalculationQueryOrScript">
+    <ns2:label xml:lang="en">KPI calculation query or script</ns2:label>
+    <ns2:comment xml:lang="en">The actual query (e.g., SQL, SPARQL) or reference to a script used to calculate the KPI.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#KPI" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#kpiMeasurementFrequency">
+    <ns2:label xml:lang="en">KPI measurement frequency</ns2:label>
+    <ns2:comment xml:lang="en">Specifies how often the KPI should be measured/updated.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#KPI" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#duration" />
+  </ns1:DatatypeProperty>
+  
+  <!-- Agent Incentive Structure Properties -->
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#incentiveCondition">
+    <ns2:label xml:lang="en">incentive condition</ns2:label>
+    <ns2:comment xml:lang="en">The condition upon the triggering KPI that must be met (e.g., 'KPI_Value &gt; X', 'KPI_Trend = Positive').</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#AgentIncentiveStructure" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#rewardMechanismDescription">
+    <ns2:label xml:lang="en">reward mechanism description</ns2:label>
+    <ns2:comment xml:lang="en">Describes the conceptual reward for the AI agent (e.g., 'IncreasedComputationalResources', 'PriorityTaskQueueAccess', 'PositiveWeightUpdateInMetaLearning').</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#AgentIncentiveStructure" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+</rdf:RDF>

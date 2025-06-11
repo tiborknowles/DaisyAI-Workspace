@@ -1,0 +1,109 @@
+AGENT STARTER PACK CODE STRUCTURE GUIDE FOR LLM
+Based on the official Agent Starter Pack repository, here's the complete guide:
+Official Agent Starter Pack Architecture
+The Agent Starter Pack follows this exact structure for each agent:
+Apply
+instructions
+agent-name/
+├── app/                          # Core agent logic
+│   ├── agent.py                 # Main agent implementation
+│   ├── agent_engine_app.py      # Agent Engine deployment script
+│   └── utils/                   # Utility functions
+├── deployment/                   # Infrastructure as Code
+│   ├── terraform/               # Terraform configurations
+│   │   ├── dev/                # Development environment
+│   │   └── vars/               # Variable definitions
+│   ├── ci/                     # CI configurations
+│   └── cd/                     # CD configurations
+├── frontend/                     # UI components (Streamlit/React)
+├── tests/                       # Testing framework
+│   ├── unit/                   # Unit tests
+│   ├── integration/            # Integration tests
+│   └── load_test/              # Load testing
+├── notebooks/                   # Jupyter notebooks for experimentation
+├── Makefile                     # Standard commands (install, playground, backend)
+├── pyproject.toml              # Python project configuration
+├── uv.lock                     # Dependency lock file
+└── README.md                   # Project-specific instructions
+
+Standard Commands Per Official Documentation
+According to the Getting Started Guide, each agent supports:
+make install - Install dependencies using uv sync
+make playground - Launch interactive testing environment
+make backend - Deploy to Google Cloud (Agent Engine/Cloud Run)
+make test - Run unit and integration tests
+Deployment Targets Supported
+From the official repository:
+Agent Engine (agent_engine) - Fully managed solution (recommended)
+Cloud Run (cloud_run) - Containerized deployment
+Available Templates
+Official templates from the repository:
+adk_base - Base ReAct agent using Google's ADK
+agentic_rag - RAG agent with Vertex AI Search/Vector Search
+langgraph_base_react - LangGraph-based ReAct agent
+crewai_coding_crew - Multi-agent CrewAI system
+live_api - Real-time multimodal RAG agent
+
+Agent Starter Pack Native Testing Tools
+Based on my comprehensive review of the Agent Starter Pack documentation, here are the native testing tools provided:
+1. 🏗️ Core Testing Commands (Makefile)
+Apply
+Run
+)
+2. 🔬 Unit Testing Framework
+Framework: pytest
+Location: tests/unit/
+Purpose: Test business logic, agent functionality, data processing
+Example: tests/unit/test_dummy.py (placeholder for your tests)
+3. 🔗 Integration Testing
+Framework: pytest with ADK integration
+Location: tests/integration/
+Key Tests:
+test_agent.py - Tests agent streaming responses using ADK Runner
+test_agent_engine_app.py - Tests Agent Engine deployment integration
+Features:
+Mocking of dependencies (like retrieve_docs)
+Testing with InMemorySessionService
+Streaming response validation
+4. ⚡ Load Testing Framework
+Framework: Locust
+Location: tests/load_test/
+Purpose: Performance testing of deployed agents
+Features:
+Simulates concurrent users
+Tests Agent Engine streaming endpoints
+Generates performance reports (HTML + CSV)
+OAuth token-based authentication
+5. 📊 Interactive Testing Notebooks
+Location: notebooks/
+Key Testing Notebooks:
+adk_app_testing.ipynb - Comprehensive testing guide for both local and remote agents
+evaluating_adk_agent.ipynb - Agent evaluation and performance assessment
+intro_agent_engine.ipynb - Agent Engine deployment testing
+6. 🎮 Playground Testing Environment
+Tool: ADK Web UI (make playground)
+Features:
+Interactive chat interface
+Real-time code reloading
+Session management
+User feedback collection
+Multiple input types support
+Chat history tracking
+7. 📈 Observability & Monitoring Tools
+OpenTelemetry Integration: Automatic tracing and logging
+Cloud Trace: Request flow analysis
+BigQuery Integration: Long-term data storage
+Looker Studio Dashboards: Performance visualization
+Custom Logging: Enhanced payload handling for large data
+8. 🚀 Deployment Testing
+Agent Engine Testing: Remote testing with reasoning engines
+Cloud Run Testing: HTTP endpoint testing with authentication
+Local vs Remote: Both environments supported in notebooks
+🎯 Recommended Testing Workflow
+Local Development: Use make playground for interactive testing
+Unit Testing: Write tests in tests/unit/ and run with make test
+Integration Testing: Test agent functionality with ADK Runner
+Load Testing: Deploy with make backend, then run Locust tests
+Evaluation: Use Jupyter notebooks for comprehensive evaluation
+Production Monitoring: Leverage observability tools for ongoing monitoring
+The Agent Starter Pack provides a complete testing ecosystem that covers everything from interactive development to production performance monitoring, all following Google Cloud best practices.

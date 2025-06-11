@@ -1,0 +1,5103 @@
+// ===============================================
+// DAISYONT COMPLETE ONTOLOGY IMPORT SCRIPT
+// ===============================================
+// Generated automatically from individual OWL modules
+// Total modules processed: 15
+// Total statements: 5107
+// ===============================================
+
+// ==============================================
+// CONSTRAINTS AND INDEXES
+// ==============================================
+
+CREATE CONSTRAINT ontology_iri_unique IF NOT EXISTS FOR (o:Ontology) REQUIRE o.base_iri IS UNIQUE;
+CREATE CONSTRAINT class_name_unique IF NOT EXISTS FOR (c:Class) REQUIRE c.name IS UNIQUE;
+CREATE CONSTRAINT class_iri_unique IF NOT EXISTS FOR (c:Class) REQUIRE c.iri IS UNIQUE;
+CREATE CONSTRAINT object_property_name_unique IF NOT EXISTS FOR (p:ObjectProperty) REQUIRE p.name IS UNIQUE;
+CREATE CONSTRAINT data_property_name_unique IF NOT EXISTS FOR (p:DataProperty) REQUIRE p.name IS UNIQUE;
+CREATE CONSTRAINT individual_iri_unique IF NOT EXISTS FOR (i:Individual) REQUIRE i.iri IS UNIQUE;
+
+CREATE INDEX ontology_name_index IF NOT EXISTS FOR (o:Ontology) ON (o.name);
+CREATE INDEX class_name_index IF NOT EXISTS FOR (c:Class) ON (c.name);
+CREATE INDEX class_ontology_index IF NOT EXISTS FOR (c:Class) ON (c.ontology);
+CREATE INDEX property_name_index IF NOT EXISTS FOR (p:ObjectProperty) ON (p.name);
+
+// Module: TouringAndLivePerformanceOntology
+// Source: TouringAndLivePerformanceOntology.owl
+// Base IRI: http://www.autonomousrecordlabel.com/ontology#TouringAndLivePerformanceOntology#
+
+CREATE (:Ontology {
+name: 'TouringAndLivePerformanceOntology',
+base_iri: 'http://www.autonomousrecordlabel.com/ontology#TouringAndLivePerformanceOntology#',
+source_file: 'TouringAndLivePerformanceOntology.owl'
+});
+
+// Class: Venue
+CREATE (:Class {
+name: 'Venue',
+iri: 'http://www.autonomousrecordlabel.com/ontology#Venue',
+label: 'Venue',
+ontology: 'TouringAndLivePerformanceOntology'
+});
+
+MATCH (c:Class {name: 'Venue'}) SET c.comment = 'A physical location where live performances or events take place.';
+
+MATCH (c:Class {name: 'Venue'}) SET c.rdfs_label = 'Venue';
+
+// Class: Tour
+CREATE (:Class {
+name: 'Tour',
+iri: 'http://www.autonomousrecordlabel.com/ontology#Tour',
+label: 'Tour',
+ontology: 'TouringAndLivePerformanceOntology'
+});
+
+MATCH (c:Class {name: 'Tour'}) SET c.comment = 'A series of live performances by an artist or group across multiple locations over a period.';
+
+MATCH (c:Class {name: 'Tour'}) SET c.rdfs_label = 'Tour';
+
+// Class: Concert
+CREATE (:Class {
+name: 'Concert',
+iri: 'http://www.autonomousrecordlabel.com/ontology#Concert',
+label: 'Concert',
+ontology: 'TouringAndLivePerformanceOntology'
+});
+
+MATCH (c:Class {name: 'Concert'}) SET c.comment = 'A single live music performance event.';
+
+MATCH (c:Class {name: 'Concert'}) SET c.rdfs_label = 'Concert';
+
+// Class: FestivalAppearance
+CREATE (:Class {
+name: 'FestivalAppearance',
+iri: 'http://www.autonomousrecordlabel.com/ontology#FestivalAppearance',
+label: 'FestivalAppearance',
+ontology: 'TouringAndLivePerformanceOntology'
+});
+
+MATCH (c:Class {name: 'FestivalAppearance'}) SET c.comment = 'A live performance by an artist as part of a larger music festival.';
+
+MATCH (c:Class {name: 'FestivalAppearance'}) SET c.rdfs_label = 'Festival Appearance';
+
+// Class: Promoter
+CREATE (:Class {
+name: 'Promoter',
+iri: 'http://www.autonomousrecordlabel.com/ontology#Promoter',
+label: 'Promoter',
+ontology: 'TouringAndLivePerformanceOntology'
+});
+
+MATCH (c:Class {name: 'Promoter'}) SET c.comment = 'An individual or organization that finances and organizes live music events.';
+
+MATCH (c:Class {name: 'Promoter'}) SET c.rdfs_label = 'Promoter';
+
+// Class: TicketingAgent
+CREATE (:Class {
+name: 'TicketingAgent',
+iri: 'http://www.autonomousrecordlabel.com/ontology#TicketingAgent',
+label: 'TicketingAgent',
+ontology: 'TouringAndLivePerformanceOntology'
+});
+
+MATCH (c:Class {name: 'TicketingAgent'}) SET c.comment = 'An organization that sells tickets for events on behalf of venues or promoters.';
+
+MATCH (c:Class {name: 'TicketingAgent'}) SET c.rdfs_label = 'Ticketing Agent';
+
+// Class: Ticket
+CREATE (:Class {
+name: 'Ticket',
+iri: 'http://www.autonomousrecordlabel.com/ontology#Ticket',
+label: 'Ticket',
+ontology: 'TouringAndLivePerformanceOntology'
+});
+
+MATCH (c:Class {name: 'Ticket'}) SET c.comment = 'A pass granting admission to an event, such as a concert.';
+
+MATCH (c:Class {name: 'Ticket'}) SET c.rdfs_label = 'Ticket';
+
+// Class: TravelLogistics
+CREATE (:Class {
+name: 'TravelLogistics',
+iri: 'http://www.autonomousrecordlabel.com/ontology#TravelLogistics',
+label: 'TravelLogistics',
+ontology: 'TouringAndLivePerformanceOntology'
+});
+
+MATCH (c:Class {name: 'TravelLogistics'}) SET c.comment = 'Information related to travel arrangements for a tour or event, including transportation and accommodation.';
+
+MATCH (c:Class {name: 'TravelLogistics'}) SET c.rdfs_label = 'Travel Logistics';
+
+// Class: EquipmentManifest
+CREATE (:Class {
+name: 'EquipmentManifest',
+iri: 'http://www.autonomousrecordlabel.com/ontology#EquipmentManifest',
+label: 'EquipmentManifest',
+ontology: 'TouringAndLivePerformanceOntology'
+});
+
+MATCH (c:Class {name: 'EquipmentManifest'}) SET c.comment = 'A list of musical equipment, stage gear, and other technical apparatus required for a performance or tour.';
+
+MATCH (c:Class {name: 'EquipmentManifest'}) SET c.rdfs_label = 'Equipment Manifest';
+
+// Hierarchy: Venue -> EPMO
+MATCH (child:Class {name: 'Venue'}), (parent:Class {name: 'EPMO'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: Tour -> Event
+MATCH (child:Class {name: 'Tour'}), (parent:Class {name: 'Event'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: Concert -> Event
+MATCH (child:Class {name: 'Concert'}), (parent:Class {name: 'Event'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: FestivalAppearance -> Concert
+MATCH (child:Class {name: 'FestivalAppearance'}), (parent:Class {name: 'Concert'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: Promoter -> EPMO
+MATCH (child:Class {name: 'Promoter'}), (parent:Class {name: 'EPMO'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: TicketingAgent -> EPMO
+MATCH (child:Class {name: 'TicketingAgent'}), (parent:Class {name: 'EPMO'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Object Property: tourIncludesConcert
+CREATE (:ObjectProperty {
+name: 'tourIncludesConcert',
+iri: 'http://www.autonomousrecordlabel.com/ontology#tourIncludesConcert',
+ontology: 'TouringAndLivePerformanceOntology'
+});
+
+// Property relationship: Tour -tourIncludesConcert-> Concert
+MATCH (d:Class {name: 'Tour'}), (r:Class {name: 'Concert'})
+CREATE (d)-[:TOURINCLUDESCONCERT]->(r);
+
+// Object Property: concertPartOfTour
+CREATE (:ObjectProperty {
+name: 'concertPartOfTour',
+iri: 'http://www.autonomousrecordlabel.com/ontology#concertPartOfTour',
+ontology: 'TouringAndLivePerformanceOntology'
+});
+
+// Property relationship: Concert -concertPartOfTour-> Tour
+MATCH (d:Class {name: 'Concert'}), (r:Class {name: 'Tour'})
+CREATE (d)-[:CONCERTPARTOFTOUR]->(r);
+
+// Object Property: eventTakesPlaceAtVenue
+CREATE (:ObjectProperty {
+name: 'eventTakesPlaceAtVenue',
+iri: 'http://www.autonomousrecordlabel.com/ontology#eventTakesPlaceAtVenue',
+ontology: 'TouringAndLivePerformanceOntology'
+});
+
+// Property relationship: Event -eventTakesPlaceAtVenue-> Venue
+MATCH (d:Class {name: 'Event'}), (r:Class {name: 'Venue'})
+CREATE (d)-[:EVENTTAKESPLACEATVENUE]->(r);
+
+// Object Property: venueHostsEvent
+CREATE (:ObjectProperty {
+name: 'venueHostsEvent',
+iri: 'http://www.autonomousrecordlabel.com/ontology#venueHostsEvent',
+ontology: 'TouringAndLivePerformanceOntology'
+});
+
+// Property relationship: Venue -venueHostsEvent-> Event
+MATCH (d:Class {name: 'Venue'}), (r:Class {name: 'Event'})
+CREATE (d)-[:VENUEHOSTSEVENT]->(r);
+
+// Object Property: eventOrganizedByPromoter
+CREATE (:ObjectProperty {
+name: 'eventOrganizedByPromoter',
+iri: 'http://www.autonomousrecordlabel.com/ontology#eventOrganizedByPromoter',
+ontology: 'TouringAndLivePerformanceOntology'
+});
+
+// Property relationship: Event -eventOrganizedByPromoter-> Promoter
+MATCH (d:Class {name: 'Event'}), (r:Class {name: 'Promoter'})
+CREATE (d)-[:EVENTORGANIZEDBYPROMOTER]->(r);
+
+// Object Property: ticketForEvent
+CREATE (:ObjectProperty {
+name: 'ticketForEvent',
+iri: 'http://www.autonomousrecordlabel.com/ontology#ticketForEvent',
+ontology: 'TouringAndLivePerformanceOntology'
+});
+
+// Property relationship: Ticket -ticketForEvent-> Event
+MATCH (d:Class {name: 'Ticket'}), (r:Class {name: 'Event'})
+CREATE (d)-[:TICKETFOREVENT]->(r);
+
+// Object Property: ticketSoldByAgent
+CREATE (:ObjectProperty {
+name: 'ticketSoldByAgent',
+iri: 'http://www.autonomousrecordlabel.com/ontology#ticketSoldByAgent',
+ontology: 'TouringAndLivePerformanceOntology'
+});
+
+// Property relationship: Ticket -ticketSoldByAgent-> TicketingAgent
+MATCH (d:Class {name: 'Ticket'}), (r:Class {name: 'TicketingAgent'})
+CREATE (d)-[:TICKETSOLDBYAGENT]->(r);
+
+// Object Property: tourHasTravelLogistics
+CREATE (:ObjectProperty {
+name: 'tourHasTravelLogistics',
+iri: 'http://www.autonomousrecordlabel.com/ontology#tourHasTravelLogistics',
+ontology: 'TouringAndLivePerformanceOntology'
+});
+
+// Property relationship: Tour -tourHasTravelLogistics-> TravelLogistics
+MATCH (d:Class {name: 'Tour'}), (r:Class {name: 'TravelLogistics'})
+CREATE (d)-[:TOURHASTRAVELLOGISTICS]->(r);
+
+// Object Property: performanceRequiresEquipment
+CREATE (:ObjectProperty {
+name: 'performanceRequiresEquipment',
+iri: 'http://www.autonomousrecordlabel.com/ontology#performanceRequiresEquipment',
+ontology: 'TouringAndLivePerformanceOntology'
+});
+
+// Property relationship: Event -performanceRequiresEquipment-> EquipmentManifest
+MATCH (d:Class {name: 'Event'}), (r:Class {name: 'EquipmentManifest'})
+CREATE (d)-[:PERFORMANCEREQUIRESEQUIPMENT]->(r);
+
+// Object Property: performanceGuaranteeAmountObject
+CREATE (:ObjectProperty {
+name: 'performanceGuaranteeAmountObject',
+iri: 'http://www.autonomousrecordlabel.com/ontology#performanceGuaranteeAmountObject',
+ontology: 'TouringAndLivePerformanceOntology'
+});
+
+// Property relationship: PerformanceAgreement -performanceGuaranteeAmountObject-> MonetaryAmount
+MATCH (d:Class {name: 'PerformanceAgreement'}), (r:Class {name: 'MonetaryAmount'})
+CREATE (d)-[:PERFORMANCEGUARANTEEAMOUNTOBJECT]->(r);
+
+// Object Property: ticketHasPriceObject
+CREATE (:ObjectProperty {
+name: 'ticketHasPriceObject',
+iri: 'http://www.autonomousrecordlabel.com/ontology#ticketHasPriceObject',
+ontology: 'TouringAndLivePerformanceOntology'
+});
+
+// Property relationship: Ticket -ticketHasPriceObject-> MonetaryAmount
+MATCH (d:Class {name: 'Ticket'}), (r:Class {name: 'MonetaryAmount'})
+CREATE (d)-[:TICKETHASPRICEOBJECT]->(r);
+
+// Data Property: venueName
+CREATE (:DataProperty {
+name: 'venueName',
+iri: 'http://www.autonomousrecordlabel.com/ontology#venueName',
+ontology: 'TouringAndLivePerformanceOntology'
+});
+
+// Data Property: venueCapacity
+CREATE (:DataProperty {
+name: 'venueCapacity',
+iri: 'http://www.autonomousrecordlabel.com/ontology#venueCapacity',
+ontology: 'TouringAndLivePerformanceOntology'
+});
+
+// Data Property: venueAddress
+CREATE (:DataProperty {
+name: 'venueAddress',
+iri: 'http://www.autonomousrecordlabel.com/ontology#venueAddress',
+ontology: 'TouringAndLivePerformanceOntology'
+});
+
+// Data Property: transportationDetails
+CREATE (:DataProperty {
+name: 'transportationDetails',
+iri: 'http://www.autonomousrecordlabel.com/ontology#transportationDetails',
+ontology: 'TouringAndLivePerformanceOntology'
+});
+
+// Data Property: accommodationDetails
+CREATE (:DataProperty {
+name: 'accommodationDetails',
+iri: 'http://www.autonomousrecordlabel.com/ontology#accommodationDetails',
+ontology: 'TouringAndLivePerformanceOntology'
+});
+
+// Data Property: manifestItem
+CREATE (:DataProperty {
+name: 'manifestItem',
+iri: 'http://www.autonomousrecordlabel.com/ontology#manifestItem',
+ontology: 'TouringAndLivePerformanceOntology'
+});
+
+// Data Property: hallFeePercentage
+CREATE (:DataProperty {
+name: 'hallFeePercentage',
+iri: 'http://www.autonomousrecordlabel.com/ontology#hallFeePercentage',
+ontology: 'TouringAndLivePerformanceOntology'
+});
+
+
+// Module: AgentDefinitionOntology
+// Source: AgentDefinitionOntology.owl
+// Base IRI: file:///Users/tibor.knowles/Desktop/Daisy/OntologyV2/AgentDefinitionOntology.owl#
+
+CREATE (:Ontology {
+name: 'AgentDefinitionOntology',
+base_iri: 'file:///Users/tibor.knowles/Desktop/Daisy/OntologyV2/AgentDefinitionOntology.owl#',
+source_file: 'AgentDefinitionOntology.owl'
+});
+
+// Class: AgentCapability
+CREATE (:Class {
+name: 'AgentCapability',
+iri: 'http://www.autonomousrecordlabel.com/ontology#AgentCapability',
+label: 'AgentCapability',
+ontology: 'AgentDefinitionOntology'
+});
+
+MATCH (c:Class {name: 'AgentCapability'}) SET c.comment = 'A specific ability or function an AI agent can perform (e.g., AnalyzeSocialMediaData, DraftContractClause).';
+
+MATCH (c:Class {name: 'AgentCapability'}) SET c.rdfs_label = 'Agent Capability';
+
+// Class: AgentPermission
+CREATE (:Class {
+name: 'AgentPermission',
+iri: 'http://www.autonomousrecordlabel.com/ontology#AgentPermission',
+label: 'AgentPermission',
+ontology: 'AgentDefinitionOntology'
+});
+
+MATCH (c:Class {name: 'AgentPermission'}) SET c.comment = 'Defines what an agent is authorized to do, often linking an agent to a capability and potentially a data scope or context.';
+
+MATCH (c:Class {name: 'AgentPermission'}) SET c.rdfs_label = 'Agent Permission';
+
+// Class: AgentGoal
+CREATE (:Class {
+name: 'AgentGoal',
+iri: 'http://www.autonomousrecordlabel.com/ontology#AgentGoal',
+label: 'AgentGoal',
+ontology: 'AgentDefinitionOntology'
+});
+
+MATCH (c:Class {name: 'AgentGoal'}) SET c.comment = 'A specific objective assigned to or adopted by an AI Agent, contributing to broader LabelGoals.';
+
+MATCH (c:Class {name: 'AgentGoal'}) SET c.rdfs_label = 'Agent Goal';
+
+// Class: MaestroAI
+CREATE (:Class {
+name: 'MaestroAI',
+iri: 'http://www.autonomousrecordlabel.com/ontology#MaestroAI',
+label: 'MaestroAI',
+ontology: 'AgentDefinitionOntology'
+});
+
+MATCH (c:Class {name: 'MaestroAI'}) SET c.comment = 'The strategic orchestration AI, responsible for setting label goals, designing agent incentives, running strategic simulations, and acting as an AI Co-scientist.';
+
+MATCH (c:Class {name: 'MaestroAI'}) SET c.rdfs_label = 'Maestro AI';
+
+// Class: TalentAIScout
+CREATE (:Class {
+name: 'TalentAIScout',
+iri: 'http://www.autonomousrecordlabel.com/ontology#TalentAIScout',
+label: 'TalentAIScout',
+ontology: 'AgentDefinitionOntology'
+});
+
+MATCH (c:Class {name: 'TalentAIScout'}) SET c.comment = 'AI agent focused on A&R tasks like discovering, analyzing, and recommending new talent.';
+
+MATCH (c:Class {name: 'TalentAIScout'}) SET c.rdfs_label = 'Talent AI Scout';
+
+// Class: ProductionAIGenerateMusicTask
+CREATE (:Class {
+name: 'ProductionAIGenerateMusicTask',
+iri: 'http://www.autonomousrecordlabel.com/ontology#ProductionAIGenerateMusicTask',
+label: 'ProductionAIGenerateMusicTask',
+ontology: 'ProductionAndDistributionOntology'
+});
+
+MATCH (c:Class {name: 'ProductionAIGenerateMusicTask'}) SET c.comment = 'A specific cognitive task for the ProductionAIGenerator to create music based on a creative brief.';
+
+MATCH (c:Class {name: 'ProductionAIGenerateMusicTask'}) SET c.rdfs_label = 'Production AI Generate Music Task';
+
+// Hierarchy: MusicGenerationTool -> Tool
+MATCH (child:Class {name: 'MusicGenerationTool'}), (parent:Class {name: 'Tool'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: RemixingTool -> Tool
+MATCH (child:Class {name: 'RemixingTool'}), (parent:Class {name: 'Tool'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: DAWIntegrationTool -> Tool
+MATCH (child:Class {name: 'DAWIntegrationTool'}), (parent:Class {name: 'Tool'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: ReleaseCycleStage -> MusicReleaseLifecycleState
+MATCH (child:Class {name: 'ReleaseCycleStage'}), (parent:Class {name: 'MusicReleaseLifecycleState'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: ProductionAIGenerateMusicTask -> CognitiveTask
+MATCH (child:Class {name: 'ProductionAIGenerateMusicTask'}), (parent:Class {name: 'CognitiveTask'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Object Property: productionProcessFor
+CREATE (:ObjectProperty {
+name: 'productionProcessFor',
+iri: 'http://www.autonomousrecordlabel.com/ontology#productionProcessFor',
+ontology: 'ProductionAndDistributionOntology'
+});
+
+// Property relationship: MusicProductionProcess -productionProcessFor-> Recording
+MATCH (d:Class {name: 'MusicProductionProcess'}), (r:Class {name: 'Recording'})
+CREATE (d)-[:PRODUCTIONPROCESSFOR]->(r);
+
+// Object Property: hasCreativeBrief
+CREATE (:ObjectProperty {
+name: 'hasCreativeBrief',
+iri: 'http://www.autonomousrecordlabel.com/ontology#hasCreativeBrief',
+ontology: 'ProductionAndDistributionOntology'
+});
+
+// Object Property: briefTargetGenre
+CREATE (:ObjectProperty {
+name: 'briefTargetGenre',
+iri: 'http://www.autonomousrecordlabel.com/ontology#briefTargetGenre',
+ontology: 'ProductionAndDistributionOntology'
+});
+
+// Property relationship: CreativeBrief -briefTargetGenre-> Genre
+MATCH (d:Class {name: 'CreativeBrief'}), (r:Class {name: 'Genre'})
+CREATE (d)-[:BRIEFTARGETGENRE]->(r);
+
+// Object Property: briefReferenceTrack
+CREATE (:ObjectProperty {
+name: 'briefReferenceTrack',
+iri: 'http://www.autonomousrecordlabel.com/ontology#briefReferenceTrack',
+ontology: 'ProductionAndDistributionOntology'
+});
+
+// Property relationship: CreativeBrief -briefReferenceTrack-> Recording
+MATCH (d:Class {name: 'CreativeBrief'}), (r:Class {name: 'Recording'})
+CREATE (d)-[:BRIEFREFERENCETRACK]->(r);
+
+// Object Property: hasReleaseCycleStage
+CREATE (:ObjectProperty {
+name: 'hasReleaseCycleStage',
+iri: 'http://www.autonomousrecordlabel.com/ontology#hasReleaseCycleStage',
+ontology: 'ProductionAndDistributionOntology'
+});
+
+// Property relationship: MusicRelease -hasReleaseCycleStage-> ReleaseCycleStage
+MATCH (d:Class {name: 'MusicRelease'}), (r:Class {name: 'ReleaseCycleStage'})
+CREATE (d)-[:HASRELEASECYCLESTAGE]->(r);
+
+// Object Property: distributedViaChannel
+CREATE (:ObjectProperty {
+name: 'distributedViaChannel',
+iri: 'http://www.autonomousrecordlabel.com/ontology#distributedViaChannel',
+ontology: 'ProductionAndDistributionOntology'
+});
+
+// Property relationship: MusicRelease -distributedViaChannel-> DistributionChannel
+MATCH (d:Class {name: 'MusicRelease'}), (r:Class {name: 'DistributionChannel'})
+CREATE (d)-[:DISTRIBUTEDVIACHANNEL]->(r);
+
+// Object Property: hasReleaseFormat
+CREATE (:ObjectProperty {
+name: 'hasReleaseFormat',
+iri: 'http://www.autonomousrecordlabel.com/ontology#hasReleaseFormat',
+ontology: 'ProductionAndDistributionOntology'
+});
+
+// Property relationship: MusicRelease -hasReleaseFormat-> MusicReleaseFormat
+MATCH (d:Class {name: 'MusicRelease'}), (r:Class {name: 'MusicReleaseFormat'})
+CREATE (d)-[:HASRELEASEFORMAT]->(r);
+
+// Object Property: assetHasMetadata
+CREATE (:ObjectProperty {
+name: 'assetHasMetadata',
+iri: 'http://www.autonomousrecordlabel.com/ontology#assetHasMetadata',
+ontology: 'ProductionAndDistributionOntology'
+});
+
+// Data Property: briefTargetMood
+CREATE (:DataProperty {
+name: 'briefTargetMood',
+iri: 'http://www.autonomousrecordlabel.com/ontology#briefTargetMood',
+ontology: 'ProductionAndDistributionOntology'
+});
+
+// Data Property: briefLyricalThemes
+CREATE (:DataProperty {
+name: 'briefLyricalThemes',
+iri: 'http://www.autonomousrecordlabel.com/ontology#briefLyricalThemes',
+ontology: 'ProductionAndDistributionOntology'
+});
+
+// Data Property: briefInstrumentationNotes
+CREATE (:DataProperty {
+name: 'briefInstrumentationNotes',
+iri: 'http://www.autonomousrecordlabel.com/ontology#briefInstrumentationNotes',
+ontology: 'ProductionAndDistributionOntology'
+});
+
+// Data Property: generativeModelType
+CREATE (:DataProperty {
+name: 'generativeModelType',
+iri: 'http://www.autonomousrecordlabel.com/ontology#generativeModelType',
+ontology: 'ProductionAndDistributionOntology'
+});
+
+// Data Property: musicToolControllableParameters
+CREATE (:DataProperty {
+name: 'musicToolControllableParameters',
+iri: 'http://www.autonomousrecordlabel.com/ontology#musicToolControllableParameters',
+ontology: 'ProductionAndDistributionOntology'
+});
+
+// Data Property: releaseDate
+CREATE (:DataProperty {
+name: 'releaseDate',
+iri: 'http://www.autonomousrecordlabel.com/ontology#releaseDate',
+ontology: 'ProductionAndDistributionOntology'
+});
+
+// Data Property: metadataField
+CREATE (:DataProperty {
+name: 'metadataField',
+iri: 'http://www.autonomousrecordlabel.com/ontology#metadataField',
+ontology: 'ProductionAndDistributionOntology'
+});
+
+// Data Property: metadataValue
+CREATE (:DataProperty {
+name: 'metadataValue',
+iri: 'http://www.autonomousrecordlabel.com/ontology#metadataValue',
+ontology: 'ProductionAndDistributionOntology'
+});
+
+// Individual: ProductionStage_Songwriting (type: MusicProductionProcess)
+CREATE (:Individual:MusicProductionProcess {
+name: 'ProductionStage_Songwriting',
+iri: 'http://www.autonomousrecordlabel.com/ontology#ProductionStage_Songwriting',
+ontology: 'ProductionAndDistributionOntology'
+});
+
+// Individual: ProductionStage_Arrangement (type: MusicProductionProcess)
+CREATE (:Individual:MusicProductionProcess {
+name: 'ProductionStage_Arrangement',
+iri: 'http://www.autonomousrecordlabel.com/ontology#ProductionStage_Arrangement',
+ontology: 'ProductionAndDistributionOntology'
+});
+
+// Individual: ProductionStage_Tracking (type: MusicProductionProcess)
+CREATE (:Individual:MusicProductionProcess {
+name: 'ProductionStage_Tracking',
+iri: 'http://www.autonomousrecordlabel.com/ontology#ProductionStage_Tracking',
+ontology: 'ProductionAndDistributionOntology'
+});
+
+// Individual: ProductionStage_Mixing (type: MusicProductionProcess)
+CREATE (:Individual:MusicProductionProcess {
+name: 'ProductionStage_Mixing',
+iri: 'http://www.autonomousrecordlabel.com/ontology#ProductionStage_Mixing',
+ontology: 'ProductionAndDistributionOntology'
+});
+
+// Individual: ProductionStage_Mastering (type: MusicProductionProcess)
+CREATE (:Individual:MusicProductionProcess {
+name: 'ProductionStage_Mastering',
+iri: 'http://www.autonomousrecordlabel.com/ontology#ProductionStage_Mastering',
+ontology: 'ProductionAndDistributionOntology'
+});
+
+// Individual: ReleaseStage_PreProduction (type: ReleaseCycleStage)
+CREATE (:Individual:ReleaseCycleStage {
+name: 'ReleaseStage_PreProduction',
+iri: 'http://www.autonomousrecordlabel.com/ontology#ReleaseStage_PreProduction',
+ontology: 'ProductionAndDistributionOntology'
+});
+
+// Individual: ReleaseStage_Production (type: ReleaseCycleStage)
+CREATE (:Individual:ReleaseCycleStage {
+name: 'ReleaseStage_Production',
+iri: 'http://www.autonomousrecordlabel.com/ontology#ReleaseStage_Production',
+ontology: 'ProductionAndDistributionOntology'
+});
+
+// Individual: ReleaseStage_PreReleaseMarketing (type: ReleaseCycleStage)
+CREATE (:Individual:ReleaseCycleStage {
+name: 'ReleaseStage_PreReleaseMarketing',
+iri: 'http://www.autonomousrecordlabel.com/ontology#ReleaseStage_PreReleaseMarketing',
+ontology: 'ProductionAndDistributionOntology'
+});
+
+// Individual: ReleaseStage_ReleaseDate (type: ReleaseCycleStage)
+CREATE (:Individual:ReleaseCycleStage {
+name: 'ReleaseStage_ReleaseDate',
+iri: 'http://www.autonomousrecordlabel.com/ontology#ReleaseStage_ReleaseDate',
+ontology: 'ProductionAndDistributionOntology'
+});
+
+// Individual: ReleaseStage_PostReleasePromotion (type: ReleaseCycleStage)
+CREATE (:Individual:ReleaseCycleStage {
+name: 'ReleaseStage_PostReleasePromotion',
+iri: 'http://www.autonomousrecordlabel.com/ontology#ReleaseStage_PostReleasePromotion',
+ontology: 'ProductionAndDistributionOntology'
+});
+
+// Individual: ReleaseStage_CatalogManagement (type: ReleaseCycleStage)
+CREATE (:Individual:ReleaseCycleStage {
+name: 'ReleaseStage_CatalogManagement',
+iri: 'http://www.autonomousrecordlabel.com/ontology#ReleaseStage_CatalogManagement',
+ontology: 'ProductionAndDistributionOntology'
+});
+
+// Individual: Channel_Spotify (type: DistributionChannel)
+CREATE (:Individual:DistributionChannel {
+name: 'Channel_Spotify',
+iri: 'http://www.autonomousrecordlabel.com/ontology#Channel_Spotify',
+ontology: 'ProductionAndDistributionOntology'
+});
+
+// Individual: Channel_AppleMusic (type: DistributionChannel)
+CREATE (:Individual:DistributionChannel {
+name: 'Channel_AppleMusic',
+iri: 'http://www.autonomousrecordlabel.com/ontology#Channel_AppleMusic',
+ontology: 'ProductionAndDistributionOntology'
+});
+
+// Individual: Channel_Bandcamp (type: DistributionChannel)
+CREATE (:Individual:DistributionChannel {
+name: 'Channel_Bandcamp',
+iri: 'http://www.autonomousrecordlabel.com/ontology#Channel_Bandcamp',
+ontology: 'ProductionAndDistributionOntology'
+});
+
+// Individual: Channel_PhysicalRetail (type: DistributionChannel)
+CREATE (:Individual:DistributionChannel {
+name: 'Channel_PhysicalRetail',
+iri: 'http://www.autonomousrecordlabel.com/ontology#Channel_PhysicalRetail',
+ontology: 'ProductionAndDistributionOntology'
+});
+
+// Class: ProductionAIGenerator
+CREATE (:Class {
+name: 'ProductionAIGenerator',
+iri: 'http://www.autonomousrecordlabel.com/ontology#ProductionAIGenerator',
+label: 'ProductionAIGenerator',
+ontology: 'AgentDefinitionOntology'
+});
+
+MATCH (c:Class {name: 'ProductionAIGenerator'}) SET c.comment = 'AI agent capable of generating musical ideas, drafts, or full compositions, and potentially remixing.';
+
+MATCH (c:Class {name: 'ProductionAIGenerator'}) SET c.rdfs_label = 'Production AI Music Generator';
+
+// Class: MarketingAIOptimizer
+CREATE (:Class {
+name: 'MarketingAIOptimizer',
+iri: 'http://www.autonomousrecordlabel.com/ontology#MarketingAIOptimizer',
+label: 'MarketingAIOptimizer',
+ontology: 'AgentDefinitionOntology'
+});
+
+MATCH (c:Class {name: 'MarketingAIOptimizer'}) SET c.comment = 'AI agent focused on planning, executing, and optimizing marketing campaigns.';
+
+MATCH (c:Class {name: 'MarketingAIOptimizer'}) SET c.rdfs_label = 'Marketing AI Optimizer';
+
+// Class: VenuAILogistics
+CREATE (:Class {
+name: 'VenuAILogistics',
+iri: 'http://www.autonomousrecordlabel.com/ontology#VenuAILogistics',
+label: 'VenuAILogistics',
+ontology: 'AgentDefinitionOntology'
+});
+
+MATCH (c:Class {name: 'VenuAILogistics'}) SET c.comment = 'AI agent focused on managing tour logistics, venue bookings, and related live performance aspects.';
+
+MATCH (c:Class {name: 'VenuAILogistics'}) SET c.rdfs_label = 'Venue AI Logistics';
+
+// Class: RightsAdminAI
+CREATE (:Class {
+name: 'RightsAdminAI',
+iri: 'http://www.autonomousrecordlabel.com/ontology#RightsAdminAI',
+label: 'RightsAdminAI',
+ontology: 'AgentDefinitionOntology'
+});
+
+MATCH (c:Class {name: 'RightsAdminAI'}) SET c.comment = 'AI agent focused on managing music rights, licenses, and royalty administration.';
+
+MATCH (c:Class {name: 'RightsAdminAI'}) SET c.rdfs_label = 'Rights Administration AI';
+
+// Class: LegalComplianceAI
+CREATE (:Class {
+name: 'LegalComplianceAI',
+iri: 'http://www.autonomousrecordlabel.com/ontology#LegalComplianceAI',
+label: 'LegalComplianceAI',
+ontology: 'AgentDefinitionOntology'
+});
+
+MATCH (c:Class {name: 'LegalComplianceAI'}) SET c.comment = 'AI agent focused on ensuring legal and contractual compliance, assisting in drafting and reviewing agreements.';
+
+MATCH (c:Class {name: 'LegalComplianceAI'}) SET c.rdfs_label = 'Legal Compliance AI';
+
+// Class: FinancialAnalysisAI
+CREATE (:Class {
+name: 'FinancialAnalysisAI',
+iri: 'http://www.autonomousrecordlabel.com/ontology#FinancialAnalysisAI',
+label: 'FinancialAnalysisAI',
+ontology: 'AgentDefinitionOntology'
+});
+
+MATCH (c:Class {name: 'FinancialAnalysisAI'}) SET c.comment = 'AI agent focused on financial planning, analysis, revenue forecasting, and budget allocation.';
+
+MATCH (c:Class {name: 'FinancialAnalysisAI'}) SET c.rdfs_label = 'Financial Analysis AI';
+
+// Class: AudienceIntelligenceAI
+CREATE (:Class {
+name: 'AudienceIntelligenceAI',
+iri: 'http://www.autonomousrecordlabel.com/ontology#AudienceIntelligenceAI',
+label: 'AudienceIntelligenceAI',
+ontology: 'AgentDefinitionOntology'
+});
+
+MATCH (c:Class {name: 'AudienceIntelligenceAI'}) SET c.comment = 'AI agent focused on analyzing audience data, identifying segments, and understanding fan behavior.';
+
+MATCH (c:Class {name: 'AudienceIntelligenceAI'}) SET c.rdfs_label = 'Audience Intelligence AI';
+
+// Hierarchy: AgentGoal -> Goal
+MATCH (child:Class {name: 'AgentGoal'}), (parent:Class {name: 'Goal'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: MaestroAI -> AIAgent
+MATCH (child:Class {name: 'MaestroAI'}), (parent:Class {name: 'AIAgent'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: TalentAIScout -> AIAgent
+MATCH (child:Class {name: 'TalentAIScout'}), (parent:Class {name: 'AIAgent'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: ProductionAIGenerator -> AIAgent
+MATCH (child:Class {name: 'ProductionAIGenerator'}), (parent:Class {name: 'AIAgent'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: MarketingAIOptimizer -> AIAgent
+MATCH (child:Class {name: 'MarketingAIOptimizer'}), (parent:Class {name: 'AIAgent'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: VenuAILogistics -> AIAgent
+MATCH (child:Class {name: 'VenuAILogistics'}), (parent:Class {name: 'AIAgent'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: RightsAdminAI -> AIAgent
+MATCH (child:Class {name: 'RightsAdminAI'}), (parent:Class {name: 'AIAgent'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: LegalComplianceAI -> AIAgent
+MATCH (child:Class {name: 'LegalComplianceAI'}), (parent:Class {name: 'AIAgent'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: FinancialAnalysisAI -> AIAgent
+MATCH (child:Class {name: 'FinancialAnalysisAI'}), (parent:Class {name: 'AIAgent'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: AudienceIntelligenceAI -> AIAgent
+MATCH (child:Class {name: 'AudienceIntelligenceAI'}), (parent:Class {name: 'AIAgent'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Object Property: hasCapability
+CREATE (:ObjectProperty {
+name: 'hasCapability',
+iri: 'http://www.autonomousrecordlabel.com/ontology#hasCapability',
+ontology: 'AgentDefinitionOntology'
+});
+
+// Property relationship: AIAgent -hasCapability-> AgentCapability
+MATCH (d:Class {name: 'AIAgent'}), (r:Class {name: 'AgentCapability'})
+CREATE (d)-[:HASCAPABILITY]->(r);
+
+// Object Property: hasPermission
+CREATE (:ObjectProperty {
+name: 'hasPermission',
+iri: 'http://www.autonomousrecordlabel.com/ontology#hasPermission',
+ontology: 'AgentDefinitionOntology'
+});
+
+// Property relationship: AIAgent -hasPermission-> AgentPermission
+MATCH (d:Class {name: 'AIAgent'}), (r:Class {name: 'AgentPermission'})
+CREATE (d)-[:HASPERMISSION]->(r);
+
+// Object Property: permissionConcernsCapability
+CREATE (:ObjectProperty {
+name: 'permissionConcernsCapability',
+iri: 'http://www.autonomousrecordlabel.com/ontology#permissionConcernsCapability',
+ontology: 'AgentDefinitionOntology'
+});
+
+// Property relationship: AgentPermission -permissionConcernsCapability-> AgentCapability
+MATCH (d:Class {name: 'AgentPermission'}), (r:Class {name: 'AgentCapability'})
+CREATE (d)-[:PERMISSIONCONCERNSCAPABILITY]->(r);
+
+// Data Property: capabilityDescription
+CREATE (:DataProperty {
+name: 'capabilityDescription',
+iri: 'http://www.autonomousrecordlabel.com/ontology#capabilityDescription',
+ontology: 'AgentDefinitionOntology'
+});
+
+// Data Property: permissionDetails
+CREATE (:DataProperty {
+name: 'permissionDetails',
+iri: 'http://www.autonomousrecordlabel.com/ontology#permissionDetails',
+ontology: 'AgentDefinitionOntology'
+});
+
+// Data Property: agentPrimaryGoalDescription
+CREATE (:DataProperty {
+name: 'agentPrimaryGoalDescription',
+iri: 'http://www.autonomousrecordlabel.com/ontology#agentPrimaryGoalDescription',
+ontology: 'AgentDefinitionOntology'
+});
+
+
+// Module: BusinessDomainCoreOntology
+// Source: BusinessDomainCoreOntology.owl
+// Base IRI: file:///Users/tibor.knowles/Desktop/Daisy/OntologyV2/BusinessDomainCoreOntology.owl#
+
+CREATE (:Ontology {
+name: 'BusinessDomainCoreOntology',
+base_iri: 'file:///Users/tibor.knowles/Desktop/Daisy/OntologyV2/BusinessDomainCoreOntology.owl#',
+source_file: 'BusinessDomainCoreOntology.owl'
+});
+
+// Class: MonetaryAmount
+CREATE (:Class {
+name: 'MonetaryAmount',
+iri: 'http://www.autonomousrecordlabel.com/ontology#MonetaryAmount',
+label: 'MonetaryAmount',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+MATCH (c:Class {name: 'MonetaryAmount'}) SET c.comment = 'Represents a quantity of money, with a value and a currency. Defined here as it\'s a core business concept often tied to contracts, advances etc.';
+
+MATCH (c:Class {name: 'MonetaryAmount'}) SET c.rdfs_label = 'Monetary Amount';
+
+// Class: Artist
+CREATE (:Class {
+name: 'Artist',
+iri: 'http://www.autonomousrecordlabel.com/ontology#Artist',
+label: 'Artist',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+MATCH (c:Class {name: 'Artist'}) SET c.comment = 'A performing artist or group in the music industry.';
+
+MATCH (c:Class {name: 'Artist'}) SET c.rdfs_label = 'Artist (Performer)';
+
+// Class: MusicWork
+CREATE (:Class {
+name: 'MusicWork',
+iri: 'http://www.autonomousrecordlabel.com/ontology#MusicWork',
+label: 'MusicWork',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+MATCH (c:Class {name: 'MusicWork'}) SET c.comment = 'The underlying musical composition (melody, harmony, lyrics).';
+
+MATCH (c:Class {name: 'MusicWork'}) SET c.rdfs_label = 'Music Work (Song/Composition)';
+
+// Class: Recording
+CREATE (:Class {
+name: 'Recording',
+iri: 'http://www.autonomousrecordlabel.com/ontology#Recording',
+label: 'Recording',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+MATCH (c:Class {name: 'Recording'}) SET c.comment = 'A specific fixation of sounds, often embodying a MusicWork. Also known as a master recording.';
+
+MATCH (c:Class {name: 'Recording'}) SET c.rdfs_label = 'Recording (Master)';
+
+// Class: MusicRelease
+CREATE (:Class {
+name: 'MusicRelease',
+iri: 'http://www.autonomousrecordlabel.com/ontology#MusicRelease',
+label: 'MusicRelease',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+MATCH (c:Class {name: 'MusicRelease'}) SET c.comment = 'A product released to the public containing one or more recordings (e.g., Album, Single, EP).';
+
+MATCH (c:Class {name: 'MusicRelease'}) SET c.rdfs_label = 'Music Release';
+
+// Class: Contract
+CREATE (:Class {
+name: 'Contract',
+iri: 'http://www.autonomousrecordlabel.com/ontology#Contract',
+label: 'Contract',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+MATCH (c:Class {name: 'Contract'}) SET c.comment = 'An abstract representation of a legally binding agreement between parties.';
+
+MATCH (c:Class {name: 'Contract'}) SET c.rdfs_label = 'Contract (Abstract)';
+
+// Class: RevenueStream
+CREATE (:Class {
+name: 'RevenueStream',
+iri: 'http://www.autonomousrecordlabel.com/ontology#RevenueStream',
+label: 'RevenueStream',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+MATCH (c:Class {name: 'RevenueStream'}) SET c.comment = 'An abstract category or source from which revenue is generated.';
+
+MATCH (c:Class {name: 'RevenueStream'}) SET c.rdfs_label = 'Revenue Stream (Abstract)';
+
+// Class: Right
+CREATE (:Class {
+name: 'Right',
+iri: 'http://www.autonomousrecordlabel.com/ontology#Right',
+label: 'Right',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+MATCH (c:Class {name: 'Right'}) SET c.comment = 'An abstract representation of a legal or contractual entitlement or privilege.';
+
+MATCH (c:Class {name: 'Right'}) SET c.rdfs_label = 'Right (Abstract)';
+
+// Class: Territory
+CREATE (:Class {
+name: 'Territory',
+iri: 'http://www.autonomousrecordlabel.com/ontology#Territory',
+label: 'Territory',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+MATCH (c:Class {name: 'Territory'}) SET c.comment = 'A geographical region relevant for contracts, rights, and distribution.';
+
+MATCH (c:Class {name: 'Territory'}) SET c.rdfs_label = 'Territory';
+
+// Class: CurrencyCode
+CREATE (:Class {
+name: 'CurrencyCode',
+iri: 'http://www.autonomousrecordlabel.com/ontology#CurrencyCode',
+label: 'CurrencyCode',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+MATCH (c:Class {name: 'CurrencyCode'}) SET c.comment = 'Represents a currency (e.g., USD, EUR, JPY), often using ISO 4217 codes.';
+
+MATCH (c:Class {name: 'CurrencyCode'}) SET c.rdfs_label = 'Currency Code';
+
+// Class: Genre
+CREATE (:Class {
+name: 'Genre',
+iri: 'http://www.autonomousrecordlabel.com/ontology#Genre',
+label: 'Genre',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+MATCH (c:Class {name: 'Genre'}) SET c.comment = 'A musical genre.';
+
+MATCH (c:Class {name: 'Genre'}) SET c.rdfs_label = 'Genre';
+
+// Class: MusicReleaseFormat
+CREATE (:Class {
+name: 'MusicReleaseFormat',
+iri: 'http://www.autonomousrecordlabel.com/ontology#MusicReleaseFormat',
+label: 'MusicReleaseFormat',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+MATCH (c:Class {name: 'MusicReleaseFormat'}) SET c.comment = 'The physical or digital format of a music release (e.g., Vinyl, CD, Digital Stream).';
+
+MATCH (c:Class {name: 'MusicReleaseFormat'}) SET c.rdfs_label = 'Music Release Format';
+
+// Class: MediaType
+CREATE (:Class {
+name: 'MediaType',
+iri: 'http://www.autonomousrecordlabel.com/ontology#MediaType',
+label: 'MediaType',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+MATCH (c:Class {name: 'MediaType'}) SET c.comment = 'The type of media in which music is used (e.g., Film, TV, Game).';
+
+MATCH (c:Class {name: 'MediaType'}) SET c.rdfs_label = 'Media Type';
+
+// Class: CopyrightRegistration
+CREATE (:Class {
+name: 'CopyrightRegistration',
+iri: 'http://www.autonomousrecordlabel.com/ontology#CopyrightRegistration',
+label: 'CopyrightRegistration',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+MATCH (c:Class {name: 'CopyrightRegistration'}) SET c.comment = 'Represents the formal registration of a copyright.';
+
+MATCH (c:Class {name: 'CopyrightRegistration'}) SET c.rdfs_label = 'Copyright Registration';
+
+// Class: PerformanceMetricThreshold
+CREATE (:Class {
+name: 'PerformanceMetricThreshold',
+iri: 'http://www.autonomousrecordlabel.com/ontology#PerformanceMetricThreshold',
+label: 'PerformanceMetricThreshold',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+MATCH (c:Class {name: 'PerformanceMetricThreshold'}) SET c.comment = 'A threshold based on a performance metric (e.g., sales, streams) that can trigger contractual changes like royalty escalations.';
+
+MATCH (c:Class {name: 'PerformanceMetricThreshold'}) SET c.rdfs_label = 'Performance Metric Threshold';
+
+// Hierarchy: MonetaryAmount -> FinancialConcept
+MATCH (child:Class {name: 'MonetaryAmount'}), (parent:Class {name: 'FinancialConcept'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: Artist -> Person
+MATCH (child:Class {name: 'Artist'}), (parent:Class {name: 'Person'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: MusicWork -> CreativeWork
+MATCH (child:Class {name: 'MusicWork'}), (parent:Class {name: 'CreativeWork'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: Recording -> CreativeWork
+MATCH (child:Class {name: 'Recording'}), (parent:Class {name: 'CreativeWork'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: MusicRelease -> CreativeWork
+MATCH (child:Class {name: 'MusicRelease'}), (parent:Class {name: 'CreativeWork'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: RevenueStream -> FinancialConcept
+MATCH (child:Class {name: 'RevenueStream'}), (parent:Class {name: 'FinancialConcept'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Object Property: hasParty
+CREATE (:ObjectProperty {
+name: 'hasParty',
+iri: 'http://www.autonomousrecordlabel.com/ontology#hasParty',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+// Property relationship: Contract -hasParty-> EPMO
+MATCH (d:Class {name: 'Contract'}), (r:Class {name: 'EPMO'})
+CREATE (d)-[:HASPARTY]->(r);
+
+// Object Property: isPartyTo
+CREATE (:ObjectProperty {
+name: 'isPartyTo',
+iri: 'http://www.autonomousrecordlabel.com/ontology#isPartyTo',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+// Property relationship: EPMO -isPartyTo-> Contract
+MATCH (d:Class {name: 'EPMO'}), (r:Class {name: 'Contract'})
+CREATE (d)-[:ISPARTYTO]->(r);
+
+// Object Property: performsOnRecording
+CREATE (:ObjectProperty {
+name: 'performsOnRecording',
+iri: 'http://www.autonomousrecordlabel.com/ontology#performsOnRecording',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+// Property relationship: Artist -performsOnRecording-> Recording
+MATCH (d:Class {name: 'Artist'}), (r:Class {name: 'Recording'})
+CREATE (d)-[:PERFORMSONRECORDING]->(r);
+
+// Object Property: hasPerformer
+CREATE (:ObjectProperty {
+name: 'hasPerformer',
+iri: 'http://www.autonomousrecordlabel.com/ontology#hasPerformer',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+// Property relationship: Recording -hasPerformer-> Artist
+MATCH (d:Class {name: 'Recording'}), (r:Class {name: 'Artist'})
+CREATE (d)-[:HASPERFORMER]->(r);
+
+// Object Property: isRecordingOf
+CREATE (:ObjectProperty {
+name: 'isRecordingOf',
+iri: 'http://www.autonomousrecordlabel.com/ontology#isRecordingOf',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+// Property relationship: Recording -isRecordingOf-> MusicWork
+MATCH (d:Class {name: 'Recording'}), (r:Class {name: 'MusicWork'})
+CREATE (d)-[:ISRECORDINGOF]->(r);
+
+// Object Property: hasRecording
+CREATE (:ObjectProperty {
+name: 'hasRecording',
+iri: 'http://www.autonomousrecordlabel.com/ontology#hasRecording',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+// Property relationship: MusicWork -hasRecording-> Recording
+MATCH (d:Class {name: 'MusicWork'}), (r:Class {name: 'Recording'})
+CREATE (d)-[:HASRECORDING]->(r);
+
+// Object Property: containsRecording
+CREATE (:ObjectProperty {
+name: 'containsRecording',
+iri: 'http://www.autonomousrecordlabel.com/ontology#containsRecording',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+// Property relationship: MusicRelease -containsRecording-> Recording
+MATCH (d:Class {name: 'MusicRelease'}), (r:Class {name: 'Recording'})
+CREATE (d)-[:CONTAINSRECORDING]->(r);
+
+// Object Property: appearsOnRelease
+CREATE (:ObjectProperty {
+name: 'appearsOnRelease',
+iri: 'http://www.autonomousrecordlabel.com/ontology#appearsOnRelease',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+// Property relationship: Recording -appearsOnRelease-> MusicRelease
+MATCH (d:Class {name: 'Recording'}), (r:Class {name: 'MusicRelease'})
+CREATE (d)-[:APPEARSONRELEASE]->(r);
+
+// Object Property: hasCurrencyCode
+CREATE (:ObjectProperty {
+name: 'hasCurrencyCode',
+iri: 'http://www.autonomousrecordlabel.com/ontology#hasCurrencyCode',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+// Property relationship: MonetaryAmount -hasCurrencyCode-> CurrencyCode
+MATCH (d:Class {name: 'MonetaryAmount'}), (r:Class {name: 'CurrencyCode'})
+CREATE (d)-[:HASCURRENCYCODE]->(r);
+
+// Data Property: artistName
+CREATE (:DataProperty {
+name: 'artistName',
+iri: 'http://www.autonomousrecordlabel.com/ontology#artistName',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+// Data Property: artistID
+CREATE (:DataProperty {
+name: 'artistID',
+iri: 'http://www.autonomousrecordlabel.com/ontology#artistID',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+// Data Property: workTitle
+CREATE (:DataProperty {
+name: 'workTitle',
+iri: 'http://www.autonomousrecordlabel.com/ontology#workTitle',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+// Data Property: iswc
+CREATE (:DataProperty {
+name: 'iswc',
+iri: 'http://www.autonomousrecordlabel.com/ontology#iswc',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+// Data Property: recordingTitle
+CREATE (:DataProperty {
+name: 'recordingTitle',
+iri: 'http://www.autonomousrecordlabel.com/ontology#recordingTitle',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+// Data Property: isrc
+CREATE (:DataProperty {
+name: 'isrc',
+iri: 'http://www.autonomousrecordlabel.com/ontology#isrc',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+// Data Property: releaseTitle
+CREATE (:DataProperty {
+name: 'releaseTitle',
+iri: 'http://www.autonomousrecordlabel.com/ontology#releaseTitle',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+// Data Property: catalogNumber
+CREATE (:DataProperty {
+name: 'catalogNumber',
+iri: 'http://www.autonomousrecordlabel.com/ontology#catalogNumber',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+// Data Property: contractID
+CREATE (:DataProperty {
+name: 'contractID',
+iri: 'http://www.autonomousrecordlabel.com/ontology#contractID',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+// Data Property: effectiveDate
+CREATE (:DataProperty {
+name: 'effectiveDate',
+iri: 'http://www.autonomousrecordlabel.com/ontology#effectiveDate',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+// Data Property: contractStatus
+CREATE (:DataProperty {
+name: 'contractStatus',
+iri: 'http://www.autonomousrecordlabel.com/ontology#contractStatus',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+// Data Property: revenueStreamName
+CREATE (:DataProperty {
+name: 'revenueStreamName',
+iri: 'http://www.autonomousrecordlabel.com/ontology#revenueStreamName',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+// Data Property: revenueStreamDescription
+CREATE (:DataProperty {
+name: 'revenueStreamDescription',
+iri: 'http://www.autonomousrecordlabel.com/ontology#revenueStreamDescription',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+// Data Property: rightName
+CREATE (:DataProperty {
+name: 'rightName',
+iri: 'http://www.autonomousrecordlabel.com/ontology#rightName',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+// Data Property: rightDescription
+CREATE (:DataProperty {
+name: 'rightDescription',
+iri: 'http://www.autonomousrecordlabel.com/ontology#rightDescription',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+// Data Property: territoryName
+CREATE (:DataProperty {
+name: 'territoryName',
+iri: 'http://www.autonomousrecordlabel.com/ontology#territoryName',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+// Data Property: territoryCode
+CREATE (:DataProperty {
+name: 'territoryCode',
+iri: 'http://www.autonomousrecordlabel.com/ontology#territoryCode',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+// Data Property: currencyValue
+CREATE (:DataProperty {
+name: 'currencyValue',
+iri: 'http://www.autonomousrecordlabel.com/ontology#currencyValue',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+// Data Property: genreName
+CREATE (:DataProperty {
+name: 'genreName',
+iri: 'http://www.autonomousrecordlabel.com/ontology#genreName',
+ontology: 'BusinessDomainCoreOntology'
+});
+
+
+// Module: Web3AndDigitalAssetsOntology
+// Source: Web3AndDigitalAssetsOntology.owl
+// Base IRI: http://www.autonomousrecordlabel.com/ontology#Web3AndDigitalAssetsOntology#
+
+CREATE (:Ontology {
+name: 'Web3AndDigitalAssetsOntology',
+base_iri: 'http://www.autonomousrecordlabel.com/ontology#Web3AndDigitalAssetsOntology#',
+source_file: 'Web3AndDigitalAssetsOntology.owl'
+});
+
+// Class: Blockchain
+CREATE (:Class {
+name: 'Blockchain',
+iri: 'http://www.autonomousrecordlabel.com/ontology#Blockchain',
+label: 'Blockchain',
+ontology: 'Web3AndDigitalAssetsOntology'
+});
+
+MATCH (c:Class {name: 'Blockchain'}) SET c.comment = 'A specific blockchain network (e.g., Ethereum, Polygon, Flow).';
+
+MATCH (c:Class {name: 'Blockchain'}) SET c.rdfs_label = 'Blockchain';
+
+// Class: CryptoWallet
+CREATE (:Class {
+name: 'CryptoWallet',
+iri: 'http://www.autonomousrecordlabel.com/ontology#CryptoWallet',
+label: 'CryptoWallet',
+ontology: 'Web3AndDigitalAssetsOntology'
+});
+
+MATCH (c:Class {name: 'CryptoWallet'}) SET c.comment = 'A digital wallet used to store, send, and receive cryptocurrencies and NFTs.';
+
+MATCH (c:Class {name: 'CryptoWallet'}) SET c.rdfs_label = 'Crypto Wallet';
+
+// Class: DigitalAsset_Web3
+CREATE (:Class {
+name: 'DigitalAsset_Web3',
+iri: 'http://www.autonomousrecordlabel.com/ontology#DigitalAsset_Web3',
+label: 'DigitalAsset_Web3',
+ontology: 'Web3AndDigitalAssetsOntology'
+});
+
+MATCH (c:Class {name: 'DigitalAsset_Web3'}) SET c.comment = 'An abstract representation of a digital asset managed on a blockchain.';
+
+MATCH (c:Class {name: 'DigitalAsset_Web3'}) SET c.rdfs_label = 'Web3 Digital Asset';
+
+// Class: NFTAsset
+CREATE (:Class {
+name: 'NFTAsset',
+iri: 'http://www.autonomousrecordlabel.com/ontology#NFTAsset',
+label: 'NFTAsset',
+ontology: 'Web3AndDigitalAssetsOntology'
+});
+
+MATCH (c:Class {name: 'NFTAsset'}) SET c.comment = 'A unique digital asset representing ownership of a specific item, which could be a piece of art, a collectible, a right, or a membership.';
+
+MATCH (c:Class {name: 'NFTAsset'}) SET c.rdfs_label = 'NFT Asset (Non-Fungible Token)';
+
+// Class: IP_NFT
+CREATE (:Class {
+name: 'IP_NFT',
+iri: 'http://www.autonomousrecordlabel.com/ontology#IP_NFT',
+label: 'IP_NFT',
+ontology: 'Web3AndDigitalAssetsOntology'
+});
+
+MATCH (c:Class {name: 'IP_NFT'}) SET c.comment = 'An NFT representing ownership or fractional ownership of intellectual property, such as a master recording or publishing rights.';
+
+MATCH (c:Class {name: 'IP_NFT'}) SET c.rdfs_label = 'Intellectual Property NFT';
+
+// Class: CollectibleNFT
+CREATE (:Class {
+name: 'CollectibleNFT',
+iri: 'http://www.autonomousrecordlabel.com/ontology#CollectibleNFT',
+label: 'CollectibleNFT',
+ontology: 'Web3AndDigitalAssetsOntology'
+});
+
+MATCH (c:Class {name: 'CollectibleNFT'}) SET c.comment = 'An NFT representing a digital collectible, such as digital art, memorabilia, or unique fan experiences.';
+
+MATCH (c:Class {name: 'CollectibleNFT'}) SET c.rdfs_label = 'Collectible NFT';
+
+// Class: UtilityToken_Label
+CREATE (:Class {
+name: 'UtilityToken_Label',
+iri: 'http://www.autonomousrecordlabel.com/ontology#UtilityToken_Label',
+label: 'UtilityToken_Label',
+ontology: 'Web3AndDigitalAssetsOntology'
+});
+
+MATCH (c:Class {name: 'UtilityToken_Label'}) SET c.comment = 'A fungible token issued by the record label that may grant access to specific services, governance rights, or other utilities within the label\'s ecosystem.';
+
+MATCH (c:Class {name: 'UtilityToken_Label'}) SET c.rdfs_label = 'Label Utility Token';
+
+// Class: SmartContract
+CREATE (:Class {
+name: 'SmartContract',
+iri: 'http://www.autonomousrecordlabel.com/ontology#SmartContract',
+label: 'SmartContract',
+ontology: 'Web3AndDigitalAssetsOntology'
+});
+
+MATCH (c:Class {name: 'SmartContract'}) SET c.comment = 'A self-executing contract with the terms of the agreement directly written into code, residing on a blockchain.';
+
+MATCH (c:Class {name: 'SmartContract'}) SET c.rdfs_label = 'Smart Contract';
+
+// Class: DAO_Member
+CREATE (:Class {
+name: 'DAO_Member',
+iri: 'http://www.autonomousrecordlabel.com/ontology#DAO_Member',
+label: 'DAO_Member',
+ontology: 'Web3AndDigitalAssetsOntology'
+});
+
+MATCH (c:Class {name: 'DAO_Member'}) SET c.comment = 'A member of a Decentralized Autonomous Organization, potentially holding governance tokens.';
+
+MATCH (c:Class {name: 'DAO_Member'}) SET c.rdfs_label = 'DAO Member';
+
+// Hierarchy: NFTAsset -> DigitalAsset_Web3
+MATCH (child:Class {name: 'NFTAsset'}), (parent:Class {name: 'DigitalAsset_Web3'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: IP_NFT -> NFTAsset
+MATCH (child:Class {name: 'IP_NFT'}), (parent:Class {name: 'NFTAsset'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: CollectibleNFT -> NFTAsset
+MATCH (child:Class {name: 'CollectibleNFT'}), (parent:Class {name: 'NFTAsset'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: UtilityToken_Label -> DigitalAsset_Web3
+MATCH (child:Class {name: 'UtilityToken_Label'}), (parent:Class {name: 'DigitalAsset_Web3'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: SmartContract -> Contract
+MATCH (child:Class {name: 'SmartContract'}), (parent:Class {name: 'Contract'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: DAO_Member -> EPMO
+MATCH (child:Class {name: 'DAO_Member'}), (parent:Class {name: 'EPMO'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Object Property: walletOwnedBy
+CREATE (:ObjectProperty {
+name: 'walletOwnedBy',
+iri: 'http://www.autonomousrecordlabel.com/ontology#walletOwnedBy',
+ontology: 'Web3AndDigitalAssetsOntology'
+});
+
+// Property relationship: CryptoWallet -walletOwnedBy-> EPMO
+MATCH (d:Class {name: 'CryptoWallet'}), (r:Class {name: 'EPMO'})
+CREATE (d)-[:WALLETOWNEDBY]->(r);
+
+// Object Property: assetHeldInWallet
+CREATE (:ObjectProperty {
+name: 'assetHeldInWallet',
+iri: 'http://www.autonomousrecordlabel.com/ontology#assetHeldInWallet',
+ontology: 'Web3AndDigitalAssetsOntology'
+});
+
+// Property relationship: DigitalAsset_Web3 -assetHeldInWallet-> CryptoWallet
+MATCH (d:Class {name: 'DigitalAsset_Web3'}), (r:Class {name: 'CryptoWallet'})
+CREATE (d)-[:ASSETHELDINWALLET]->(r);
+
+// Object Property: nftRepresentsIP
+CREATE (:ObjectProperty {
+name: 'nftRepresentsIP',
+iri: 'http://www.autonomousrecordlabel.com/ontology#nftRepresentsIP',
+ontology: 'Web3AndDigitalAssetsOntology'
+});
+
+// Property relationship: IP_NFT -nftRepresentsIP-> Copyright
+MATCH (d:Class {name: 'IP_NFT'}), (r:Class {name: 'Copyright'})
+CREATE (d)-[:NFTREPRESENTSIP]->(r);
+
+// Object Property: nftAssociatedWithCreativeWork
+CREATE (:ObjectProperty {
+name: 'nftAssociatedWithCreativeWork',
+iri: 'http://www.autonomousrecordlabel.com/ontology#nftAssociatedWithCreativeWork',
+ontology: 'Web3AndDigitalAssetsOntology'
+});
+
+// Property relationship: NFTAsset -nftAssociatedWithCreativeWork-> CreativeWork
+MATCH (d:Class {name: 'NFTAsset'}), (r:Class {name: 'CreativeWork'})
+CREATE (d)-[:NFTASSOCIATEDWITHCREATIVEWORK]->(r);
+
+// Object Property: assetDeployedOnBlockchain
+CREATE (:ObjectProperty {
+name: 'assetDeployedOnBlockchain',
+iri: 'http://www.autonomousrecordlabel.com/ontology#assetDeployedOnBlockchain',
+ontology: 'Web3AndDigitalAssetsOntology'
+});
+
+// Property relationship: DigitalAsset_Web3 -assetDeployedOnBlockchain-> Blockchain
+MATCH (d:Class {name: 'DigitalAsset_Web3'}), (r:Class {name: 'Blockchain'})
+CREATE (d)-[:ASSETDEPLOYEDONBLOCKCHAIN]->(r);
+
+// Object Property: smartContractDeployedOn
+CREATE (:ObjectProperty {
+name: 'smartContractDeployedOn',
+iri: 'http://www.autonomousrecordlabel.com/ontology#smartContractDeployedOn',
+ontology: 'Web3AndDigitalAssetsOntology'
+});
+
+// Property relationship: SmartContract -smartContractDeployedOn-> Blockchain
+MATCH (d:Class {name: 'SmartContract'}), (r:Class {name: 'Blockchain'})
+CREATE (d)-[:SMARTCONTRACTDEPLOYEDON]->(r);
+
+// Object Property: smartContractAutomatesPaymentFor
+CREATE (:ObjectProperty {
+name: 'smartContractAutomatesPaymentFor',
+iri: 'http://www.autonomousrecordlabel.com/ontology#smartContractAutomatesPaymentFor',
+ontology: 'Web3AndDigitalAssetsOntology'
+});
+
+// Property relationship: SmartContract -smartContractAutomatesPaymentFor-> Royalty
+MATCH (d:Class {name: 'SmartContract'}), (r:Class {name: 'Royalty'})
+CREATE (d)-[:SMARTCONTRACTAUTOMATESPAYMENTFOR]->(r);
+
+// Object Property: tokenGrantsAccessTo
+CREATE (:ObjectProperty {
+name: 'tokenGrantsAccessTo',
+iri: 'http://www.autonomousrecordlabel.com/ontology#tokenGrantsAccessTo',
+ontology: 'Web3AndDigitalAssetsOntology'
+});
+
+// Property relationship: UtilityToken_Label -tokenGrantsAccessTo-> Thing
+MATCH (d:Class {name: 'UtilityToken_Label'}), (r:Class {name: 'Thing'})
+CREATE (d)-[:TOKENGRANTSACCESSTO]->(r);
+
+// Object Property: daoMemberHoldsToken
+CREATE (:ObjectProperty {
+name: 'daoMemberHoldsToken',
+iri: 'http://www.autonomousrecordlabel.com/ontology#daoMemberHoldsToken',
+ontology: 'Web3AndDigitalAssetsOntology'
+});
+
+// Property relationship: DAO_Member -daoMemberHoldsToken-> UtilityToken_Label
+MATCH (d:Class {name: 'DAO_Member'}), (r:Class {name: 'UtilityToken_Label'})
+CREATE (d)-[:DAOMEMBERHOLDSTOKEN]->(r);
+
+// Data Property: blockchainName
+CREATE (:DataProperty {
+name: 'blockchainName',
+iri: 'http://www.autonomousrecordlabel.com/ontology#blockchainName',
+ontology: 'Web3AndDigitalAssetsOntology'
+});
+
+// Data Property: walletAddress
+CREATE (:DataProperty {
+name: 'walletAddress',
+iri: 'http://www.autonomousrecordlabel.com/ontology#walletAddress',
+ontology: 'Web3AndDigitalAssetsOntology'
+});
+
+// Data Property: tokenID
+CREATE (:DataProperty {
+name: 'tokenID',
+iri: 'http://www.autonomousrecordlabel.com/ontology#tokenID',
+ontology: 'Web3AndDigitalAssetsOntology'
+});
+
+// Data Property: nftStandard
+CREATE (:DataProperty {
+name: 'nftStandard',
+iri: 'http://www.autonomousrecordlabel.com/ontology#nftStandard',
+ontology: 'Web3AndDigitalAssetsOntology'
+});
+
+// Data Property: smartContractAddress
+CREATE (:DataProperty {
+name: 'smartContractAddress',
+iri: 'http://www.autonomousrecordlabel.com/ontology#smartContractAddress',
+ontology: 'Web3AndDigitalAssetsOntology'
+});
+
+// Data Property: utilityTokenSymbol
+CREATE (:DataProperty {
+name: 'utilityTokenSymbol',
+iri: 'http://www.autonomousrecordlabel.com/ontology#utilityTokenSymbol',
+ontology: 'Web3AndDigitalAssetsOntology'
+});
+
+// Data Property: utilityTokenTotalSupply
+CREATE (:DataProperty {
+name: 'utilityTokenTotalSupply',
+iri: 'http://www.autonomousrecordlabel.com/ontology#utilityTokenTotalSupply',
+ontology: 'Web3AndDigitalAssetsOntology'
+});
+
+// Data Property: daoMemberVotingPower
+CREATE (:DataProperty {
+name: 'daoMemberVotingPower',
+iri: 'http://www.autonomousrecordlabel.com/ontology#daoMemberVotingPower',
+ontology: 'Web3AndDigitalAssetsOntology'
+});
+
+// Individual: Blockchain_Ethereum (type: Blockchain)
+CREATE (:Individual:Blockchain {
+name: 'Blockchain_Ethereum',
+iri: 'http://www.autonomousrecordlabel.com/ontology#Blockchain_Ethereum',
+ontology: 'Web3AndDigitalAssetsOntology'
+});
+
+// Individual: Blockchain_Polygon (type: Blockchain)
+CREATE (:Individual:Blockchain {
+name: 'Blockchain_Polygon',
+iri: 'http://www.autonomousrecordlabel.com/ontology#Blockchain_Polygon',
+ontology: 'Web3AndDigitalAssetsOntology'
+});
+
+
+// Module: DaisyOnt_Umbrella
+// Source: DaisyOnt_Umbrella.owl
+// Base IRI: http://www.autonomousrecordlabel.com/ontology#DaisyOnt_Umbrella#
+
+CREATE (:Ontology {
+name: 'DaisyOnt_Umbrella',
+base_iri: 'http://www.autonomousrecordlabel.com/ontology#DaisyOnt_Umbrella#',
+source_file: 'DaisyOnt_Umbrella.owl'
+});
+
+
+// Module: GoalAndPerformanceOntology
+// Source: GoalAndPerformanceOntology.owl
+// Base IRI: file:///Users/tibor.knowles/Desktop/Daisy/OntologyV2/GoalAndPerformanceOntology.owl#
+
+CREATE (:Ontology {
+name: 'GoalAndPerformanceOntology',
+base_iri: 'file:///Users/tibor.knowles/Desktop/Daisy/OntologyV2/GoalAndPerformanceOntology.owl#',
+source_file: 'GoalAndPerformanceOntology.owl'
+});
+
+// Class: LabelGoal
+CREATE (:Class {
+name: 'LabelGoal',
+iri: 'http://www.autonomousrecordlabel.com/ontology#LabelGoal',
+label: 'LabelGoal',
+ontology: 'GoalAndPerformanceOntology'
+});
+
+MATCH (c:Class {name: 'LabelGoal'}) SET c.comment = 'A strategic or operational goal for the record label itself (e.g., FinancialGrowthGoal, MarketShareGoal, ArtistSuccessGoal).';
+
+MATCH (c:Class {name: 'LabelGoal'}) SET c.rdfs_label = 'Label Goal';
+
+// Class: AgentIncentiveStructure
+CREATE (:Class {
+name: 'AgentIncentiveStructure',
+iri: 'http://www.autonomousrecordlabel.com/ontology#AgentIncentiveStructure',
+label: 'AgentIncentiveStructure',
+ontology: 'GoalAndPerformanceOntology'
+});
+
+MATCH (c:Class {name: 'AgentIncentiveStructure'}) SET c.comment = 'Defines how an agent\'s behavior is incentivized or rewarded, typically based on KPI achievement related to specific goals. Designed/managed by MaestroAI.';
+
+MATCH (c:Class {name: 'AgentIncentiveStructure'}) SET c.rdfs_label = 'Agent Incentive Structure';
+
+// Hierarchy: LabelGoal -> Goal
+MATCH (child:Class {name: 'LabelGoal'}), (parent:Class {name: 'Goal'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Object Property: isPropagatedBy
+CREATE (:ObjectProperty {
+name: 'isPropagatedBy',
+iri: 'http://www.autonomousrecordlabel.com/ontology#isPropagatedBy',
+ontology: 'GoalAndPerformanceOntology'
+});
+
+// Property relationship: Goal -isPropagatedBy-> MaestroAI
+MATCH (d:Class {name: 'Goal'}), (r:Class {name: 'MaestroAI'})
+CREATE (d)-[:ISPROPAGATEDBY]->(r);
+
+// Object Property: assignedToAgentOrTeam
+CREATE (:ObjectProperty {
+name: 'assignedToAgentOrTeam',
+iri: 'http://www.autonomousrecordlabel.com/ontology#assignedToAgentOrTeam',
+ontology: 'GoalAndPerformanceOntology'
+});
+
+// Object Property: monitoringKPI
+CREATE (:ObjectProperty {
+name: 'monitoringKPI',
+iri: 'http://www.autonomousrecordlabel.com/ontology#monitoringKPI',
+ontology: 'GoalAndPerformanceOntology'
+});
+
+// Property relationship: Goal -monitoringKPI-> KPI
+MATCH (d:Class {name: 'Goal'}), (r:Class {name: 'KPI'})
+CREATE (d)-[:MONITORINGKPI]->(r);
+
+// Object Property: isTrackedForGoal
+CREATE (:ObjectProperty {
+name: 'isTrackedForGoal',
+iri: 'http://www.autonomousrecordlabel.com/ontology#isTrackedForGoal',
+ontology: 'GoalAndPerformanceOntology'
+});
+
+// Property relationship: KPI -isTrackedForGoal-> Goal
+MATCH (d:Class {name: 'KPI'}), (r:Class {name: 'Goal'})
+CREATE (d)-[:ISTRACKEDFORGOAL]->(r);
+
+// Object Property: influencedByContextualFactor
+CREATE (:ObjectProperty {
+name: 'influencedByContextualFactor',
+iri: 'http://www.autonomousrecordlabel.com/ontology#influencedByContextualFactor',
+ontology: 'GoalAndPerformanceOntology'
+});
+
+// Property relationship: KPI -influencedByContextualFactor-> MCPContextualFactor
+MATCH (d:Class {name: 'KPI'}), (r:Class {name: 'MCPContextualFactor'})
+CREATE (d)-[:INFLUENCEDBYCONTEXTUALFACTOR]->(r);
+
+// Object Property: kpiDataSource
+CREATE (:ObjectProperty {
+name: 'kpiDataSource',
+iri: 'http://www.autonomousrecordlabel.com/ontology#kpiDataSource',
+ontology: 'GoalAndPerformanceOntology'
+});
+
+// Property relationship: KPI -kpiDataSource-> ContextualDataFeed
+MATCH (d:Class {name: 'KPI'}), (r:Class {name: 'ContextualDataFeed'})
+CREATE (d)-[:KPIDATASOURCE]->(r);
+
+// Object Property: responsibleAgentForMeasurement
+CREATE (:ObjectProperty {
+name: 'responsibleAgentForMeasurement',
+iri: 'http://www.autonomousrecordlabel.com/ontology#responsibleAgentForMeasurement',
+ontology: 'GoalAndPerformanceOntology'
+});
+
+// Property relationship: KPI -responsibleAgentForMeasurement-> AIAgent
+MATCH (d:Class {name: 'KPI'}), (r:Class {name: 'AIAgent'})
+CREATE (d)-[:RESPONSIBLEAGENTFORMEASUREMENT]->(r);
+
+// Object Property: incentiveAppliesToAgentType
+CREATE (:ObjectProperty {
+name: 'incentiveAppliesToAgentType',
+iri: 'http://www.autonomousrecordlabel.com/ontology#incentiveAppliesToAgentType',
+ontology: 'GoalAndPerformanceOntology'
+});
+
+// Property relationship: AgentIncentiveStructure -incentiveAppliesToAgentType-> AIAgent
+MATCH (d:Class {name: 'AgentIncentiveStructure'}), (r:Class {name: 'AIAgent'})
+CREATE (d)-[:INCENTIVEAPPLIESTOAGENTTYPE]->(r);
+
+// Object Property: incentiveTriggeredByKPI
+CREATE (:ObjectProperty {
+name: 'incentiveTriggeredByKPI',
+iri: 'http://www.autonomousrecordlabel.com/ontology#incentiveTriggeredByKPI',
+ontology: 'GoalAndPerformanceOntology'
+});
+
+// Property relationship: AgentIncentiveStructure -incentiveTriggeredByKPI-> KPI
+MATCH (d:Class {name: 'AgentIncentiveStructure'}), (r:Class {name: 'KPI'})
+CREATE (d)-[:INCENTIVETRIGGEREDBYKPI]->(r);
+
+// Object Property: derivedFromLabelGoal
+CREATE (:ObjectProperty {
+name: 'derivedFromLabelGoal',
+iri: 'http://www.autonomousrecordlabel.com/ontology#derivedFromLabelGoal',
+ontology: 'GoalAndPerformanceOntology'
+});
+
+// Property relationship: AgentIncentiveStructure -derivedFromLabelGoal-> LabelGoal
+MATCH (d:Class {name: 'AgentIncentiveStructure'}), (r:Class {name: 'LabelGoal'})
+CREATE (d)-[:DERIVEDFROMLABELGOAL]->(r);
+
+// Data Property: goalTargetValueContext
+CREATE (:DataProperty {
+name: 'goalTargetValueContext',
+iri: 'http://www.autonomousrecordlabel.com/ontology#goalTargetValueContext',
+ontology: 'GoalAndPerformanceOntology'
+});
+
+// Data Property: kpiBaselineValue
+CREATE (:DataProperty {
+name: 'kpiBaselineValue',
+iri: 'http://www.autonomousrecordlabel.com/ontology#kpiBaselineValue',
+ontology: 'GoalAndPerformanceOntology'
+});
+
+// Data Property: kpiTargetValue
+CREATE (:DataProperty {
+name: 'kpiTargetValue',
+iri: 'http://www.autonomousrecordlabel.com/ontology#kpiTargetValue',
+ontology: 'GoalAndPerformanceOntology'
+});
+
+// Data Property: kpiActualValue
+CREATE (:DataProperty {
+name: 'kpiActualValue',
+iri: 'http://www.autonomousrecordlabel.com/ontology#kpiActualValue',
+ontology: 'GoalAndPerformanceOntology'
+});
+
+// Data Property: kpiCalculationLogicDescription
+CREATE (:DataProperty {
+name: 'kpiCalculationLogicDescription',
+iri: 'http://www.autonomousrecordlabel.com/ontology#kpiCalculationLogicDescription',
+ontology: 'GoalAndPerformanceOntology'
+});
+
+// Data Property: kpiCalculationQueryOrScript
+CREATE (:DataProperty {
+name: 'kpiCalculationQueryOrScript',
+iri: 'http://www.autonomousrecordlabel.com/ontology#kpiCalculationQueryOrScript',
+ontology: 'GoalAndPerformanceOntology'
+});
+
+// Data Property: kpiMeasurementFrequency
+CREATE (:DataProperty {
+name: 'kpiMeasurementFrequency',
+iri: 'http://www.autonomousrecordlabel.com/ontology#kpiMeasurementFrequency',
+ontology: 'GoalAndPerformanceOntology'
+});
+
+// Data Property: incentiveCondition
+CREATE (:DataProperty {
+name: 'incentiveCondition',
+iri: 'http://www.autonomousrecordlabel.com/ontology#incentiveCondition',
+ontology: 'GoalAndPerformanceOntology'
+});
+
+// Data Property: rewardMechanismDescription
+CREATE (:DataProperty {
+name: 'rewardMechanismDescription',
+iri: 'http://www.autonomousrecordlabel.com/ontology#rewardMechanismDescription',
+ontology: 'GoalAndPerformanceOntology'
+});
+
+
+// Module: RightsAndLicensingOntology
+// Source: RightsAndLicensingOntology.owl
+// Base IRI: file:///Users/tibor.knowles/Desktop/Daisy/OntologyV2/RightsAndLicensingOntology.owl#
+
+CREATE (:Ontology {
+name: 'RightsAndLicensingOntology',
+base_iri: 'file:///Users/tibor.knowles/Desktop/Daisy/OntologyV2/RightsAndLicensingOntology.owl#',
+source_file: 'RightsAndLicensingOntology.owl'
+});
+
+// Class: Copyright
+CREATE (:Class {
+name: 'Copyright',
+iri: 'http://www.autonomousrecordlabel.com/ontology#Copyright',
+label: 'Copyright',
+ontology: 'RightsAndLicensingOntology'
+});
+
+MATCH (c:Class {name: 'Copyright'}) SET c.comment = 'A legal right granted to the creator of original works of authorship, including literary, dramatic, musical, and certain other intellectual works.';
+
+MATCH (c:Class {name: 'Copyright'}) SET c.rdfs_label = 'Copyright';
+
+// Class: MusicalWorkCopyright
+CREATE (:Class {
+name: 'MusicalWorkCopyright',
+iri: 'http://www.autonomousrecordlabel.com/ontology#MusicalWorkCopyright',
+label: 'MusicalWorkCopyright',
+ontology: 'RightsAndLicensingOntology'
+});
+
+MATCH (c:Class {name: 'MusicalWorkCopyright'}) SET c.comment = 'Copyright in the underlying musical composition (melody, lyrics, harmony). Often referred to as the \'song\' copyright or PA (Performing Arts) copyright.';
+
+MATCH (c:Class {name: 'MusicalWorkCopyright'}) SET c.rdfs_label = 'Musical Work Copyright (PA Copyright)';
+
+// Class: SoundRecordingCopyright
+CREATE (:Class {
+name: 'SoundRecordingCopyright',
+iri: 'http://www.autonomousrecordlabel.com/ontology#SoundRecordingCopyright',
+label: 'SoundRecordingCopyright',
+ontology: 'RightsAndLicensingOntology'
+});
+
+MATCH (c:Class {name: 'SoundRecordingCopyright'}) SET c.comment = 'Copyright in the specific fixation of sounds in a recording (the master). Often referred to as the \'master\' copyright or SR (Sound Recording) copyright.';
+
+MATCH (c:Class {name: 'SoundRecordingCopyright'}) SET c.rdfs_label = 'Sound Recording Copyright (SR Copyright)';
+
+// Class: ExclusiveRight
+CREATE (:Class {
+name: 'ExclusiveRight',
+iri: 'http://www.autonomousrecordlabel.com/ontology#ExclusiveRight',
+label: 'ExclusiveRight',
+ontology: 'RightsAndLicensingOntology'
+});
+
+MATCH (c:Class {name: 'ExclusiveRight'}) SET c.comment = 'A right granted exclusively to a copyright holder or their assignee, such as the right to reproduce, distribute, perform, or display the work.';
+
+MATCH (c:Class {name: 'ExclusiveRight'}) SET c.rdfs_label = 'Exclusive Right';
+
+// Class: UsageRight
+CREATE (:Class {
+name: 'UsageRight',
+iri: 'http://www.autonomousrecordlabel.com/ontology#UsageRight',
+label: 'UsageRight',
+ontology: 'RightsAndLicensingOntology'
+});
+
+MATCH (c:Class {name: 'UsageRight'}) SET c.comment = 'Permission to use a copyrighted work in a specific manner, often granted via a license.';
+
+MATCH (c:Class {name: 'UsageRight'}) SET c.rdfs_label = 'Usage Right';
+
+// Class: ReproductionRight
+CREATE (:Class {
+name: 'ReproductionRight',
+iri: 'http://www.autonomousrecordlabel.com/ontology#ReproductionRight',
+label: 'ReproductionRight',
+ontology: 'RightsAndLicensingOntology'
+});
+
+MATCH (c:Class {name: 'ReproductionRight'}) SET c.rdfs_label = 'Reproduction Right';
+
+// Class: DistributionRight
+CREATE (:Class {
+name: 'DistributionRight',
+iri: 'http://www.autonomousrecordlabel.com/ontology#DistributionRight',
+label: 'DistributionRight',
+ontology: 'RightsAndLicensingOntology'
+});
+
+MATCH (c:Class {name: 'DistributionRight'}) SET c.rdfs_label = 'Distribution Right';
+
+// Class: PublicPerformanceRight
+CREATE (:Class {
+name: 'PublicPerformanceRight',
+iri: 'http://www.autonomousrecordlabel.com/ontology#PublicPerformanceRight',
+label: 'PublicPerformanceRight',
+ontology: 'RightsAndLicensingOntology'
+});
+
+MATCH (c:Class {name: 'PublicPerformanceRight'}) SET c.rdfs_label = 'Public Performance Right';
+
+// Class: PublicDisplayRight
+CREATE (:Class {
+name: 'PublicDisplayRight',
+iri: 'http://www.autonomousrecordlabel.com/ontology#PublicDisplayRight',
+label: 'PublicDisplayRight',
+ontology: 'RightsAndLicensingOntology'
+});
+
+MATCH (c:Class {name: 'PublicDisplayRight'}) SET c.rdfs_label = 'Public Display Right';
+
+// Class: DerivativeWorkRight
+CREATE (:Class {
+name: 'DerivativeWorkRight',
+iri: 'http://www.autonomousrecordlabel.com/ontology#DerivativeWorkRight',
+label: 'DerivativeWorkRight',
+ontology: 'RightsAndLicensingOntology'
+});
+
+MATCH (c:Class {name: 'DerivativeWorkRight'}) SET c.rdfs_label = 'Derivative Work Right';
+
+// Class: SynchronizationRight
+CREATE (:Class {
+name: 'SynchronizationRight',
+iri: 'http://www.autonomousrecordlabel.com/ontology#SynchronizationRight',
+label: 'SynchronizationRight',
+ontology: 'RightsAndLicensingOntology'
+});
+
+MATCH (c:Class {name: 'SynchronizationRight'}) SET c.rdfs_label = 'Synchronization Right';
+
+// Class: MechanicalLicense
+CREATE (:Class {
+name: 'MechanicalLicense',
+iri: 'http://www.autonomousrecordlabel.com/ontology#MechanicalLicense',
+label: 'MechanicalLicense',
+ontology: 'RightsAndLicensingOntology'
+});
+
+MATCH (c:Class {name: 'MechanicalLicense'}) SET c.comment = 'Grants permission to reproduce and distribute a copyrighted musical work in recordings (CDs, downloads, streams).';
+
+MATCH (c:Class {name: 'MechanicalLicense'}) SET c.rdfs_label = 'Mechanical License';
+
+// Class: PerformanceLicense
+CREATE (:Class {
+name: 'PerformanceLicense',
+iri: 'http://www.autonomousrecordlabel.com/ontology#PerformanceLicense',
+label: 'PerformanceLicense',
+ontology: 'RightsAndLicensingOntology'
+});
+
+MATCH (c:Class {name: 'PerformanceLicense'}) SET c.comment = 'Grants permission to publicly perform a copyrighted musical work (e.g., radio, TV, concerts, streaming services).';
+
+MATCH (c:Class {name: 'PerformanceLicense'}) SET c.rdfs_label = 'Performance License';
+
+// Class: SynchronizationLicense
+CREATE (:Class {
+name: 'SynchronizationLicense',
+iri: 'http://www.autonomousrecordlabel.com/ontology#SynchronizationLicense',
+label: 'SynchronizationLicense',
+ontology: 'RightsAndLicensingOntology'
+});
+
+MATCH (c:Class {name: 'SynchronizationLicense'}) SET c.comment = 'Grants permission to use a musical work in timed synchronization with visual media (film, TV, commercials, video games).';
+
+MATCH (c:Class {name: 'SynchronizationLicense'}) SET c.rdfs_label = 'Synchronization License (Sync License)';
+
+// Class: PrintLicense
+CREATE (:Class {
+name: 'PrintLicense',
+iri: 'http://www.autonomousrecordlabel.com/ontology#PrintLicense',
+label: 'PrintLicense',
+ontology: 'RightsAndLicensingOntology'
+});
+
+MATCH (c:Class {name: 'PrintLicense'}) SET c.comment = 'Grants permission to reproduce and distribute sheet music or lyrics.';
+
+MATCH (c:Class {name: 'PrintLicense'}) SET c.rdfs_label = 'Print License';
+
+// Hierarchy: Copyright -> Right
+MATCH (child:Class {name: 'Copyright'}), (parent:Class {name: 'Right'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: MusicalWorkCopyright -> Copyright
+MATCH (child:Class {name: 'MusicalWorkCopyright'}), (parent:Class {name: 'Copyright'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: SoundRecordingCopyright -> Copyright
+MATCH (child:Class {name: 'SoundRecordingCopyright'}), (parent:Class {name: 'Copyright'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: ExclusiveRight -> Right
+MATCH (child:Class {name: 'ExclusiveRight'}), (parent:Class {name: 'Right'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: UsageRight -> Right
+MATCH (child:Class {name: 'UsageRight'}), (parent:Class {name: 'Right'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: ReproductionRight -> UsageRight
+MATCH (child:Class {name: 'ReproductionRight'}), (parent:Class {name: 'UsageRight'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: DistributionRight -> UsageRight
+MATCH (child:Class {name: 'DistributionRight'}), (parent:Class {name: 'UsageRight'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: PublicPerformanceRight -> UsageRight
+MATCH (child:Class {name: 'PublicPerformanceRight'}), (parent:Class {name: 'UsageRight'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: PublicDisplayRight -> UsageRight
+MATCH (child:Class {name: 'PublicDisplayRight'}), (parent:Class {name: 'UsageRight'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: DerivativeWorkRight -> UsageRight
+MATCH (child:Class {name: 'DerivativeWorkRight'}), (parent:Class {name: 'UsageRight'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: SynchronizationRight -> UsageRight
+MATCH (child:Class {name: 'SynchronizationRight'}), (parent:Class {name: 'UsageRight'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: MechanicalLicense -> LicenseAgreement
+MATCH (child:Class {name: 'MechanicalLicense'}), (parent:Class {name: 'LicenseAgreement'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: PerformanceLicense -> LicenseAgreement
+MATCH (child:Class {name: 'PerformanceLicense'}), (parent:Class {name: 'LicenseAgreement'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: SynchronizationLicense -> LicenseAgreement
+MATCH (child:Class {name: 'SynchronizationLicense'}), (parent:Class {name: 'LicenseAgreement'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: PrintLicense -> LicenseAgreement
+MATCH (child:Class {name: 'PrintLicense'}), (parent:Class {name: 'LicenseAgreement'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Object Property: copyrightForWork
+CREATE (:ObjectProperty {
+name: 'copyrightForWork',
+iri: 'http://www.autonomousrecordlabel.com/ontology#copyrightForWork',
+ontology: 'RightsAndLicensingOntology'
+});
+
+// Property relationship: Copyright -copyrightForWork-> CreativeWork
+MATCH (d:Class {name: 'Copyright'}), (r:Class {name: 'CreativeWork'})
+CREATE (d)-[:COPYRIGHTFORWORK]->(r);
+
+// Object Property: ownedBy
+CREATE (:ObjectProperty {
+name: 'ownedBy',
+iri: 'http://www.autonomousrecordlabel.com/ontology#ownedBy',
+ontology: 'RightsAndLicensingOntology'
+});
+
+// Property relationship: Right -ownedBy-> EPMO
+MATCH (d:Class {name: 'Right'}), (r:Class {name: 'EPMO'})
+CREATE (d)-[:OWNEDBY]->(r);
+
+// Object Property: ownsAssetOrRight
+CREATE (:ObjectProperty {
+name: 'ownsAssetOrRight',
+iri: 'http://www.autonomousrecordlabel.com/ontology#ownsAssetOrRight',
+ontology: 'RightsAndLicensingOntology'
+});
+
+// Property relationship: EPMO -ownsAssetOrRight-> Right
+MATCH (d:Class {name: 'EPMO'}), (r:Class {name: 'Right'})
+CREATE (d)-[:OWNSASSETORRIGHT]->(r);
+
+// Object Property: licenseGrantsSpecificRight
+CREATE (:ObjectProperty {
+name: 'licenseGrantsSpecificRight',
+iri: 'http://www.autonomousrecordlabel.com/ontology#licenseGrantsSpecificRight',
+ontology: 'RightsAndLicensingOntology'
+});
+
+// Property relationship: LicenseAgreement -licenseGrantsSpecificRight-> UsageRight
+MATCH (d:Class {name: 'LicenseAgreement'}), (r:Class {name: 'UsageRight'})
+CREATE (d)-[:LICENSEGRANTSSPECIFICRIGHT]->(r);
+
+// Object Property: licensedForMediaType
+CREATE (:ObjectProperty {
+name: 'licensedForMediaType',
+iri: 'http://www.autonomousrecordlabel.com/ontology#licensedForMediaType',
+ontology: 'RightsAndLicensingOntology'
+});
+
+// Property relationship: SynchronizationLicense -licensedForMediaType-> MediaType
+MATCH (d:Class {name: 'SynchronizationLicense'}), (r:Class {name: 'MediaType'})
+CREATE (d)-[:LICENSEDFORMEDIATYPE]->(r);
+
+// Object Property: copyrightRegisteredFor
+CREATE (:ObjectProperty {
+name: 'copyrightRegisteredFor',
+iri: 'http://www.autonomousrecordlabel.com/ontology#copyrightRegisteredFor',
+ontology: 'RightsAndLicensingOntology'
+});
+
+// Property relationship: CopyrightRegistration -copyrightRegisteredFor-> CreativeWork
+MATCH (d:Class {name: 'CopyrightRegistration'}), (r:Class {name: 'CreativeWork'})
+CREATE (d)-[:COPYRIGHTREGISTEREDFOR]->(r);
+
+// Object Property: copyrightAppliesToTerritory
+CREATE (:ObjectProperty {
+name: 'copyrightAppliesToTerritory',
+iri: 'http://www.autonomousrecordlabel.com/ontology#copyrightAppliesToTerritory',
+ontology: 'RightsAndLicensingOntology'
+});
+
+// Property relationship: Copyright -copyrightAppliesToTerritory-> Territory
+MATCH (d:Class {name: 'Copyright'}), (r:Class {name: 'Territory'})
+CREATE (d)-[:COPYRIGHTAPPLIESTOTERRITORY]->(r);
+
+// Data Property: copyrightTermDetails
+CREATE (:DataProperty {
+name: 'copyrightTermDetails',
+iri: 'http://www.autonomousrecordlabel.com/ontology#copyrightTermDetails',
+ontology: 'RightsAndLicensingOntology'
+});
+
+// Data Property: licenseScopeDescription
+CREATE (:DataProperty {
+name: 'licenseScopeDescription',
+iri: 'http://www.autonomousrecordlabel.com/ontology#licenseScopeDescription',
+ontology: 'RightsAndLicensingOntology'
+});
+
+// Data Property: isExclusiveLicense
+CREATE (:DataProperty {
+name: 'isExclusiveLicense',
+iri: 'http://www.autonomousrecordlabel.com/ontology#isExclusiveLicense',
+ontology: 'RightsAndLicensingOntology'
+});
+
+
+// Module: DaisyCoreOntology
+// Source: DaisyCoreOntology.owl
+// Base IRI: file:///Users/tibor.knowles/Desktop/Daisy/OntologyV2/DaisyCoreOntology.owl#
+
+CREATE (:Ontology {
+name: 'DaisyCoreOntology',
+base_iri: 'file:///Users/tibor.knowles/Desktop/Daisy/OntologyV2/DaisyCoreOntology.owl#',
+source_file: 'DaisyCoreOntology.owl'
+});
+
+// Class: EPMO
+CREATE (:Class {
+name: 'EPMO',
+iri: 'http://www.autonomousrecordlabel.com/ontology#EPMO',
+label: 'EPMO',
+ontology: 'DaisyCoreOntology'
+});
+
+MATCH (c:Class {name: 'EPMO'}) SET c.comment = 'Abstract superclass for persons or organizations involved in the music business, often dealing with provisions, monetary aspects, or rights.';
+
+MATCH (c:Class {name: 'EPMO'}) SET c.rdfs_label = 'Entity Provisioning Monetary or Otherwise';
+
+// Class: Event
+CREATE (:Class {
+name: 'Event',
+iri: 'http://www.autonomousrecordlabel.com/ontology#Event',
+label: 'Event',
+ontology: 'DaisyCoreOntology'
+});
+
+MATCH (c:Class {name: 'Event'}) SET c.comment = 'Abstract representation of an event or happening.';
+
+MATCH (c:Class {name: 'Event'}) SET c.rdfs_label = 'Event (Abstract)';
+
+// Class: Human
+CREATE (:Class {
+name: 'Human',
+iri: 'http://www.autonomousrecordlabel.com/ontology#Human',
+label: 'Human',
+ontology: 'DaisyCoreOntology'
+});
+
+MATCH (c:Class {name: 'Human'}) SET c.comment = 'Abstract representation of a human user or actor within the Daisy system.';
+
+MATCH (c:Class {name: 'Human'}) SET c.rdfs_label = 'Human';
+
+// Class: Person
+CREATE (:Class {
+name: 'Person',
+iri: 'http://www.autonomousrecordlabel.com/ontology#Person',
+label: 'Person',
+ontology: 'DaisyCoreOntology'
+});
+
+MATCH (c:Class {name: 'Person'}) SET c.comment = 'A human individual.';
+
+MATCH (c:Class {name: 'Person'}) SET c.rdfs_label = 'Person';
+
+// Class: AIAgent
+CREATE (:Class {
+name: 'AIAgent',
+iri: 'http://www.autonomousrecordlabel.com/ontology#AIAgent',
+label: 'AIAgent',
+ontology: 'DaisyCoreOntology'
+});
+
+MATCH (c:Class {name: 'AIAgent'}) SET c.comment = 'Abstract representation of an Artificial Intelligence agent within the Daisy system.';
+
+MATCH (c:Class {name: 'AIAgent'}) SET c.rdfs_label = 'AI Agent (Abstract)';
+
+// Class: Goal
+CREATE (:Class {
+name: 'Goal',
+iri: 'http://www.autonomousrecordlabel.com/ontology#Goal',
+label: 'Goal',
+ontology: 'DaisyCoreOntology'
+});
+
+MATCH (c:Class {name: 'Goal'}) SET c.comment = 'Abstract concept of a desired state, outcome, or objective to be achieved.';
+
+MATCH (c:Class {name: 'Goal'}) SET c.rdfs_label = 'Goal (Abstract)';
+
+// Class: KPI
+CREATE (:Class {
+name: 'KPI',
+iri: 'http://www.autonomousrecordlabel.com/ontology#KPI',
+label: 'KPI',
+ontology: 'DaisyCoreOntology'
+});
+
+MATCH (c:Class {name: 'KPI'}) SET c.comment = 'Abstract definition of a Key Performance Indicator, a quantifiable measure used to track progress towards a goal.';
+
+MATCH (c:Class {name: 'KPI'}) SET c.rdfs_label = 'Key Performance Indicator (Abstract)';
+
+// Class: PerformanceMetric
+CREATE (:Class {
+name: 'PerformanceMetric',
+iri: 'http://www.autonomousrecordlabel.com/ontology#PerformanceMetric',
+label: 'PerformanceMetric',
+ontology: 'DaisyCoreOntology'
+});
+
+MATCH (c:Class {name: 'PerformanceMetric'}) SET c.comment = 'Abstract definition of a metric used to evaluate performance, often more granular or specific than a KPI.';
+
+MATCH (c:Class {name: 'PerformanceMetric'}) SET c.rdfs_label = 'Performance Metric (Abstract)';
+
+// Class: OrganizationalUnit
+CREATE (:Class {
+name: 'OrganizationalUnit',
+iri: 'http://www.autonomousrecordlabel.com/ontology#OrganizationalUnit',
+label: 'OrganizationalUnit',
+ontology: 'DaisyCoreOntology'
+});
+
+MATCH (c:Class {name: 'OrganizationalUnit'}) SET c.comment = 'Abstract representation of a department, team, or other structural unit within an organization.';
+
+MATCH (c:Class {name: 'OrganizationalUnit'}) SET c.rdfs_label = 'Organizational Unit (Abstract)';
+
+// Class: Tool
+CREATE (:Class {
+name: 'Tool',
+iri: 'http://www.autonomousrecordlabel.com/ontology#Tool',
+label: 'Tool',
+ontology: 'DaisyCoreOntology'
+});
+
+MATCH (c:Class {name: 'Tool'}) SET c.comment = 'Abstract representation of a capability, resource, or utility that an agent can use to perform actions or tasks.';
+
+MATCH (c:Class {name: 'Tool'}) SET c.rdfs_label = 'Tool (Abstract)';
+
+// Class: SimulationRun
+CREATE (:Class {
+name: 'SimulationRun',
+iri: 'http://www.autonomousrecordlabel.com/ontology#SimulationRun',
+label: 'SimulationRun',
+ontology: 'DaisyCoreOntology'
+});
+
+MATCH (c:Class {name: 'SimulationRun'}) SET c.comment = 'Abstract concept for an execution of a simulation or \"what-if\" scenario.';
+
+MATCH (c:Class {name: 'SimulationRun'}) SET c.rdfs_label = 'Simulation Run (Abstract)';
+
+// Class: InteractionArtifact
+CREATE (:Class {
+name: 'InteractionArtifact',
+iri: 'http://www.autonomousrecordlabel.com/ontology#InteractionArtifact',
+label: 'InteractionArtifact',
+ontology: 'DaisyCoreOntology'
+});
+
+MATCH (c:Class {name: 'InteractionArtifact'}) SET c.comment = 'Abstract representation of an object or record generated during human-agent or agent-agent interaction (e.g., an approval request, feedback).';
+
+MATCH (c:Class {name: 'InteractionArtifact'}) SET c.rdfs_label = 'Interaction Artifact (Abstract)';
+
+// Class: AgentAction
+CREATE (:Class {
+name: 'AgentAction',
+iri: 'http://www.autonomousrecordlabel.com/ontology#AgentAction',
+label: 'AgentAction',
+ontology: 'DaisyCoreOntology'
+});
+
+MATCH (c:Class {name: 'AgentAction'}) SET c.comment = 'Abstract representation of a discrete action that can be performed by an AI Agent.';
+
+MATCH (c:Class {name: 'AgentAction'}) SET c.rdfs_label = 'Agent Action (Abstract)';
+
+// Class: CreativeWork
+CREATE (:Class {
+name: 'CreativeWork',
+iri: 'http://www.autonomousrecordlabel.com/ontology#CreativeWork',
+label: 'CreativeWork',
+ontology: 'DaisyCoreOntology'
+});
+
+MATCH (c:Class {name: 'CreativeWork'}) SET c.comment = 'Abstract representation of an original work of authorship.';
+
+MATCH (c:Class {name: 'CreativeWork'}) SET c.rdfs_label = 'Creative Work (Abstract)';
+
+// Class: ContextualDataFeed
+CREATE (:Class {
+name: 'ContextualDataFeed',
+iri: 'http://www.autonomousrecordlabel.com/ontology#ContextualDataFeed',
+label: 'ContextualDataFeed',
+ontology: 'DaisyCoreOntology'
+});
+
+MATCH (c:Class {name: 'ContextualDataFeed'}) SET c.comment = 'Abstract representation of a source of contextual data for AI Agents.';
+
+MATCH (c:Class {name: 'ContextualDataFeed'}) SET c.rdfs_label = 'Contextual Data Feed (Abstract)';
+
+// Class: MarketingConcept
+CREATE (:Class {
+name: 'MarketingConcept',
+iri: 'http://www.autonomousrecordlabel.com/ontology#MarketingConcept',
+label: 'MarketingConcept',
+ontology: 'DaisyCoreOntology'
+});
+
+MATCH (c:Class {name: 'MarketingConcept'}) SET c.comment = 'An abstract high-level concept related to marketing.';
+
+MATCH (c:Class {name: 'MarketingConcept'}) SET c.rdfs_label = 'Marketing Concept (Abstract)';
+
+// Class: FinancialConcept
+CREATE (:Class {
+name: 'FinancialConcept',
+iri: 'http://www.autonomousrecordlabel.com/ontology#FinancialConcept',
+label: 'FinancialConcept',
+ontology: 'DaisyCoreOntology'
+});
+
+MATCH (c:Class {name: 'FinancialConcept'}) SET c.comment = 'An abstract high-level concept related to financials.';
+
+MATCH (c:Class {name: 'FinancialConcept'}) SET c.rdfs_label = 'Financial Concept (Abstract)';
+
+// Class: ArtistCareerState
+CREATE (:Class {
+name: 'ArtistCareerState',
+iri: 'http://www.autonomousrecordlabel.com/ontology#ArtistCareerState',
+label: 'ArtistCareerState',
+ontology: 'DaisyCoreOntology'
+});
+
+MATCH (c:Class {name: 'ArtistCareerState'}) SET c.comment = 'An abstract snapshot of an artist\'s career status at a point in time.';
+
+MATCH (c:Class {name: 'ArtistCareerState'}) SET c.rdfs_label = 'Artist Career State (Abstract)';
+
+// Class: MusicReleaseLifecycleState
+CREATE (:Class {
+name: 'MusicReleaseLifecycleState',
+iri: 'http://www.autonomousrecordlabel.com/ontology#MusicReleaseLifecycleState',
+label: 'MusicReleaseLifecycleState',
+ontology: 'DaisyCoreOntology'
+});
+
+MATCH (c:Class {name: 'MusicReleaseLifecycleState'}) SET c.comment = 'An abstract representation of the current phase of a music release.';
+
+MATCH (c:Class {name: 'MusicReleaseLifecycleState'}) SET c.rdfs_label = 'Music Release Lifecycle State (Abstract)';
+
+// Class: ContractualProvision
+CREATE (:Class {
+name: 'ContractualProvision',
+iri: 'http://www.autonomousrecordlabel.com/ontology#ContractualProvision',
+label: 'ContractualProvision',
+ontology: 'DaisyCoreOntology'
+});
+
+MATCH (c:Class {name: 'ContractualProvision'}) SET c.comment = 'An abstract representation of a specific clause or term within a contract or agreement.';
+
+MATCH (c:Class {name: 'ContractualProvision'}) SET c.rdfs_label = 'Contractual Provision (Abstract)';
+
+// Hierarchy: Human -> EPMO
+MATCH (child:Class {name: 'Human'}), (parent:Class {name: 'EPMO'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: Person -> EPMO
+MATCH (child:Class {name: 'Person'}), (parent:Class {name: 'EPMO'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: OrganizationalUnit -> EPMO
+MATCH (child:Class {name: 'OrganizationalUnit'}), (parent:Class {name: 'EPMO'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Object Property: currentAssignedGoal
+CREATE (:ObjectProperty {
+name: 'currentAssignedGoal',
+iri: 'http://www.autonomousrecordlabel.com/ontology#currentAssignedGoal',
+ontology: 'DaisyCoreOntology'
+});
+
+// Property relationship: AIAgent -currentAssignedGoal-> Goal
+MATCH (d:Class {name: 'AIAgent'}), (r:Class {name: 'Goal'})
+CREATE (d)-[:CURRENTASSIGNEDGOAL]->(r);
+
+// Object Property: performsAction
+CREATE (:ObjectProperty {
+name: 'performsAction',
+iri: 'http://www.autonomousrecordlabel.com/ontology#performsAction',
+ontology: 'DaisyCoreOntology'
+});
+
+// Property relationship: AIAgent -performsAction-> AgentAction
+MATCH (d:Class {name: 'AIAgent'}), (r:Class {name: 'AgentAction'})
+CREATE (d)-[:PERFORMSACTION]->(r);
+
+// Object Property: actionPerformedBy
+CREATE (:ObjectProperty {
+name: 'actionPerformedBy',
+iri: 'http://www.autonomousrecordlabel.com/ontology#actionPerformedBy',
+ontology: 'DaisyCoreOntology'
+});
+
+// Property relationship: AgentAction -actionPerformedBy-> AIAgent
+MATCH (d:Class {name: 'AgentAction'}), (r:Class {name: 'AIAgent'})
+CREATE (d)-[:ACTIONPERFORMEDBY]->(r);
+
+// Object Property: createdBy
+CREATE (:ObjectProperty {
+name: 'createdBy',
+iri: 'http://www.autonomousrecordlabel.com/ontology#createdBy',
+ontology: 'DaisyCoreOntology'
+});
+
+// Object Property: hasAssociatedKPI
+CREATE (:ObjectProperty {
+name: 'hasAssociatedKPI',
+iri: 'http://www.autonomousrecordlabel.com/ontology#hasAssociatedKPI',
+ontology: 'DaisyCoreOntology'
+});
+
+// Property relationship: Goal -hasAssociatedKPI-> KPI
+MATCH (d:Class {name: 'Goal'}), (r:Class {name: 'KPI'})
+CREATE (d)-[:HASASSOCIATEDKPI]->(r);
+
+// Object Property: usesTool
+CREATE (:ObjectProperty {
+name: 'usesTool',
+iri: 'http://www.autonomousrecordlabel.com/ontology#usesTool',
+ontology: 'DaisyCoreOntology'
+});
+
+// Data Property: hasName
+CREATE (:DataProperty {
+name: 'hasName',
+iri: 'http://www.autonomousrecordlabel.com/ontology#hasName',
+ontology: 'DaisyCoreOntology'
+});
+
+// Data Property: hasDescription
+CREATE (:DataProperty {
+name: 'hasDescription',
+iri: 'http://www.autonomousrecordlabel.com/ontology#hasDescription',
+ontology: 'DaisyCoreOntology'
+});
+
+// Data Property: creationTimestamp
+CREATE (:DataProperty {
+name: 'creationTimestamp',
+iri: 'http://www.autonomousrecordlabel.com/ontology#creationTimestamp',
+ontology: 'DaisyCoreOntology'
+});
+
+// Data Property: agentID
+CREATE (:DataProperty {
+name: 'agentID',
+iri: 'http://www.autonomousrecordlabel.com/ontology#agentID',
+ontology: 'DaisyCoreOntology'
+});
+
+// Data Property: agentStatus
+CREATE (:DataProperty {
+name: 'agentStatus',
+iri: 'http://www.autonomousrecordlabel.com/ontology#agentStatus',
+ontology: 'DaisyCoreOntology'
+});
+
+// Data Property: humanName
+CREATE (:DataProperty {
+name: 'humanName',
+iri: 'http://www.autonomousrecordlabel.com/ontology#humanName',
+ontology: 'DaisyCoreOntology'
+});
+
+// Data Property: humanRole
+CREATE (:DataProperty {
+name: 'humanRole',
+iri: 'http://www.autonomousrecordlabel.com/ontology#humanRole',
+ontology: 'DaisyCoreOntology'
+});
+
+// Data Property: goalDescription
+CREATE (:DataProperty {
+name: 'goalDescription',
+iri: 'http://www.autonomousrecordlabel.com/ontology#goalDescription',
+ontology: 'DaisyCoreOntology'
+});
+
+// Data Property: goalStatus
+CREATE (:DataProperty {
+name: 'goalStatus',
+iri: 'http://www.autonomousrecordlabel.com/ontology#goalStatus',
+ontology: 'DaisyCoreOntology'
+});
+
+// Data Property: kpiName
+CREATE (:DataProperty {
+name: 'kpiName',
+iri: 'http://www.autonomousrecordlabel.com/ontology#kpiName',
+ontology: 'DaisyCoreOntology'
+});
+
+// Data Property: kpiDescription
+CREATE (:DataProperty {
+name: 'kpiDescription',
+iri: 'http://www.autonomousrecordlabel.com/ontology#kpiDescription',
+ontology: 'DaisyCoreOntology'
+});
+
+// Data Property: toolName
+CREATE (:DataProperty {
+name: 'toolName',
+iri: 'http://www.autonomousrecordlabel.com/ontology#toolName',
+ontology: 'DaisyCoreOntology'
+});
+
+// Data Property: toolDescription
+CREATE (:DataProperty {
+name: 'toolDescription',
+iri: 'http://www.autonomousrecordlabel.com/ontology#toolDescription',
+ontology: 'DaisyCoreOntology'
+});
+
+// Data Property: simulationRunID
+CREATE (:DataProperty {
+name: 'simulationRunID',
+iri: 'http://www.autonomousrecordlabel.com/ontology#simulationRunID',
+ontology: 'DaisyCoreOntology'
+});
+
+// Data Property: simulationPurpose
+CREATE (:DataProperty {
+name: 'simulationPurpose',
+iri: 'http://www.autonomousrecordlabel.com/ontology#simulationPurpose',
+ontology: 'DaisyCoreOntology'
+});
+
+// Data Property: artifactTimestamp
+CREATE (:DataProperty {
+name: 'artifactTimestamp',
+iri: 'http://www.autonomousrecordlabel.com/ontology#artifactTimestamp',
+ontology: 'DaisyCoreOntology'
+});
+
+
+// Module: ArtistDevelopmentAndMarketingOntology
+// Source: ArtistDevelopmentAndMarketingOntology.owl
+// Base IRI: file:///Users/tibor.knowles/Desktop/Daisy/OntologyV2/ArtistDevelopmentAndMarketingOntology.owl#
+
+CREATE (:Ontology {
+name: 'ArtistDevelopmentAndMarketingOntology',
+base_iri: 'file:///Users/tibor.knowles/Desktop/Daisy/OntologyV2/ArtistDevelopmentAndMarketingOntology.owl#',
+source_file: 'ArtistDevelopmentAndMarketingOntology.owl'
+});
+
+// Class: ArtistCareerStage
+CREATE (:Class {
+name: 'ArtistCareerStage',
+iri: 'http://www.autonomousrecordlabel.com/ontology#ArtistCareerStage',
+label: 'ArtistCareerStage',
+ontology: 'ArtistDevelopmentAndMarketingOntology'
+});
+
+MATCH (c:Class {name: 'ArtistCareerStage'}) SET c.comment = 'A defined stage in an artist\'s career lifecycle (e.g., Undiscovered, Buzzing, Developing, Established, Legacy).';
+
+MATCH (c:Class {name: 'ArtistCareerStage'}) SET c.rdfs_label = 'Artist Career Stage';
+
+// Class: BrandElement
+CREATE (:Class {
+name: 'BrandElement',
+iri: 'http://www.autonomousrecordlabel.com/ontology#BrandElement',
+label: 'BrandElement',
+ontology: 'ArtistDevelopmentAndMarketingOntology'
+});
+
+MATCH (c:Class {name: 'BrandElement'}) SET c.comment = 'A component of an artist\'s or label\'s brand identity (e.g., logo, color scheme, typical imagery, brand voice).';
+
+MATCH (c:Class {name: 'BrandElement'}) SET c.rdfs_label = 'Brand Element';
+
+// Class: MarketingCampaign
+CREATE (:Class {
+name: 'MarketingCampaign',
+iri: 'http://www.autonomousrecordlabel.com/ontology#MarketingCampaign',
+label: 'MarketingCampaign',
+ontology: 'ArtistDevelopmentAndMarketingOntology'
+});
+
+MATCH (c:Class {name: 'MarketingCampaign'}) SET c.comment = 'A planned set of coordinated marketing activities designed to achieve a specific objective, often for a MusicRelease or Artist promotion.';
+
+MATCH (c:Class {name: 'MarketingCampaign'}) SET c.rdfs_label = 'Marketing Campaign';
+
+// Class: PromotionalActivity
+CREATE (:Class {
+name: 'PromotionalActivity',
+iri: 'http://www.autonomousrecordlabel.com/ontology#PromotionalActivity',
+label: 'PromotionalActivity',
+ontology: 'ArtistDevelopmentAndMarketingOntology'
+});
+
+MATCH (c:Class {name: 'PromotionalActivity'}) SET c.comment = 'A specific action or tactic used within a marketing campaign (e.g., social media push, playlist pitching, ad buy).';
+
+MATCH (c:Class {name: 'PromotionalActivity'}) SET c.rdfs_label = 'Promotional Activity';
+
+// Class: RadioCampaign
+CREATE (:Class {
+name: 'RadioCampaign',
+iri: 'http://www.autonomousrecordlabel.com/ontology#RadioCampaign',
+label: 'RadioCampaign',
+ontology: 'ArtistDevelopmentAndMarketingOntology'
+});
+
+MATCH (c:Class {name: 'RadioCampaign'}) SET c.rdfs_label = 'Radio Campaign';
+
+// Class: PlaylistPitchingActivity
+CREATE (:Class {
+name: 'PlaylistPitchingActivity',
+iri: 'http://www.autonomousrecordlabel.com/ontology#PlaylistPitchingActivity',
+label: 'PlaylistPitchingActivity',
+ontology: 'ArtistDevelopmentAndMarketingOntology'
+});
+
+MATCH (c:Class {name: 'PlaylistPitchingActivity'}) SET c.rdfs_label = 'Playlist Pitching Activity';
+
+// Class: SocialMediaPushActivity
+CREATE (:Class {
+name: 'SocialMediaPushActivity',
+iri: 'http://www.autonomousrecordlabel.com/ontology#SocialMediaPushActivity',
+label: 'SocialMediaPushActivity',
+ontology: 'ArtistDevelopmentAndMarketingOntology'
+});
+
+MATCH (c:Class {name: 'SocialMediaPushActivity'}) SET c.rdfs_label = 'Social Media Push Activity';
+
+// Class: PublicRelationsActivity
+CREATE (:Class {
+name: 'PublicRelationsActivity',
+iri: 'http://www.autonomousrecordlabel.com/ontology#PublicRelationsActivity',
+label: 'PublicRelationsActivity',
+ontology: 'ArtistDevelopmentAndMarketingOntology'
+});
+
+MATCH (c:Class {name: 'PublicRelationsActivity'}) SET c.rdfs_label = 'Public Relations Activity';
+
+// Class: AdvertisingCampaign
+CREATE (:Class {
+name: 'AdvertisingCampaign',
+iri: 'http://www.autonomousrecordlabel.com/ontology#AdvertisingCampaign',
+label: 'AdvertisingCampaign',
+ontology: 'ArtistDevelopmentAndMarketingOntology'
+});
+
+MATCH (c:Class {name: 'AdvertisingCampaign'}) SET c.rdfs_label = 'Advertising Campaign';
+
+// Class: AudienceSegment
+CREATE (:Class {
+name: 'AudienceSegment',
+iri: 'http://www.autonomousrecordlabel.com/ontology#AudienceSegment',
+label: 'AudienceSegment',
+ontology: 'ArtistDevelopmentAndMarketingOntology'
+});
+
+MATCH (c:Class {name: 'AudienceSegment'}) SET c.comment = 'A distinct group of potential or existing fans/consumers, characterized by shared demographics, psychographics, or behaviors.';
+
+MATCH (c:Class {name: 'AudienceSegment'}) SET c.rdfs_label = 'Audience Segment';
+
+// Class: FanEngagementMetric
+CREATE (:Class {
+name: 'FanEngagementMetric',
+iri: 'http://www.autonomousrecordlabel.com/ontology#FanEngagementMetric',
+label: 'FanEngagementMetric',
+ontology: 'ArtistDevelopmentAndMarketingOntology'
+});
+
+MATCH (c:Class {name: 'FanEngagementMetric'}) SET c.comment = 'A metric specifically designed to measure the level and quality of interaction between fans and an artist or their content.';
+
+MATCH (c:Class {name: 'FanEngagementMetric'}) SET c.rdfs_label = 'Fan Engagement Metric';
+
+// Class: MarketTrend
+CREATE (:Class {
+name: 'MarketTrend',
+iri: 'http://www.autonomousrecordlabel.com/ontology#MarketTrend',
+label: 'MarketTrend',
+ontology: 'ArtistDevelopmentAndMarketingOntology'
+});
+
+MATCH (c:Class {name: 'MarketTrend'}) SET c.comment = 'A perceived direction or pattern of change in market preferences, consumption habits, or industry dynamics.';
+
+MATCH (c:Class {name: 'MarketTrend'}) SET c.rdfs_label = 'Market Trend';
+
+// Class: CampaignLifecycleStage
+CREATE (:Class {
+name: 'CampaignLifecycleStage',
+iri: 'http://www.autonomousrecordlabel.com/ontology#CampaignLifecycleStage',
+label: 'CampaignLifecycleStage',
+ontology: 'ArtistDevelopmentAndMarketingOntology'
+});
+
+MATCH (c:Class {name: 'CampaignLifecycleStage'}) SET c.comment = 'A defined stage in the lifecycle of a marketing campaign (e.g., Planning, Pre-Launch, Active, Post-Mortem).';
+
+MATCH (c:Class {name: 'CampaignLifecycleStage'}) SET c.rdfs_label = 'Campaign Lifecycle Stage';
+
+// Hierarchy: ArtistCareerStage -> ArtistCareerState
+MATCH (child:Class {name: 'ArtistCareerStage'}), (parent:Class {name: 'ArtistCareerState'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: MarketingCampaign -> MarketingConcept
+MATCH (child:Class {name: 'MarketingCampaign'}), (parent:Class {name: 'MarketingConcept'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: PromotionalActivity -> MarketingConcept
+MATCH (child:Class {name: 'PromotionalActivity'}), (parent:Class {name: 'MarketingConcept'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: RadioCampaign -> PromotionalActivity
+MATCH (child:Class {name: 'RadioCampaign'}), (parent:Class {name: 'PromotionalActivity'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: PlaylistPitchingActivity -> PromotionalActivity
+MATCH (child:Class {name: 'PlaylistPitchingActivity'}), (parent:Class {name: 'PromotionalActivity'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: SocialMediaPushActivity -> PromotionalActivity
+MATCH (child:Class {name: 'SocialMediaPushActivity'}), (parent:Class {name: 'PromotionalActivity'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: PublicRelationsActivity -> PromotionalActivity
+MATCH (child:Class {name: 'PublicRelationsActivity'}), (parent:Class {name: 'PromotionalActivity'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: AdvertisingCampaign -> PromotionalActivity
+MATCH (child:Class {name: 'AdvertisingCampaign'}), (parent:Class {name: 'PromotionalActivity'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: AudienceSegment -> MarketingConcept
+MATCH (child:Class {name: 'AudienceSegment'}), (parent:Class {name: 'MarketingConcept'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: FanEngagementMetric -> PerformanceMetric
+MATCH (child:Class {name: 'FanEngagementMetric'}), (parent:Class {name: 'PerformanceMetric'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: MarketTrend -> MarketingConcept
+MATCH (child:Class {name: 'MarketTrend'}), (parent:Class {name: 'MarketingConcept'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Object Property: hasCurrentCareerStage
+CREATE (:ObjectProperty {
+name: 'hasCurrentCareerStage',
+iri: 'http://www.autonomousrecordlabel.com/ontology#hasCurrentCareerStage',
+ontology: 'ArtistDevelopmentAndMarketingOntology'
+});
+
+// Property relationship: Artist -hasCurrentCareerStage-> ArtistCareerStage
+MATCH (d:Class {name: 'Artist'}), (r:Class {name: 'ArtistCareerStage'})
+CREATE (d)-[:HASCURRENTCAREERSTAGE]->(r);
+
+// Object Property: artistHasBrandElement
+CREATE (:ObjectProperty {
+name: 'artistHasBrandElement',
+iri: 'http://www.autonomousrecordlabel.com/ontology#artistHasBrandElement',
+ontology: 'ArtistDevelopmentAndMarketingOntology'
+});
+
+// Property relationship: Artist -artistHasBrandElement-> BrandElement
+MATCH (d:Class {name: 'Artist'}), (r:Class {name: 'BrandElement'})
+CREATE (d)-[:ARTISTHASBRANDELEMENT]->(r);
+
+// Object Property: campaignTargetsArtist
+CREATE (:ObjectProperty {
+name: 'campaignTargetsArtist',
+iri: 'http://www.autonomousrecordlabel.com/ontology#campaignTargetsArtist',
+ontology: 'ArtistDevelopmentAndMarketingOntology'
+});
+
+// Property relationship: MarketingCampaign -campaignTargetsArtist-> Artist
+MATCH (d:Class {name: 'MarketingCampaign'}), (r:Class {name: 'Artist'})
+CREATE (d)-[:CAMPAIGNTARGETSARTIST]->(r);
+
+// Object Property: campaignTargetsGenericAsset
+CREATE (:ObjectProperty {
+name: 'campaignTargetsGenericAsset',
+iri: 'http://www.autonomousrecordlabel.com/ontology#campaignTargetsGenericAsset',
+ontology: 'ArtistDevelopmentAndMarketingOntology'
+});
+
+// Object Property: campaignTargetsRelease
+CREATE (:ObjectProperty {
+name: 'campaignTargetsRelease',
+iri: 'http://www.autonomousrecordlabel.com/ontology#campaignTargetsRelease',
+ontology: 'ArtistDevelopmentAndMarketingOntology'
+});
+
+// Property relationship: MarketingCampaign -campaignTargetsRelease-> MusicRelease
+MATCH (d:Class {name: 'MarketingCampaign'}), (r:Class {name: 'MusicRelease'})
+CREATE (d)-[:CAMPAIGNTARGETSRELEASE]->(r);
+
+// Object Property: campaignComprisesActivity
+CREATE (:ObjectProperty {
+name: 'campaignComprisesActivity',
+iri: 'http://www.autonomousrecordlabel.com/ontology#campaignComprisesActivity',
+ontology: 'ArtistDevelopmentAndMarketingOntology'
+});
+
+// Property relationship: MarketingCampaign -campaignComprisesActivity-> PromotionalActivity
+MATCH (d:Class {name: 'MarketingCampaign'}), (r:Class {name: 'PromotionalActivity'})
+CREATE (d)-[:CAMPAIGNCOMPRISESACTIVITY]->(r);
+
+// Object Property: activityPartOfCampaign
+CREATE (:ObjectProperty {
+name: 'activityPartOfCampaign',
+iri: 'http://www.autonomousrecordlabel.com/ontology#activityPartOfCampaign',
+ontology: 'ArtistDevelopmentAndMarketingOntology'
+});
+
+// Property relationship: PromotionalActivity -activityPartOfCampaign-> MarketingCampaign
+MATCH (d:Class {name: 'PromotionalActivity'}), (r:Class {name: 'MarketingCampaign'})
+CREATE (d)-[:ACTIVITYPARTOFCAMPAIGN]->(r);
+
+// Object Property: campaignTargetsAudience
+CREATE (:ObjectProperty {
+name: 'campaignTargetsAudience',
+iri: 'http://www.autonomousrecordlabel.com/ontology#campaignTargetsAudience',
+ontology: 'ArtistDevelopmentAndMarketingOntology'
+});
+
+// Property relationship: MarketingCampaign -campaignTargetsAudience-> AudienceSegment
+MATCH (d:Class {name: 'MarketingCampaign'}), (r:Class {name: 'AudienceSegment'})
+CREATE (d)-[:CAMPAIGNTARGETSAUDIENCE]->(r);
+
+// Object Property: campaignHasMetric
+CREATE (:ObjectProperty {
+name: 'campaignHasMetric',
+iri: 'http://www.autonomousrecordlabel.com/ontology#campaignHasMetric',
+ontology: 'ArtistDevelopmentAndMarketingOntology'
+});
+
+// Property relationship: MarketingCampaign -campaignHasMetric-> FanEngagementMetric
+MATCH (d:Class {name: 'MarketingCampaign'}), (r:Class {name: 'FanEngagementMetric'})
+CREATE (d)-[:CAMPAIGNHASMETRIC]->(r);
+
+// Object Property: trendAffectsGenre
+CREATE (:ObjectProperty {
+name: 'trendAffectsGenre',
+iri: 'http://www.autonomousrecordlabel.com/ontology#trendAffectsGenre',
+ontology: 'ArtistDevelopmentAndMarketingOntology'
+});
+
+// Property relationship: MarketTrend -trendAffectsGenre-> Genre
+MATCH (d:Class {name: 'MarketTrend'}), (r:Class {name: 'Genre'})
+CREATE (d)-[:TRENDAFFECTSGENRE]->(r);
+
+// Object Property: hasCampaignLifecycleStage
+CREATE (:ObjectProperty {
+name: 'hasCampaignLifecycleStage',
+iri: 'http://www.autonomousrecordlabel.com/ontology#hasCampaignLifecycleStage',
+ontology: 'ArtistDevelopmentAndMarketingOntology'
+});
+
+// Property relationship: MarketingCampaign -hasCampaignLifecycleStage-> CampaignLifecycleStage
+MATCH (d:Class {name: 'MarketingCampaign'}), (r:Class {name: 'CampaignLifecycleStage'})
+CREATE (d)-[:HASCAMPAIGNLIFECYCLESTAGE]->(r);
+
+// Object Property: campaignHasBudget
+CREATE (:ObjectProperty {
+name: 'campaignHasBudget',
+iri: 'http://www.autonomousrecordlabel.com/ontology#campaignHasBudget',
+ontology: 'ArtistDevelopmentAndMarketingOntology'
+});
+
+// Property relationship: MarketingCampaign -campaignHasBudget-> MonetaryAmount
+MATCH (d:Class {name: 'MarketingCampaign'}), (r:Class {name: 'MonetaryAmount'})
+CREATE (d)-[:CAMPAIGNHASBUDGET]->(r);
+
+// Data Property: careerStageStartDate
+CREATE (:DataProperty {
+name: 'careerStageStartDate',
+iri: 'http://www.autonomousrecordlabel.com/ontology#careerStageStartDate',
+ontology: 'ArtistDevelopmentAndMarketingOntology'
+});
+
+// Data Property: brandElementDescription
+CREATE (:DataProperty {
+name: 'brandElementDescription',
+iri: 'http://www.autonomousrecordlabel.com/ontology#brandElementDescription',
+ontology: 'ArtistDevelopmentAndMarketingOntology'
+});
+
+// Data Property: audienceSegmentCharacteristics
+CREATE (:DataProperty {
+name: 'audienceSegmentCharacteristics',
+iri: 'http://www.autonomousrecordlabel.com/ontology#audienceSegmentCharacteristics',
+ontology: 'ArtistDevelopmentAndMarketingOntology'
+});
+
+// Data Property: trendDescription
+CREATE (:DataProperty {
+name: 'trendDescription',
+iri: 'http://www.autonomousrecordlabel.com/ontology#trendDescription',
+ontology: 'ArtistDevelopmentAndMarketingOntology'
+});
+
+// Data Property: campaignStartDate
+CREATE (:DataProperty {
+name: 'campaignStartDate',
+iri: 'http://www.autonomousrecordlabel.com/ontology#campaignStartDate',
+ontology: 'ArtistDevelopmentAndMarketingOntology'
+});
+
+// Data Property: campaignEndDate
+CREATE (:DataProperty {
+name: 'campaignEndDate',
+iri: 'http://www.autonomousrecordlabel.com/ontology#campaignEndDate',
+ontology: 'ArtistDevelopmentAndMarketingOntology'
+});
+
+// Individual: CareerStage_Undiscovered (type: ArtistCareerStage)
+CREATE (:Individual:ArtistCareerStage {
+name: 'CareerStage_Undiscovered',
+iri: 'http://www.autonomousrecordlabel.com/ontology#CareerStage_Undiscovered',
+ontology: 'ArtistDevelopmentAndMarketingOntology'
+});
+
+// Individual: CareerStage_Buzzing (type: ArtistCareerStage)
+CREATE (:Individual:ArtistCareerStage {
+name: 'CareerStage_Buzzing',
+iri: 'http://www.autonomousrecordlabel.com/ontology#CareerStage_Buzzing',
+ontology: 'ArtistDevelopmentAndMarketingOntology'
+});
+
+// Individual: CareerStage_Developing (type: ArtistCareerStage)
+CREATE (:Individual:ArtistCareerStage {
+name: 'CareerStage_Developing',
+iri: 'http://www.autonomousrecordlabel.com/ontology#CareerStage_Developing',
+ontology: 'ArtistDevelopmentAndMarketingOntology'
+});
+
+// Individual: CareerStage_Established (type: ArtistCareerStage)
+CREATE (:Individual:ArtistCareerStage {
+name: 'CareerStage_Established',
+iri: 'http://www.autonomousrecordlabel.com/ontology#CareerStage_Established',
+ontology: 'ArtistDevelopmentAndMarketingOntology'
+});
+
+// Individual: CareerStage_Legacy (type: ArtistCareerStage)
+CREATE (:Individual:ArtistCareerStage {
+name: 'CareerStage_Legacy',
+iri: 'http://www.autonomousrecordlabel.com/ontology#CareerStage_Legacy',
+ontology: 'ArtistDevelopmentAndMarketingOntology'
+});
+
+// Individual: Metric_SocialMediaLikes (type: FanEngagementMetric)
+CREATE (:Individual:FanEngagementMetric {
+name: 'Metric_SocialMediaLikes',
+iri: 'http://www.autonomousrecordlabel.com/ontology#Metric_SocialMediaLikes',
+ontology: 'ArtistDevelopmentAndMarketingOntology'
+});
+
+// Individual: Metric_StreamToSaveRatio (type: FanEngagementMetric)
+CREATE (:Individual:FanEngagementMetric {
+name: 'Metric_StreamToSaveRatio',
+iri: 'http://www.autonomousrecordlabel.com/ontology#Metric_StreamToSaveRatio',
+ontology: 'ArtistDevelopmentAndMarketingOntology'
+});
+
+// Individual: Metric_ConcertAttendance (type: FanEngagementMetric)
+CREATE (:Individual:FanEngagementMetric {
+name: 'Metric_ConcertAttendance',
+iri: 'http://www.autonomousrecordlabel.com/ontology#Metric_ConcertAttendance',
+ontology: 'ArtistDevelopmentAndMarketingOntology'
+});
+
+// Individual: CampaignStage_Planning (type: CampaignLifecycleStage)
+CREATE (:Individual:CampaignLifecycleStage {
+name: 'CampaignStage_Planning',
+iri: 'http://www.autonomousrecordlabel.com/ontology#CampaignStage_Planning',
+ontology: 'ArtistDevelopmentAndMarketingOntology'
+});
+
+// Individual: CampaignStage_Active (type: CampaignLifecycleStage)
+CREATE (:Individual:CampaignLifecycleStage {
+name: 'CampaignStage_Active',
+iri: 'http://www.autonomousrecordlabel.com/ontology#CampaignStage_Active',
+ontology: 'ArtistDevelopmentAndMarketingOntology'
+});
+
+// Individual: CampaignStage_PostMortem (type: CampaignLifecycleStage)
+CREATE (:Individual:CampaignLifecycleStage {
+name: 'CampaignStage_PostMortem',
+iri: 'http://www.autonomousrecordlabel.com/ontology#CampaignStage_PostMortem',
+ontology: 'ArtistDevelopmentAndMarketingOntology'
+});
+
+
+// Module: ContextAndFeedbackOntology
+// Source: ContextAndFeedbackOntology.owl
+// Base IRI: file:///Users/tibor.knowles/Desktop/Daisy/OntologyV2/ContextAndFeedbackOntology.owl#
+
+CREATE (:Ontology {
+name: 'ContextAndFeedbackOntology',
+base_iri: 'file:///Users/tibor.knowles/Desktop/Daisy/OntologyV2/ContextAndFeedbackOntology.owl#',
+source_file: 'ContextAndFeedbackOntology.owl'
+});
+
+// Class: Recommendation
+CREATE (:Class {
+name: 'Recommendation',
+iri: 'http://www.autonomousrecordlabel.com/ontology#Recommendation',
+label: 'Recommendation',
+ontology: 'ContextAndFeedbackOntology'
+});
+
+MATCH (c:Class {name: 'Recommendation'}) SET c.comment = 'A suggestion or proposal, typically for an action or decision, generated by an AI agent or a human. It should be supported by evidence and context.';
+
+MATCH (c:Class {name: 'Recommendation'}) SET c.rdfs_label = 'Recommendation';
+
+// Class: MCPContextualFactor
+CREATE (:Class {
+name: 'MCPContextualFactor',
+iri: 'http://www.autonomousrecordlabel.com/ontology#MCPContextualFactor',
+label: 'MCPContextualFactor',
+ontology: 'ContextAndFeedbackOntology'
+});
+
+MATCH (c:Class {name: 'MCPContextualFactor'}) SET c.comment = 'Represents a piece of contextual information derived from MCP (Multi-Agent Contextual Processing) layers or other external data sources that can influence decisions or KPI outcomes.';
+
+MATCH (c:Class {name: 'MCPContextualFactor'}) SET c.rdfs_label = 'MCP Contextual Factor';
+
+// Class: AgentFeedback
+CREATE (:Class {
+name: 'AgentFeedback',
+iri: 'http://www.autonomousrecordlabel.com/ontology#AgentFeedback',
+label: 'AgentFeedback',
+ontology: 'ContextAndFeedbackOntology'
+});
+
+MATCH (c:Class {name: 'AgentFeedback'}) SET c.comment = 'Feedback provided by an AI agent about its own task execution, challenges, observations, or the state of its environment.';
+
+MATCH (c:Class {name: 'AgentFeedback'}) SET c.rdfs_label = 'Agent Feedback';
+
+// Class: HumanFeedback
+CREATE (:Class {
+name: 'HumanFeedback',
+iri: 'http://www.autonomousrecordlabel.com/ontology#HumanFeedback',
+label: 'HumanFeedback',
+ontology: 'ContextAndFeedbackOntology'
+});
+
+MATCH (c:Class {name: 'HumanFeedback'}) SET c.comment = 'Feedback provided by a human user on an agent\'s recommendation, action, simulation outcome, or other system aspect.';
+
+MATCH (c:Class {name: 'HumanFeedback'}) SET c.rdfs_label = 'Human Feedback';
+
+// Class: KnowledgeSourceConfidence
+CREATE (:Class {
+name: 'KnowledgeSourceConfidence',
+iri: 'http://www.autonomousrecordlabel.com/ontology#KnowledgeSourceConfidence',
+label: 'KnowledgeSourceConfidence',
+ontology: 'ContextAndFeedbackOntology'
+});
+
+MATCH (c:Class {name: 'KnowledgeSourceConfidence'}) SET c.comment = 'Represents the assessed confidence in a piece of information, a data source (like an MCP feed), or a derived insight.';
+
+MATCH (c:Class {name: 'KnowledgeSourceConfidence'}) SET c.rdfs_label = 'Knowledge Source Confidence';
+
+// Hierarchy: Recommendation -> InteractionArtifact
+MATCH (child:Class {name: 'Recommendation'}), (parent:Class {name: 'InteractionArtifact'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: AgentFeedback -> InteractionArtifact
+MATCH (child:Class {name: 'AgentFeedback'}), (parent:Class {name: 'InteractionArtifact'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: HumanFeedback -> InteractionArtifact
+MATCH (child:Class {name: 'HumanFeedback'}), (parent:Class {name: 'InteractionArtifact'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Object Property: potentialImpactOnKPI
+CREATE (:ObjectProperty {
+name: 'potentialImpactOnKPI',
+iri: 'http://www.autonomousrecordlabel.com/ontology#potentialImpactOnKPI',
+ontology: 'ContextAndFeedbackOntology'
+});
+
+// Property relationship: MCPContextualFactor -potentialImpactOnKPI-> KPI
+MATCH (d:Class {name: 'MCPContextualFactor'}), (r:Class {name: 'KPI'})
+CREATE (d)-[:POTENTIALIMPACTONKPI]->(r);
+
+// Object Property: relevanceToGoal
+CREATE (:ObjectProperty {
+name: 'relevanceToGoal',
+iri: 'http://www.autonomousrecordlabel.com/ontology#relevanceToGoal',
+ontology: 'ContextAndFeedbackOntology'
+});
+
+// Property relationship: MCPContextualFactor -relevanceToGoal-> Goal
+MATCH (d:Class {name: 'MCPContextualFactor'}), (r:Class {name: 'Goal'})
+CREATE (d)-[:RELEVANCETOGOAL]->(r);
+
+// Object Property: feedbackFromAgent
+CREATE (:ObjectProperty {
+name: 'feedbackFromAgent',
+iri: 'http://www.autonomousrecordlabel.com/ontology#feedbackFromAgent',
+ontology: 'ContextAndFeedbackOntology'
+});
+
+// Property relationship: AgentFeedback -feedbackFromAgent-> AIAgent
+MATCH (d:Class {name: 'AgentFeedback'}), (r:Class {name: 'AIAgent'})
+CREATE (d)-[:FEEDBACKFROMAGENT]->(r);
+
+// Object Property: relatedToAction
+CREATE (:ObjectProperty {
+name: 'relatedToAction',
+iri: 'http://www.autonomousrecordlabel.com/ontology#relatedToAction',
+ontology: 'ContextAndFeedbackOntology'
+});
+
+// Object Property: suggestsImprovementTo
+CREATE (:ObjectProperty {
+name: 'suggestsImprovementTo',
+iri: 'http://www.autonomousrecordlabel.com/ontology#suggestsImprovementTo',
+ontology: 'ContextAndFeedbackOntology'
+});
+
+// Object Property: feedbackFromHuman
+CREATE (:ObjectProperty {
+name: 'feedbackFromHuman',
+iri: 'http://www.autonomousrecordlabel.com/ontology#feedbackFromHuman',
+ontology: 'ContextAndFeedbackOntology'
+});
+
+// Property relationship: HumanFeedback -feedbackFromHuman-> Human
+MATCH (d:Class {name: 'HumanFeedback'}), (r:Class {name: 'Human'})
+CREATE (d)-[:FEEDBACKFROMHUMAN]->(r);
+
+// Object Property: relatedToRecommendation
+CREATE (:ObjectProperty {
+name: 'relatedToRecommendation',
+iri: 'http://www.autonomousrecordlabel.com/ontology#relatedToRecommendation',
+ontology: 'ContextAndFeedbackOntology'
+});
+
+// Property relationship: HumanFeedback -relatedToRecommendation-> Recommendation
+MATCH (d:Class {name: 'HumanFeedback'}), (r:Class {name: 'Recommendation'})
+CREATE (d)-[:RELATEDTORECOMMENDATION]->(r);
+
+// Object Property: relatedToSimulation
+CREATE (:ObjectProperty {
+name: 'relatedToSimulation',
+iri: 'http://www.autonomousrecordlabel.com/ontology#relatedToSimulation',
+ontology: 'ContextAndFeedbackOntology'
+});
+
+// Property relationship: HumanFeedback -relatedToSimulation-> SimulationRun
+MATCH (d:Class {name: 'HumanFeedback'}), (r:Class {name: 'SimulationRun'})
+CREATE (d)-[:RELATEDTOSIMULATION]->(r);
+
+// Object Property: recommendsAction
+CREATE (:ObjectProperty {
+name: 'recommendsAction',
+iri: 'http://www.autonomousrecordlabel.com/ontology#recommendsAction',
+ontology: 'ContextAndFeedbackOntology'
+});
+
+// Property relationship: Recommendation -recommendsAction-> AgentAction
+MATCH (d:Class {name: 'Recommendation'}), (r:Class {name: 'AgentAction'})
+CREATE (d)-[:RECOMMENDSACTION]->(r);
+
+// Object Property: evidenceForRecommendation
+CREATE (:ObjectProperty {
+name: 'evidenceForRecommendation',
+iri: 'http://www.autonomousrecordlabel.com/ontology#evidenceForRecommendation',
+ontology: 'ContextAndFeedbackOntology'
+});
+
+// Property relationship: Recommendation -evidenceForRecommendation-> Thing
+MATCH (d:Class {name: 'Recommendation'}), (r:Class {name: 'Thing'})
+CREATE (d)-[:EVIDENCEFORRECOMMENDATION]->(r);
+
+// Object Property: incorporatesContextualFactor
+CREATE (:ObjectProperty {
+name: 'incorporatesContextualFactor',
+iri: 'http://www.autonomousrecordlabel.com/ontology#incorporatesContextualFactor',
+ontology: 'ContextAndFeedbackOntology'
+});
+
+// Property relationship: Recommendation -incorporatesContextualFactor-> MCPContextualFactor
+MATCH (d:Class {name: 'Recommendation'}), (r:Class {name: 'MCPContextualFactor'})
+CREATE (d)-[:INCORPORATESCONTEXTUALFACTOR]->(r);
+
+// Object Property: considersAgentFeedback
+CREATE (:ObjectProperty {
+name: 'considersAgentFeedback',
+iri: 'http://www.autonomousrecordlabel.com/ontology#considersAgentFeedback',
+ontology: 'ContextAndFeedbackOntology'
+});
+
+// Property relationship: Recommendation -considersAgentFeedback-> AgentFeedback
+MATCH (d:Class {name: 'Recommendation'}), (r:Class {name: 'AgentFeedback'})
+CREATE (d)-[:CONSIDERSAGENTFEEDBACK]->(r);
+
+// Object Property: appliesToInformation
+CREATE (:ObjectProperty {
+name: 'appliesToInformation',
+iri: 'http://www.autonomousrecordlabel.com/ontology#appliesToInformation',
+ontology: 'ContextAndFeedbackOntology'
+});
+
+// Property relationship: KnowledgeSourceConfidence -appliesToInformation-> Thing
+MATCH (d:Class {name: 'KnowledgeSourceConfidence'}), (r:Class {name: 'Thing'})
+CREATE (d)-[:APPLIESTOINFORMATION]->(r);
+
+// Data Property: factorDescription
+CREATE (:DataProperty {
+name: 'factorDescription',
+iri: 'http://www.autonomousrecordlabel.com/ontology#factorDescription',
+ontology: 'ContextAndFeedbackOntology'
+});
+
+// Data Property: factorSource
+CREATE (:DataProperty {
+name: 'factorSource',
+iri: 'http://www.autonomousrecordlabel.com/ontology#factorSource',
+ontology: 'ContextAndFeedbackOntology'
+});
+
+// Data Property: factorTimestamp
+CREATE (:DataProperty {
+name: 'factorTimestamp',
+iri: 'http://www.autonomousrecordlabel.com/ontology#factorTimestamp',
+ontology: 'ContextAndFeedbackOntology'
+});
+
+// Data Property: associatedRawDataSnippet
+CREATE (:DataProperty {
+name: 'associatedRawDataSnippet',
+iri: 'http://www.autonomousrecordlabel.com/ontology#associatedRawDataSnippet',
+ontology: 'ContextAndFeedbackOntology'
+});
+
+// Data Property: feedbackContent
+CREATE (:DataProperty {
+name: 'feedbackContent',
+iri: 'http://www.autonomousrecordlabel.com/ontology#feedbackContent',
+ontology: 'ContextAndFeedbackOntology'
+});
+
+// Data Property: isAcknowledgedByMaestro
+CREATE (:DataProperty {
+name: 'isAcknowledgedByMaestro',
+iri: 'http://www.autonomousrecordlabel.com/ontology#isAcknowledgedByMaestro',
+ontology: 'ContextAndFeedbackOntology'
+});
+
+// Data Property: humanSentiment
+CREATE (:DataProperty {
+name: 'humanSentiment',
+iri: 'http://www.autonomousrecordlabel.com/ontology#humanSentiment',
+ontology: 'ContextAndFeedbackOntology'
+});
+
+// Data Property: recommendationText
+CREATE (:DataProperty {
+name: 'recommendationText',
+iri: 'http://www.autonomousrecordlabel.com/ontology#recommendationText',
+ontology: 'ContextAndFeedbackOntology'
+});
+
+// Data Property: recommendationConfidence
+CREATE (:DataProperty {
+name: 'recommendationConfidence',
+iri: 'http://www.autonomousrecordlabel.com/ontology#recommendationConfidence',
+ontology: 'ContextAndFeedbackOntology'
+});
+
+// Data Property: confidenceValue
+CREATE (:DataProperty {
+name: 'confidenceValue',
+iri: 'http://www.autonomousrecordlabel.com/ontology#confidenceValue',
+ontology: 'ContextAndFeedbackOntology'
+});
+
+// Data Property: confidenceDerivationMethod
+CREATE (:DataProperty {
+name: 'confidenceDerivationMethod',
+iri: 'http://www.autonomousrecordlabel.com/ontology#confidenceDerivationMethod',
+ontology: 'ContextAndFeedbackOntology'
+});
+
+
+// Module: FinancialsAndRoyaltiesOntology
+// Source: FinancialsAndRoyaltiesOntology.owl
+// Base IRI: file:///Users/tibor.knowles/Desktop/Daisy/OntologyV2/FinancialsAndRoyaltiesOntology.owl#
+
+CREATE (:Ontology {
+name: 'FinancialsAndRoyaltiesOntology',
+base_iri: 'file:///Users/tibor.knowles/Desktop/Daisy/OntologyV2/FinancialsAndRoyaltiesOntology.owl#',
+source_file: 'FinancialsAndRoyaltiesOntology.owl'
+});
+
+// Class: Royalty
+CREATE (:Class {
+name: 'Royalty',
+iri: 'http://www.autonomousrecordlabel.com/ontology#Royalty',
+label: 'Royalty',
+ontology: 'FinancialsAndRoyaltiesOntology'
+});
+
+MATCH (c:Class {name: 'Royalty'}) SET c.comment = 'A payment made to a rights holder for the ongoing use of their asset, such as copyrighted works.';
+
+MATCH (c:Class {name: 'Royalty'}) SET c.rdfs_label = 'Royalty';
+
+// Class: RecordRoyalty
+CREATE (:Class {
+name: 'RecordRoyalty',
+iri: 'http://www.autonomousrecordlabel.com/ontology#RecordRoyalty',
+label: 'RecordRoyalty',
+ontology: 'FinancialsAndRoyaltiesOntology'
+});
+
+MATCH (c:Class {name: 'RecordRoyalty'}) SET c.rdfs_label = 'Record Royalty';
+
+// Class: PublishingRoyalty
+CREATE (:Class {
+name: 'PublishingRoyalty',
+iri: 'http://www.autonomousrecordlabel.com/ontology#PublishingRoyalty',
+label: 'PublishingRoyalty',
+ontology: 'FinancialsAndRoyaltiesOntology'
+});
+
+MATCH (c:Class {name: 'PublishingRoyalty'}) SET c.rdfs_label = 'Publishing Royalty';
+
+// Class: MechanicalRoyalty
+CREATE (:Class {
+name: 'MechanicalRoyalty',
+iri: 'http://www.autonomousrecordlabel.com/ontology#MechanicalRoyalty',
+label: 'MechanicalRoyalty',
+ontology: 'FinancialsAndRoyaltiesOntology'
+});
+
+MATCH (c:Class {name: 'MechanicalRoyalty'}) SET c.rdfs_label = 'Mechanical Royalty';
+
+// Class: PerformanceRoyalty
+CREATE (:Class {
+name: 'PerformanceRoyalty',
+iri: 'http://www.autonomousrecordlabel.com/ontology#PerformanceRoyalty',
+label: 'PerformanceRoyalty',
+ontology: 'FinancialsAndRoyaltiesOntology'
+});
+
+MATCH (c:Class {name: 'PerformanceRoyalty'}) SET c.rdfs_label = 'Performance Royalty';
+
+// Class: SyncRoyalty
+CREATE (:Class {
+name: 'SyncRoyalty',
+iri: 'http://www.autonomousrecordlabel.com/ontology#SyncRoyalty',
+label: 'SyncRoyalty',
+ontology: 'FinancialsAndRoyaltiesOntology'
+});
+
+MATCH (c:Class {name: 'SyncRoyalty'}) SET c.rdfs_label = 'Sync Royalty';
+
+// Class: PrintRoyalty
+CREATE (:Class {
+name: 'PrintRoyalty',
+iri: 'http://www.autonomousrecordlabel.com/ontology#PrintRoyalty',
+label: 'PrintRoyalty',
+ontology: 'FinancialsAndRoyaltiesOntology'
+});
+
+MATCH (c:Class {name: 'PrintRoyalty'}) SET c.rdfs_label = 'Print Royalty';
+
+// Class: MerchRoyalty
+CREATE (:Class {
+name: 'MerchRoyalty',
+iri: 'http://www.autonomousrecordlabel.com/ontology#MerchRoyalty',
+label: 'MerchRoyalty',
+ontology: 'FinancialsAndRoyaltiesOntology'
+});
+
+MATCH (c:Class {name: 'MerchRoyalty'}) SET c.rdfs_label = 'Merchandise Royalty';
+
+// Class: RoyaltyStatement
+CREATE (:Class {
+name: 'RoyaltyStatement',
+iri: 'http://www.autonomousrecordlabel.com/ontology#RoyaltyStatement',
+label: 'RoyaltyStatement',
+ontology: 'FinancialsAndRoyaltiesOntology'
+});
+
+MATCH (c:Class {name: 'RoyaltyStatement'}) SET c.comment = 'A formal document detailing earnings, deductions, and net royalties payable to a rights holder.';
+
+MATCH (c:Class {name: 'RoyaltyStatement'}) SET c.rdfs_label = 'Royalty Statement';
+
+// Class: Advance
+CREATE (:Class {
+name: 'Advance',
+iri: 'http://www.autonomousrecordlabel.com/ontology#Advance',
+label: 'Advance',
+ontology: 'FinancialsAndRoyaltiesOntology'
+});
+
+MATCH (c:Class {name: 'Advance'}) SET c.comment = 'A sum of money paid to an artist or songwriter upfront, recoupable against future royalties.';
+
+MATCH (c:Class {name: 'Advance'}) SET c.rdfs_label = 'Advance';
+
+// Class: SigningAdvance
+CREATE (:Class {
+name: 'SigningAdvance',
+iri: 'http://www.autonomousrecordlabel.com/ontology#SigningAdvance',
+label: 'SigningAdvance',
+ontology: 'FinancialsAndRoyaltiesOntology'
+});
+
+MATCH (c:Class {name: 'SigningAdvance'}) SET c.rdfs_label = 'Signing Advance';
+
+// Class: AlbumFundAdvance
+CREATE (:Class {
+name: 'AlbumFundAdvance',
+iri: 'http://www.autonomousrecordlabel.com/ontology#AlbumFundAdvance',
+label: 'AlbumFundAdvance',
+ontology: 'FinancialsAndRoyaltiesOntology'
+});
+
+MATCH (c:Class {name: 'AlbumFundAdvance'}) SET c.rdfs_label = 'Album Fund Advance';
+
+// Class: TourSupportAdvance
+CREATE (:Class {
+name: 'TourSupportAdvance',
+iri: 'http://www.autonomousrecordlabel.com/ontology#TourSupportAdvance',
+label: 'TourSupportAdvance',
+ontology: 'FinancialsAndRoyaltiesOntology'
+});
+
+MATCH (c:Class {name: 'TourSupportAdvance'}) SET c.rdfs_label = 'Tour Support Advance';
+
+// Class: MerchAdvance
+CREATE (:Class {
+name: 'MerchAdvance',
+iri: 'http://www.autonomousrecordlabel.com/ontology#MerchAdvance',
+label: 'MerchAdvance',
+ontology: 'FinancialsAndRoyaltiesOntology'
+});
+
+MATCH (c:Class {name: 'MerchAdvance'}) SET c.rdfs_label = 'Merchandise Advance';
+
+// Class: RecoupableCost
+CREATE (:Class {
+name: 'RecoupableCost',
+iri: 'http://www.autonomousrecordlabel.com/ontology#RecoupableCost',
+label: 'RecoupableCost',
+ontology: 'FinancialsAndRoyaltiesOntology'
+});
+
+MATCH (c:Class {name: 'RecoupableCost'}) SET c.comment = 'Expenses incurred by the label that can be deducted from an artist\'s earnings before royalties are paid.';
+
+MATCH (c:Class {name: 'RecoupableCost'}) SET c.rdfs_label = 'Recoupable Cost';
+
+// Class: RecordingCost
+CREATE (:Class {
+name: 'RecordingCost',
+iri: 'http://www.autonomousrecordlabel.com/ontology#RecordingCost',
+label: 'RecordingCost',
+ontology: 'FinancialsAndRoyaltiesOntology'
+});
+
+MATCH (c:Class {name: 'RecordingCost'}) SET c.rdfs_label = 'Recording Cost (Recoupable)';
+
+// Class: VideoProductionCost
+CREATE (:Class {
+name: 'VideoProductionCost',
+iri: 'http://www.autonomousrecordlabel.com/ontology#VideoProductionCost',
+label: 'VideoProductionCost',
+ontology: 'FinancialsAndRoyaltiesOntology'
+});
+
+MATCH (c:Class {name: 'VideoProductionCost'}) SET c.rdfs_label = 'Video Production Cost (Recoupable)';
+
+// Class: MarketingCostRecoupable
+CREATE (:Class {
+name: 'MarketingCostRecoupable',
+iri: 'http://www.autonomousrecordlabel.com/ontology#MarketingCostRecoupable',
+label: 'MarketingCostRecoupable',
+ontology: 'FinancialsAndRoyaltiesOntology'
+});
+
+MATCH (c:Class {name: 'MarketingCostRecoupable'}) SET c.comment = 'Portion of marketing expenses that are recoupable, as per contract.';
+
+MATCH (c:Class {name: 'MarketingCostRecoupable'}) SET c.rdfs_label = 'Marketing Cost (Recoupable)';
+
+// Class: Fund
+CREATE (:Class {
+name: 'Fund',
+iri: 'http://www.autonomousrecordlabel.com/ontology#Fund',
+label: 'Fund',
+ontology: 'FinancialsAndRoyaltiesOntology'
+});
+
+MATCH (c:Class {name: 'Fund'}) SET c.comment = 'An amount of money allocated for a specific purpose, often for recording an album, which may include both recording costs and an artist advance.';
+
+MATCH (c:Class {name: 'Fund'}) SET c.rdfs_label = 'Fund (Recording)';
+
+// Class: RoyaltyTier
+CREATE (:Class {
+name: 'RoyaltyTier',
+iri: 'http://www.autonomousrecordlabel.com/ontology#RoyaltyTier',
+label: 'RoyaltyTier',
+ontology: 'FinancialsAndRoyaltiesOntology'
+});
+
+MATCH (c:Class {name: 'RoyaltyTier'}) SET c.comment = 'A specific level or bracket in a royalty structure, where the royalty rate may change based on achieving certain thresholds (e.g., sales escalations).';
+
+MATCH (c:Class {name: 'RoyaltyTier'}) SET c.rdfs_label = 'Royalty Tier';
+
+// Class: PaymentTransaction
+CREATE (:Class {
+name: 'PaymentTransaction',
+iri: 'http://www.autonomousrecordlabel.com/ontology#PaymentTransaction',
+label: 'PaymentTransaction',
+ontology: 'FinancialsAndRoyaltiesOntology'
+});
+
+MATCH (c:Class {name: 'PaymentTransaction'}) SET c.comment = 'Represents a specific instance of a monetary payment.';
+
+MATCH (c:Class {name: 'PaymentTransaction'}) SET c.rdfs_label = 'Payment Transaction';
+
+// Class: DatePeriod
+CREATE (:Class {
+name: 'DatePeriod',
+iri: 'http://www.autonomousrecordlabel.com/ontology#DatePeriod',
+label: 'DatePeriod',
+ontology: 'FinancialsAndRoyaltiesOntology'
+});
+
+MATCH (c:Class {name: 'DatePeriod'}) SET c.comment = 'Represents a period of time defined by a start and end date.';
+
+MATCH (c:Class {name: 'DatePeriod'}) SET c.rdfs_label = 'Date Period';
+
+// Hierarchy: Royalty -> FinancialConcept
+MATCH (child:Class {name: 'Royalty'}), (parent:Class {name: 'FinancialConcept'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: RecordRoyalty -> Royalty
+MATCH (child:Class {name: 'RecordRoyalty'}), (parent:Class {name: 'Royalty'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: PublishingRoyalty -> Royalty
+MATCH (child:Class {name: 'PublishingRoyalty'}), (parent:Class {name: 'Royalty'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: MechanicalRoyalty -> PublishingRoyalty
+MATCH (child:Class {name: 'MechanicalRoyalty'}), (parent:Class {name: 'PublishingRoyalty'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: PerformanceRoyalty -> PublishingRoyalty
+MATCH (child:Class {name: 'PerformanceRoyalty'}), (parent:Class {name: 'PublishingRoyalty'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: SyncRoyalty -> PublishingRoyalty
+MATCH (child:Class {name: 'SyncRoyalty'}), (parent:Class {name: 'PublishingRoyalty'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: PrintRoyalty -> PublishingRoyalty
+MATCH (child:Class {name: 'PrintRoyalty'}), (parent:Class {name: 'PublishingRoyalty'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: MerchRoyalty -> Royalty
+MATCH (child:Class {name: 'MerchRoyalty'}), (parent:Class {name: 'Royalty'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: RoyaltyStatement -> FinancialConcept
+MATCH (child:Class {name: 'RoyaltyStatement'}), (parent:Class {name: 'FinancialConcept'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: Advance -> FinancialConcept
+MATCH (child:Class {name: 'Advance'}), (parent:Class {name: 'FinancialConcept'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: SigningAdvance -> Advance
+MATCH (child:Class {name: 'SigningAdvance'}), (parent:Class {name: 'Advance'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: AlbumFundAdvance -> Advance
+MATCH (child:Class {name: 'AlbumFundAdvance'}), (parent:Class {name: 'Advance'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: TourSupportAdvance -> Advance
+MATCH (child:Class {name: 'TourSupportAdvance'}), (parent:Class {name: 'Advance'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: MerchAdvance -> Advance
+MATCH (child:Class {name: 'MerchAdvance'}), (parent:Class {name: 'Advance'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: RecoupableCost -> FinancialConcept
+MATCH (child:Class {name: 'RecoupableCost'}), (parent:Class {name: 'FinancialConcept'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: RecordingCost -> RecoupableCost
+MATCH (child:Class {name: 'RecordingCost'}), (parent:Class {name: 'RecoupableCost'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: VideoProductionCost -> RecoupableCost
+MATCH (child:Class {name: 'VideoProductionCost'}), (parent:Class {name: 'RecoupableCost'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: MarketingCostRecoupable -> RecoupableCost
+MATCH (child:Class {name: 'MarketingCostRecoupable'}), (parent:Class {name: 'RecoupableCost'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: Fund -> FinancialConcept
+MATCH (child:Class {name: 'Fund'}), (parent:Class {name: 'FinancialConcept'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: RoyaltyTier -> FinancialConcept
+MATCH (child:Class {name: 'RoyaltyTier'}), (parent:Class {name: 'FinancialConcept'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: PaymentTransaction -> FinancialConcept
+MATCH (child:Class {name: 'PaymentTransaction'}), (parent:Class {name: 'FinancialConcept'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Object Property: royaltyPayableTo
+CREATE (:ObjectProperty {
+name: 'royaltyPayableTo',
+iri: 'http://www.autonomousrecordlabel.com/ontology#royaltyPayableTo',
+ontology: 'FinancialsAndRoyaltiesOntology'
+});
+
+// Property relationship: Royalty -royaltyPayableTo-> EPMO
+MATCH (d:Class {name: 'Royalty'}), (r:Class {name: 'EPMO'})
+CREATE (d)-[:ROYALTYPAYABLETO]->(r);
+
+// Object Property: royaltyGeneratedBy
+CREATE (:ObjectProperty {
+name: 'royaltyGeneratedBy',
+iri: 'http://www.autonomousrecordlabel.com/ontology#royaltyGeneratedBy',
+ontology: 'FinancialsAndRoyaltiesOntology'
+});
+
+// Property relationship: Royalty -royaltyGeneratedBy-> CreativeWork
+MATCH (d:Class {name: 'Royalty'}), (r:Class {name: 'CreativeWork'})
+CREATE (d)-[:ROYALTYGENERATEDBY]->(r);
+
+// Object Property: statementForPayee
+CREATE (:ObjectProperty {
+name: 'statementForPayee',
+iri: 'http://www.autonomousrecordlabel.com/ontology#statementForPayee',
+ontology: 'FinancialsAndRoyaltiesOntology'
+});
+
+// Property relationship: RoyaltyStatement -statementForPayee-> EPMO
+MATCH (d:Class {name: 'RoyaltyStatement'}), (r:Class {name: 'EPMO'})
+CREATE (d)-[:STATEMENTFORPAYEE]->(r);
+
+// Object Property: statementCoversPeriod
+CREATE (:ObjectProperty {
+name: 'statementCoversPeriod',
+iri: 'http://www.autonomousrecordlabel.com/ontology#statementCoversPeriod',
+ontology: 'FinancialsAndRoyaltiesOntology'
+});
+
+// Property relationship: RoyaltyStatement -statementCoversPeriod-> DatePeriod
+MATCH (d:Class {name: 'RoyaltyStatement'}), (r:Class {name: 'DatePeriod'})
+CREATE (d)-[:STATEMENTCOVERSPERIOD]->(r);
+
+// Object Property: detailsRoyalty
+CREATE (:ObjectProperty {
+name: 'detailsRoyalty',
+iri: 'http://www.autonomousrecordlabel.com/ontology#detailsRoyalty',
+ontology: 'FinancialsAndRoyaltiesOntology'
+});
+
+// Property relationship: RoyaltyStatement -detailsRoyalty-> Royalty
+MATCH (d:Class {name: 'RoyaltyStatement'}), (r:Class {name: 'Royalty'})
+CREATE (d)-[:DETAILSROYALTY]->(r);
+
+// Object Property: advanceHasAmount
+CREATE (:ObjectProperty {
+name: 'advanceHasAmount',
+iri: 'http://www.autonomousrecordlabel.com/ontology#advanceHasAmount',
+ontology: 'FinancialsAndRoyaltiesOntology'
+});
+
+// Property relationship: Advance -advanceHasAmount-> MonetaryAmount
+MATCH (d:Class {name: 'Advance'}), (r:Class {name: 'MonetaryAmount'})
+CREATE (d)-[:ADVANCEHASAMOUNT]->(r);
+
+// Object Property: costHasAmount
+CREATE (:ObjectProperty {
+name: 'costHasAmount',
+iri: 'http://www.autonomousrecordlabel.com/ontology#costHasAmount',
+ontology: 'FinancialsAndRoyaltiesOntology'
+});
+
+// Property relationship: RecoupableCost -costHasAmount-> MonetaryAmount
+MATCH (d:Class {name: 'RecoupableCost'}), (r:Class {name: 'MonetaryAmount'})
+CREATE (d)-[:COSTHASAMOUNT]->(r);
+
+// Object Property: fundHasAmount
+CREATE (:ObjectProperty {
+name: 'fundHasAmount',
+iri: 'http://www.autonomousrecordlabel.com/ontology#fundHasAmount',
+ontology: 'FinancialsAndRoyaltiesOntology'
+});
+
+// Property relationship: Fund -fundHasAmount-> MonetaryAmount
+MATCH (d:Class {name: 'Fund'}), (r:Class {name: 'MonetaryAmount'})
+CREATE (d)-[:FUNDHASAMOUNT]->(r);
+
+// Object Property: royaltyTierTriggeredBy
+CREATE (:ObjectProperty {
+name: 'royaltyTierTriggeredBy',
+iri: 'http://www.autonomousrecordlabel.com/ontology#royaltyTierTriggeredBy',
+ontology: 'FinancialsAndRoyaltiesOntology'
+});
+
+// Property relationship: RoyaltyTier -royaltyTierTriggeredBy-> PerformanceMetricThreshold
+MATCH (d:Class {name: 'RoyaltyTier'}), (r:Class {name: 'PerformanceMetricThreshold'})
+CREATE (d)-[:ROYALTYTIERTRIGGEREDBY]->(r);
+
+// Object Property: paymentCurrency
+CREATE (:ObjectProperty {
+name: 'paymentCurrency',
+iri: 'http://www.autonomousrecordlabel.com/ontology#paymentCurrency',
+ontology: 'FinancialsAndRoyaltiesOntology'
+});
+
+// Property relationship: PaymentTransaction -paymentCurrency-> CurrencyCode
+MATCH (d:Class {name: 'PaymentTransaction'}), (r:Class {name: 'CurrencyCode'})
+CREATE (d)-[:PAYMENTCURRENCY]->(r);
+
+// Object Property: paymentTo
+CREATE (:ObjectProperty {
+name: 'paymentTo',
+iri: 'http://www.autonomousrecordlabel.com/ontology#paymentTo',
+ontology: 'FinancialsAndRoyaltiesOntology'
+});
+
+// Property relationship: PaymentTransaction -paymentTo-> EPMO
+MATCH (d:Class {name: 'PaymentTransaction'}), (r:Class {name: 'EPMO'})
+CREATE (d)-[:PAYMENTTO]->(r);
+
+// Object Property: paymentFrom
+CREATE (:ObjectProperty {
+name: 'paymentFrom',
+iri: 'http://www.autonomousrecordlabel.com/ontology#paymentFrom',
+ontology: 'FinancialsAndRoyaltiesOntology'
+});
+
+// Property relationship: PaymentTransaction -paymentFrom-> EPMO
+MATCH (d:Class {name: 'PaymentTransaction'}), (r:Class {name: 'EPMO'})
+CREATE (d)-[:PAYMENTFROM]->(r);
+
+// Data Property: royaltyRateValue
+CREATE (:DataProperty {
+name: 'royaltyRateValue',
+iri: 'http://www.autonomousrecordlabel.com/ontology#royaltyRateValue',
+ontology: 'FinancialsAndRoyaltiesOntology'
+});
+
+// Data Property: royaltyCalculationBasis
+CREATE (:DataProperty {
+name: 'royaltyCalculationBasis',
+iri: 'http://www.autonomousrecordlabel.com/ontology#royaltyCalculationBasis',
+ontology: 'FinancialsAndRoyaltiesOntology'
+});
+
+// Data Property: isRecouped
+CREATE (:DataProperty {
+name: 'isRecouped',
+iri: 'http://www.autonomousrecordlabel.com/ontology#isRecouped',
+ontology: 'FinancialsAndRoyaltiesOntology'
+});
+
+// Data Property: royaltyTierRate
+CREATE (:DataProperty {
+name: 'royaltyTierRate',
+iri: 'http://www.autonomousrecordlabel.com/ontology#royaltyTierRate',
+ontology: 'FinancialsAndRoyaltiesOntology'
+});
+
+// Data Property: paymentAmount
+CREATE (:DataProperty {
+name: 'paymentAmount',
+iri: 'http://www.autonomousrecordlabel.com/ontology#paymentAmount',
+ontology: 'FinancialsAndRoyaltiesOntology'
+});
+
+// Data Property: paymentDate
+CREATE (:DataProperty {
+name: 'paymentDate',
+iri: 'http://www.autonomousrecordlabel.com/ontology#paymentDate',
+ontology: 'FinancialsAndRoyaltiesOntology'
+});
+
+// Data Property: periodStartDate
+CREATE (:DataProperty {
+name: 'periodStartDate',
+iri: 'http://www.autonomousrecordlabel.com/ontology#periodStartDate',
+ontology: 'FinancialsAndRoyaltiesOntology'
+});
+
+// Data Property: periodEndDate
+CREATE (:DataProperty {
+name: 'periodEndDate',
+iri: 'http://www.autonomousrecordlabel.com/ontology#periodEndDate',
+ontology: 'FinancialsAndRoyaltiesOntology'
+});
+
+
+// Module: AgentCognitiveFrameworkOntology
+// Source: AgentCognitiveFrameworkOntology.owl
+// Base IRI: file:///Users/tibor.knowles/Desktop/Daisy/OntologyV2/AgentCognitiveFrameworkOntology.owl#
+
+CREATE (:Ontology {
+name: 'AgentCognitiveFrameworkOntology',
+base_iri: 'file:///Users/tibor.knowles/Desktop/Daisy/OntologyV2/AgentCognitiveFrameworkOntology.owl#',
+source_file: 'AgentCognitiveFrameworkOntology.owl'
+});
+
+// Class: CognitiveTask
+CREATE (:Class {
+name: 'CognitiveTask',
+iri: 'http://www.autonomousrecordlabel.com/ontology#CognitiveTask',
+label: 'CognitiveTask',
+ontology: 'AgentCognitiveFrameworkOntology'
+});
+
+MATCH (c:Class {name: 'CognitiveTask'}) SET c.comment = 'An abstract representation of a complex task or problem-solving process undertaken by an AI agent, structured around the DPGRW cycle.';
+
+MATCH (c:Class {name: 'CognitiveTask'}) SET c.rdfs_label = 'Cognitive Task';
+
+// Class: CognitiveTaskPhase
+CREATE (:Class {
+name: 'CognitiveTaskPhase',
+iri: 'http://www.autonomousrecordlabel.com/ontology#CognitiveTaskPhase',
+label: 'CognitiveTaskPhase',
+ontology: 'AgentCognitiveFrameworkOntology'
+});
+
+MATCH (c:Class {name: 'CognitiveTaskPhase'}) SET c.comment = 'An abstract phase within the DPGRW cognitive cycle.';
+
+MATCH (c:Class {name: 'CognitiveTaskPhase'}) SET c.rdfs_label = 'Cognitive Task Phase';
+
+// Class: DefinePhase
+CREATE (:Class {
+name: 'DefinePhase',
+iri: 'http://www.autonomousrecordlabel.com/ontology#DefinePhase',
+label: 'DefinePhase',
+ontology: 'AgentCognitiveFrameworkOntology'
+});
+
+MATCH (c:Class {name: 'DefinePhase'}) SET c.comment = 'The phase where the problem or goal is clearly defined, scoped, and understood.';
+
+MATCH (c:Class {name: 'DefinePhase'}) SET c.rdfs_label = 'Define Phase';
+
+// Class: PlanPhase
+CREATE (:Class {
+name: 'PlanPhase',
+iri: 'http://www.autonomousrecordlabel.com/ontology#PlanPhase',
+label: 'PlanPhase',
+ontology: 'AgentCognitiveFrameworkOntology'
+});
+
+MATCH (c:Class {name: 'PlanPhase'}) SET c.comment = 'The phase where a sequence of actions or sub-tasks is formulated to address the defined problem/goal.';
+
+MATCH (c:Class {name: 'PlanPhase'}) SET c.rdfs_label = 'Plan Phase';
+
+// Class: GatherPhase
+CREATE (:Class {
+name: 'GatherPhase',
+iri: 'http://www.autonomousrecordlabel.com/ontology#GatherPhase',
+label: 'GatherPhase',
+ontology: 'AgentCognitiveFrameworkOntology'
+});
+
+MATCH (c:Class {name: 'GatherPhase'}) SET c.comment = 'The phase where relevant information, data, and context (including MCP factors) are collected.';
+
+MATCH (c:Class {name: 'GatherPhase'}) SET c.rdfs_label = 'Gather Phase';
+
+// Class: RefinePhase
+CREATE (:Class {
+name: 'RefinePhase',
+iri: 'http://www.autonomousrecordlabel.com/ontology#RefinePhase',
+label: 'RefinePhase',
+ontology: 'AgentCognitiveFrameworkOntology'
+});
+
+MATCH (c:Class {name: 'RefinePhase'}) SET c.comment = 'The phase where gathered information is processed, analyzed, hypotheses are tested (possibly via simulation), and plans or outputs are iterated upon, considering feedback.';
+
+MATCH (c:Class {name: 'RefinePhase'}) SET c.rdfs_label = 'Refine Phase';
+
+// Class: ExecutePhase
+CREATE (:Class {
+name: 'ExecutePhase',
+iri: 'http://www.autonomousrecordlabel.com/ontology#ExecutePhase',
+label: 'ExecutePhase',
+ontology: 'AgentCognitiveFrameworkOntology'
+});
+
+MATCH (c:Class {name: 'ExecutePhase'}) SET c.comment = 'The phase where the planned actions are carried out, or the final output (e.g., a report, a recommendation, a creative work) is generated/delivered.';
+
+MATCH (c:Class {name: 'ExecutePhase'}) SET c.rdfs_label = 'Execute Phase';
+
+// Class: TaskInput
+CREATE (:Class {
+name: 'TaskInput',
+iri: 'http://www.autonomousrecordlabel.com/ontology#TaskInput',
+label: 'TaskInput',
+ontology: 'AgentCognitiveFrameworkOntology'
+});
+
+MATCH (c:Class {name: 'TaskInput'}) SET c.comment = 'Abstract representation of inputs to a CognitiveTask or its phases.';
+
+MATCH (c:Class {name: 'TaskInput'}) SET c.rdfs_label = 'Task Input (Abstract)';
+
+// Class: TaskOutput
+CREATE (:Class {
+name: 'TaskOutput',
+iri: 'http://www.autonomousrecordlabel.com/ontology#TaskOutput',
+label: 'TaskOutput',
+ontology: 'AgentCognitiveFrameworkOntology'
+});
+
+MATCH (c:Class {name: 'TaskOutput'}) SET c.comment = 'Abstract representation of outputs from a CognitiveTask or its phases.';
+
+MATCH (c:Class {name: 'TaskOutput'}) SET c.rdfs_label = 'Task Output (Abstract)';
+
+// Hierarchy: DefinePhase -> CognitiveTaskPhase
+MATCH (child:Class {name: 'DefinePhase'}), (parent:Class {name: 'CognitiveTaskPhase'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: PlanPhase -> CognitiveTaskPhase
+MATCH (child:Class {name: 'PlanPhase'}), (parent:Class {name: 'CognitiveTaskPhase'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: GatherPhase -> CognitiveTaskPhase
+MATCH (child:Class {name: 'GatherPhase'}), (parent:Class {name: 'CognitiveTaskPhase'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: RefinePhase -> CognitiveTaskPhase
+MATCH (child:Class {name: 'RefinePhase'}), (parent:Class {name: 'CognitiveTaskPhase'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: ExecutePhase -> CognitiveTaskPhase
+MATCH (child:Class {name: 'ExecutePhase'}), (parent:Class {name: 'CognitiveTaskPhase'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Object Property: isPerformedByAgent
+CREATE (:ObjectProperty {
+name: 'isPerformedByAgent',
+iri: 'http://www.autonomousrecordlabel.com/ontology#isPerformedByAgent',
+ontology: 'AgentCognitiveFrameworkOntology'
+});
+
+// Property relationship: CognitiveTask -isPerformedByAgent-> AIAgent
+MATCH (d:Class {name: 'CognitiveTask'}), (r:Class {name: 'AIAgent'})
+CREATE (d)-[:ISPERFORMEDBYAGENT]->(r);
+
+// Object Property: hasCurrentPhase
+CREATE (:ObjectProperty {
+name: 'hasCurrentPhase',
+iri: 'http://www.autonomousrecordlabel.com/ontology#hasCurrentPhase',
+ontology: 'AgentCognitiveFrameworkOntology'
+});
+
+// Property relationship: CognitiveTask -hasCurrentPhase-> CognitiveTaskPhase
+MATCH (d:Class {name: 'CognitiveTask'}), (r:Class {name: 'CognitiveTaskPhase'})
+CREATE (d)-[:HASCURRENTPHASE]->(r);
+
+// Object Property: hasTaskPhase
+CREATE (:ObjectProperty {
+name: 'hasTaskPhase',
+iri: 'http://www.autonomousrecordlabel.com/ontology#hasTaskPhase',
+ontology: 'AgentCognitiveFrameworkOntology'
+});
+
+// Property relationship: CognitiveTask -hasTaskPhase-> CognitiveTaskPhase
+MATCH (d:Class {name: 'CognitiveTask'}), (r:Class {name: 'CognitiveTaskPhase'})
+CREATE (d)-[:HASTASKPHASE]->(r);
+
+// Object Property: phaseOfTask
+CREATE (:ObjectProperty {
+name: 'phaseOfTask',
+iri: 'http://www.autonomousrecordlabel.com/ontology#phaseOfTask',
+ontology: 'AgentCognitiveFrameworkOntology'
+});
+
+// Property relationship: CognitiveTaskPhase -phaseOfTask-> CognitiveTask
+MATCH (d:Class {name: 'CognitiveTaskPhase'}), (r:Class {name: 'CognitiveTask'})
+CREATE (d)-[:PHASEOFTASK]->(r);
+
+// Object Property: hasNextPhase
+CREATE (:ObjectProperty {
+name: 'hasNextPhase',
+iri: 'http://www.autonomousrecordlabel.com/ontology#hasNextPhase',
+ontology: 'AgentCognitiveFrameworkOntology'
+});
+
+// Property relationship: CognitiveTaskPhase -hasNextPhase-> CognitiveTaskPhase
+MATCH (d:Class {name: 'CognitiveTaskPhase'}), (r:Class {name: 'CognitiveTaskPhase'})
+CREATE (d)-[:HASNEXTPHASE]->(r);
+
+// Object Property: hasPreviousPhase
+CREATE (:ObjectProperty {
+name: 'hasPreviousPhase',
+iri: 'http://www.autonomousrecordlabel.com/ontology#hasPreviousPhase',
+ontology: 'AgentCognitiveFrameworkOntology'
+});
+
+// Property relationship: CognitiveTaskPhase -hasPreviousPhase-> CognitiveTaskPhase
+MATCH (d:Class {name: 'CognitiveTaskPhase'}), (r:Class {name: 'CognitiveTaskPhase'})
+CREATE (d)-[:HASPREVIOUSPHASE]->(r);
+
+// Object Property: taskHasInput
+CREATE (:ObjectProperty {
+name: 'taskHasInput',
+iri: 'http://www.autonomousrecordlabel.com/ontology#taskHasInput',
+ontology: 'AgentCognitiveFrameworkOntology'
+});
+
+// Property relationship: CognitiveTask -taskHasInput-> TaskInput
+MATCH (d:Class {name: 'CognitiveTask'}), (r:Class {name: 'TaskInput'})
+CREATE (d)-[:TASKHASINPUT]->(r);
+
+// Object Property: taskHasOutput
+CREATE (:ObjectProperty {
+name: 'taskHasOutput',
+iri: 'http://www.autonomousrecordlabel.com/ontology#taskHasOutput',
+ontology: 'AgentCognitiveFrameworkOntology'
+});
+
+// Property relationship: CognitiveTask -taskHasOutput-> TaskOutput
+MATCH (d:Class {name: 'CognitiveTask'}), (r:Class {name: 'TaskOutput'})
+CREATE (d)-[:TASKHASOUTPUT]->(r);
+
+// Object Property: phaseInput
+CREATE (:ObjectProperty {
+name: 'phaseInput',
+iri: 'http://www.autonomousrecordlabel.com/ontology#phaseInput',
+ontology: 'AgentCognitiveFrameworkOntology'
+});
+
+// Property relationship: CognitiveTaskPhase -phaseInput-> TaskInput
+MATCH (d:Class {name: 'CognitiveTaskPhase'}), (r:Class {name: 'TaskInput'})
+CREATE (d)-[:PHASEINPUT]->(r);
+
+// Object Property: phaseOutput
+CREATE (:ObjectProperty {
+name: 'phaseOutput',
+iri: 'http://www.autonomousrecordlabel.com/ontology#phaseOutput',
+ontology: 'AgentCognitiveFrameworkOntology'
+});
+
+// Property relationship: CognitiveTaskPhase -phaseOutput-> TaskOutput
+MATCH (d:Class {name: 'CognitiveTaskPhase'}), (r:Class {name: 'TaskOutput'})
+CREATE (d)-[:PHASEOUTPUT]->(r);
+
+// Object Property: gathersContextualFactor
+CREATE (:ObjectProperty {
+name: 'gathersContextualFactor',
+iri: 'http://www.autonomousrecordlabel.com/ontology#gathersContextualFactor',
+ontology: 'AgentCognitiveFrameworkOntology'
+});
+
+// Property relationship: GatherPhase -gathersContextualFactor-> MCPContextualFactor
+MATCH (d:Class {name: 'GatherPhase'}), (r:Class {name: 'MCPContextualFactor'})
+CREATE (d)-[:GATHERSCONTEXTUALFACTOR]->(r);
+
+// Object Property: refinesBasedOnAgentFeedback
+CREATE (:ObjectProperty {
+name: 'refinesBasedOnAgentFeedback',
+iri: 'http://www.autonomousrecordlabel.com/ontology#refinesBasedOnAgentFeedback',
+ontology: 'AgentCognitiveFrameworkOntology'
+});
+
+// Property relationship: RefinePhase -refinesBasedOnAgentFeedback-> AgentFeedback
+MATCH (d:Class {name: 'RefinePhase'}), (r:Class {name: 'AgentFeedback'})
+CREATE (d)-[:REFINESBASEDONAGENTFEEDBACK]->(r);
+
+// Object Property: refinesBasedOnHumanFeedback
+CREATE (:ObjectProperty {
+name: 'refinesBasedOnHumanFeedback',
+iri: 'http://www.autonomousrecordlabel.com/ontology#refinesBasedOnHumanFeedback',
+ontology: 'AgentCognitiveFrameworkOntology'
+});
+
+// Property relationship: RefinePhase -refinesBasedOnHumanFeedback-> HumanFeedback
+MATCH (d:Class {name: 'RefinePhase'}), (r:Class {name: 'HumanFeedback'})
+CREATE (d)-[:REFINESBASEDONHUMANFEEDBACK]->(r);
+
+// Object Property: executesAgentAction
+CREATE (:ObjectProperty {
+name: 'executesAgentAction',
+iri: 'http://www.autonomousrecordlabel.com/ontology#executesAgentAction',
+ontology: 'AgentCognitiveFrameworkOntology'
+});
+
+// Property relationship: ExecutePhase -executesAgentAction-> AgentAction
+MATCH (d:Class {name: 'ExecutePhase'}), (r:Class {name: 'AgentAction'})
+CREATE (d)-[:EXECUTESAGENTACTION]->(r);
+
+// Data Property: taskName
+CREATE (:DataProperty {
+name: 'taskName',
+iri: 'http://www.autonomousrecordlabel.com/ontology#taskName',
+ontology: 'AgentCognitiveFrameworkOntology'
+});
+
+// Data Property: taskStatus
+CREATE (:DataProperty {
+name: 'taskStatus',
+iri: 'http://www.autonomousrecordlabel.com/ontology#taskStatus',
+ontology: 'AgentCognitiveFrameworkOntology'
+});
+
+// Data Property: phaseStatus
+CREATE (:DataProperty {
+name: 'phaseStatus',
+iri: 'http://www.autonomousrecordlabel.com/ontology#phaseStatus',
+ontology: 'AgentCognitiveFrameworkOntology'
+});
+
+// Data Property: phaseStartDate
+CREATE (:DataProperty {
+name: 'phaseStartDate',
+iri: 'http://www.autonomousrecordlabel.com/ontology#phaseStartDate',
+ontology: 'AgentCognitiveFrameworkOntology'
+});
+
+// Data Property: phaseEndDate
+CREATE (:DataProperty {
+name: 'phaseEndDate',
+iri: 'http://www.autonomousrecordlabel.com/ontology#phaseEndDate',
+ontology: 'AgentCognitiveFrameworkOntology'
+});
+
+
+// Module: SimulationAndStrategyOntology
+// Source: SimulationAndStrategyOntology.owl
+// Base IRI: file:///Users/tibor.knowles/Desktop/Daisy/OntologyV2/SimulationAndStrategyOntology.owl#
+
+CREATE (:Ontology {
+name: 'SimulationAndStrategyOntology',
+base_iri: 'file:///Users/tibor.knowles/Desktop/Daisy/OntologyV2/SimulationAndStrategyOntology.owl#',
+source_file: 'SimulationAndStrategyOntology.owl'
+});
+
+// Class: StrategicSimulation
+CREATE (:Class {
+name: 'StrategicSimulation',
+iri: 'http://www.autonomousrecordlabel.com/ontology#StrategicSimulation',
+label: 'StrategicSimulation',
+ontology: 'SimulationAndStrategyOntology'
+});
+
+MATCH (c:Class {name: 'StrategicSimulation'}) SET c.comment = 'A simulation run specifically designed to explore high-level strategic options, test strategic hypotheses, or forecast long-term impacts for the record label.';
+
+MATCH (c:Class {name: 'StrategicSimulation'}) SET c.rdfs_label = 'Strategic Simulation';
+
+// Class: OperationalSimulation
+CREATE (:Class {
+name: 'OperationalSimulation',
+iri: 'http://www.autonomousrecordlabel.com/ontology#OperationalSimulation',
+label: 'OperationalSimulation',
+ontology: 'SimulationAndStrategyOntology'
+});
+
+MATCH (c:Class {name: 'OperationalSimulation'}) SET c.comment = 'A simulation run focused on tactical or operational \"what-if\" scenarios, potentially run by operational agents or to evaluate specific operational changes (e.g., simulating a specific marketing micro-campaign\'s outcome).';
+
+MATCH (c:Class {name: 'OperationalSimulation'}) SET c.rdfs_label = 'Operational Simulation';
+
+// Class: SimulatedKPI
+CREATE (:Class {
+name: 'SimulatedKPI',
+iri: 'http://www.autonomousrecordlabel.com/ontology#SimulatedKPI',
+label: 'SimulatedKPI',
+ontology: 'SimulationAndStrategyOntology'
+});
+
+MATCH (c:Class {name: 'SimulatedKPI'}) SET c.comment = 'Represents a Key Performance Indicator\'s value as predicted or observed within a specific simulation run. This ensures a clear distinction from real-world actual KPI values.';
+
+MATCH (c:Class {name: 'SimulatedKPI'}) SET c.rdfs_label = 'Simulated KPI';
+
+// Class: StrategicHypothesis
+CREATE (:Class {
+name: 'StrategicHypothesis',
+iri: 'http://www.autonomousrecordlabel.com/ontology#StrategicHypothesis',
+label: 'StrategicHypothesis',
+ontology: 'SimulationAndStrategyOntology'
+});
+
+MATCH (c:Class {name: 'StrategicHypothesis'}) SET c.comment = 'A testable proposition or assumption about the business environment, market dynamics, artist potential, or the impact of certain strategies. Often formulated and tested by MaestroAI.';
+
+MATCH (c:Class {name: 'StrategicHypothesis'}) SET c.rdfs_label = 'Strategic Hypothesis';
+
+// Class: StrategicOption
+CREATE (:Class {
+name: 'StrategicOption',
+iri: 'http://www.autonomousrecordlabel.com/ontology#StrategicOption',
+label: 'StrategicOption',
+ontology: 'SimulationAndStrategyOntology'
+});
+
+MATCH (c:Class {name: 'StrategicOption'}) SET c.comment = 'A high-level strategic choice or course of action that the record label (often guided by MaestroAI) can consider pursuing (e.g., \'InvestInNewGenreX\', \'AcquireCompetitorCatalogY\').';
+
+MATCH (c:Class {name: 'StrategicOption'}) SET c.rdfs_label = 'Strategic Option';
+
+// Class: SimulationParameterSet
+CREATE (:Class {
+name: 'SimulationParameterSet',
+iri: 'http://www.autonomousrecordlabel.com/ontology#SimulationParameterSet',
+label: 'SimulationParameterSet',
+ontology: 'SimulationAndStrategyOntology'
+});
+
+MATCH (c:Class {name: 'SimulationParameterSet'}) SET c.comment = 'A collection of parameters and their values used to configure a specific SimulationRun.';
+
+MATCH (c:Class {name: 'SimulationParameterSet'}) SET c.rdfs_label = 'Simulation Parameter Set';
+
+// Hierarchy: StrategicSimulation -> SimulationRun
+MATCH (child:Class {name: 'StrategicSimulation'}), (parent:Class {name: 'SimulationRun'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: OperationalSimulation -> SimulationRun
+MATCH (child:Class {name: 'OperationalSimulation'}), (parent:Class {name: 'SimulationRun'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: SimulatedKPI -> KPI
+MATCH (child:Class {name: 'SimulatedKPI'}), (parent:Class {name: 'KPI'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Object Property: usesSimulationParameters
+CREATE (:ObjectProperty {
+name: 'usesSimulationParameters',
+iri: 'http://www.autonomousrecordlabel.com/ontology#usesSimulationParameters',
+ontology: 'SimulationAndStrategyOntology'
+});
+
+// Property relationship: SimulationRun -usesSimulationParameters-> SimulationParameterSet
+MATCH (d:Class {name: 'SimulationRun'}), (r:Class {name: 'SimulationParameterSet'})
+CREATE (d)-[:USESSIMULATIONPARAMETERS]->(r);
+
+// Object Property: predictsOutcome
+CREATE (:ObjectProperty {
+name: 'predictsOutcome',
+iri: 'http://www.autonomousrecordlabel.com/ontology#predictsOutcome',
+ontology: 'SimulationAndStrategyOntology'
+});
+
+// Property relationship: SimulationRun -predictsOutcome-> SimulatedKPI
+MATCH (d:Class {name: 'SimulationRun'}), (r:Class {name: 'SimulatedKPI'})
+CREATE (d)-[:PREDICTSOUTCOME]->(r);
+
+// Object Property: simulatesRealKPI
+CREATE (:ObjectProperty {
+name: 'simulatesRealKPI',
+iri: 'http://www.autonomousrecordlabel.com/ontology#simulatesRealKPI',
+ontology: 'SimulationAndStrategyOntology'
+});
+
+// Property relationship: SimulatedKPI -simulatesRealKPI-> KPI
+MATCH (d:Class {name: 'SimulatedKPI'}), (r:Class {name: 'KPI'})
+CREATE (d)-[:SIMULATESREALKPI]->(r);
+
+// Object Property: evidenceSupportingHypothesis
+CREATE (:ObjectProperty {
+name: 'evidenceSupportingHypothesis',
+iri: 'http://www.autonomousrecordlabel.com/ontology#evidenceSupportingHypothesis',
+ontology: 'SimulationAndStrategyOntology'
+});
+
+// Property relationship: StrategicHypothesis -evidenceSupportingHypothesis-> Thing
+MATCH (d:Class {name: 'StrategicHypothesis'}), (r:Class {name: 'Thing'})
+CREATE (d)-[:EVIDENCESUPPORTINGHYPOTHESIS]->(r);
+
+// Object Property: testedBySimulation
+CREATE (:ObjectProperty {
+name: 'testedBySimulation',
+iri: 'http://www.autonomousrecordlabel.com/ontology#testedBySimulation',
+ontology: 'SimulationAndStrategyOntology'
+});
+
+// Property relationship: StrategicHypothesis -testedBySimulation-> SimulationRun
+MATCH (d:Class {name: 'StrategicHypothesis'}), (r:Class {name: 'SimulationRun'})
+CREATE (d)-[:TESTEDBYSIMULATION]->(r);
+
+// Object Property: optionAssociatedWithGoal
+CREATE (:ObjectProperty {
+name: 'optionAssociatedWithGoal',
+iri: 'http://www.autonomousrecordlabel.com/ontology#optionAssociatedWithGoal',
+ontology: 'SimulationAndStrategyOntology'
+});
+
+// Property relationship: StrategicOption -optionAssociatedWithGoal-> LabelGoal
+MATCH (d:Class {name: 'StrategicOption'}), (r:Class {name: 'LabelGoal'})
+CREATE (d)-[:OPTIONASSOCIATEDWITHGOAL]->(r);
+
+// Object Property: optionEvaluatedBySimulation
+CREATE (:ObjectProperty {
+name: 'optionEvaluatedBySimulation',
+iri: 'http://www.autonomousrecordlabel.com/ontology#optionEvaluatedBySimulation',
+ontology: 'SimulationAndStrategyOntology'
+});
+
+// Property relationship: StrategicOption -optionEvaluatedBySimulation-> SimulationRun
+MATCH (d:Class {name: 'StrategicOption'}), (r:Class {name: 'SimulationRun'})
+CREATE (d)-[:OPTIONEVALUATEDBYSIMULATION]->(r);
+
+// Object Property: simulatesAction
+CREATE (:ObjectProperty {
+name: 'simulatesAction',
+iri: 'http://www.autonomousrecordlabel.com/ontology#simulatesAction',
+ontology: 'SimulationAndStrategyOntology'
+});
+
+// Property relationship: SimulationRun -simulatesAction-> AgentAction
+MATCH (d:Class {name: 'SimulationRun'}), (r:Class {name: 'AgentAction'})
+CREATE (d)-[:SIMULATESACTION]->(r);
+
+// Data Property: simulationStatus
+CREATE (:DataProperty {
+name: 'simulationStatus',
+iri: 'http://www.autonomousrecordlabel.com/ontology#simulationStatus',
+ontology: 'SimulationAndStrategyOntology'
+});
+
+// Data Property: isSandboxEnvironment
+CREATE (:DataProperty {
+name: 'isSandboxEnvironment',
+iri: 'http://www.autonomousrecordlabel.com/ontology#isSandboxEnvironment',
+ontology: 'SimulationAndStrategyOntology'
+});
+
+// Data Property: simulatedOutcomeConfidence
+CREATE (:DataProperty {
+name: 'simulatedOutcomeConfidence',
+iri: 'http://www.autonomousrecordlabel.com/ontology#simulatedOutcomeConfidence',
+ontology: 'SimulationAndStrategyOntology'
+});
+
+// Data Property: simulatedValue
+CREATE (:DataProperty {
+name: 'simulatedValue',
+iri: 'http://www.autonomousrecordlabel.com/ontology#simulatedValue',
+ontology: 'SimulationAndStrategyOntology'
+});
+
+// Data Property: hypothesisStatement
+CREATE (:DataProperty {
+name: 'hypothesisStatement',
+iri: 'http://www.autonomousrecordlabel.com/ontology#hypothesisStatement',
+ontology: 'SimulationAndStrategyOntology'
+});
+
+// Data Property: hypothesisAssumptions
+CREATE (:DataProperty {
+name: 'hypothesisAssumptions',
+iri: 'http://www.autonomousrecordlabel.com/ontology#hypothesisAssumptions',
+ontology: 'SimulationAndStrategyOntology'
+});
+
+// Data Property: optionDescription
+CREATE (:DataProperty {
+name: 'optionDescription',
+iri: 'http://www.autonomousrecordlabel.com/ontology#optionDescription',
+ontology: 'SimulationAndStrategyOntology'
+});
+
+// Data Property: requiredResourcesForOption
+CREATE (:DataProperty {
+name: 'requiredResourcesForOption',
+iri: 'http://www.autonomousrecordlabel.com/ontology#requiredResourcesForOption',
+ontology: 'SimulationAndStrategyOntology'
+});
+
+// Data Property: parameterSetName
+CREATE (:DataProperty {
+name: 'parameterSetName',
+iri: 'http://www.autonomousrecordlabel.com/ontology#parameterSetName',
+ontology: 'SimulationAndStrategyOntology'
+});
+
+// Data Property: parameterConfigurationJSON
+CREATE (:DataProperty {
+name: 'parameterConfigurationJSON',
+iri: 'http://www.autonomousrecordlabel.com/ontology#parameterConfigurationJSON',
+ontology: 'SimulationAndStrategyOntology'
+});
+
+
+// Module: ContractsAndLegalOntology
+// Source: ContractsAndLegalOntology.owl
+// Base IRI: file:///Users/tibor.knowles/Desktop/Daisy/OntologyV2/ContractsAndLegalOntology.owl#
+
+CREATE (:Ontology {
+name: 'ContractsAndLegalOntology',
+base_iri: 'file:///Users/tibor.knowles/Desktop/Daisy/OntologyV2/ContractsAndLegalOntology.owl#',
+source_file: 'ContractsAndLegalOntology.owl'
+});
+
+// Class: PerformanceAgreement
+CREATE (:Class {
+name: 'PerformanceAgreement',
+iri: 'http://www.autonomousrecordlabel.com/ontology#PerformanceAgreement',
+label: 'PerformanceAgreement',
+ontology: 'ContractsAndLegalOntology'
+});
+
+MATCH (c:Class {name: 'PerformanceAgreement'}) SET c.comment = 'A contract for an artist to perform at a specific event or venue.';
+
+MATCH (c:Class {name: 'PerformanceAgreement'}) SET c.rdfs_label = 'Performance Agreement (Concert)';
+
+// Class: RecordingContract
+CREATE (:Class {
+name: 'RecordingContract',
+iri: 'http://www.autonomousrecordlabel.com/ontology#RecordingContract',
+label: 'RecordingContract',
+ontology: 'ContractsAndLegalOntology'
+});
+
+MATCH (c:Class {name: 'RecordingContract'}) SET c.comment = 'A contract between a record label and an artist/group for the creation and exploitation of sound recordings.';
+
+MATCH (c:Class {name: 'RecordingContract'}) SET c.rdfs_label = 'Recording Contract';
+
+// Class: PublishingContract
+CREATE (:Class {
+name: 'PublishingContract',
+iri: 'http://www.autonomousrecordlabel.com/ontology#PublishingContract',
+label: 'PublishingContract',
+ontology: 'ContractsAndLegalOntology'
+});
+
+MATCH (c:Class {name: 'PublishingContract'}) SET c.comment = 'An abstract parent for various types of music publishing agreements.';
+
+MATCH (c:Class {name: 'PublishingContract'}) SET c.rdfs_label = 'Publishing Contract (Abstract Parent)';
+
+// Class: SongwriterAgreement
+CREATE (:Class {
+name: 'SongwriterAgreement',
+iri: 'http://www.autonomousrecordlabel.com/ontology#SongwriterAgreement',
+label: 'SongwriterAgreement',
+ontology: 'ContractsAndLegalOntology'
+});
+
+MATCH (c:Class {name: 'SongwriterAgreement'}) SET c.comment = 'A contract where a songwriter assigns copyright ownership of their songs to a music publisher in exchange for a share of income.';
+
+MATCH (c:Class {name: 'SongwriterAgreement'}) SET c.rdfs_label = 'Songwriter Agreement';
+
+// Class: CoPublishingAgreement
+CREATE (:Class {
+name: 'CoPublishingAgreement',
+iri: 'http://www.autonomousrecordlabel.com/ontology#CoPublishingAgreement',
+label: 'CoPublishingAgreement',
+ontology: 'ContractsAndLegalOntology'
+});
+
+MATCH (c:Class {name: 'CoPublishingAgreement'}) SET c.comment = 'A publishing agreement where the songwriter retains a portion of the publisher\'s share of income, effectively co-owning the publishing rights.';
+
+MATCH (c:Class {name: 'CoPublishingAgreement'}) SET c.rdfs_label = 'Co-Publishing Agreement';
+
+// Class: AdministrationAgreement
+CREATE (:Class {
+name: 'AdministrationAgreement',
+iri: 'http://www.autonomousrecordlabel.com/ontology#AdministrationAgreement',
+label: 'AdministrationAgreement',
+ontology: 'ContractsAndLegalOntology'
+});
+
+MATCH (c:Class {name: 'AdministrationAgreement'}) SET c.comment = 'A contract where a publisher handles administrative tasks for song copyrights (registration, licensing, royalty collection) for a fee/percentage, without taking ownership.';
+
+MATCH (c:Class {name: 'AdministrationAgreement'}) SET c.rdfs_label = 'Administration Agreement (Publishing)';
+
+// Class: SubPublishingAgreement
+CREATE (:Class {
+name: 'SubPublishingAgreement',
+iri: 'http://www.autonomousrecordlabel.com/ontology#SubPublishingAgreement',
+label: 'SubPublishingAgreement',
+ontology: 'ContractsAndLegalOntology'
+});
+
+MATCH (c:Class {name: 'SubPublishingAgreement'}) SET c.comment = 'A contract where a primary publisher grants a publisher in a foreign territory the right to administer songs in that territory.';
+
+MATCH (c:Class {name: 'SubPublishingAgreement'}) SET c.rdfs_label = 'Sub-Publishing Agreement';
+
+// Class: LicenseAgreement
+CREATE (:Class {
+name: 'LicenseAgreement',
+iri: 'http://www.autonomousrecordlabel.com/ontology#LicenseAgreement',
+label: 'LicenseAgreement',
+ontology: 'ContractsAndLegalOntology'
+});
+
+MATCH (c:Class {name: 'LicenseAgreement'}) SET c.comment = 'An agreement granting permission to use a copyrighted work under specified conditions.';
+
+MATCH (c:Class {name: 'LicenseAgreement'}) SET c.rdfs_label = 'License Agreement (Abstract Parent)';
+
+// Class: ProfessionalServiceAgreement
+CREATE (:Class {
+name: 'ProfessionalServiceAgreement',
+iri: 'http://www.autonomousrecordlabel.com/ontology#ProfessionalServiceAgreement',
+label: 'ProfessionalServiceAgreement',
+ontology: 'ContractsAndLegalOntology'
+});
+
+MATCH (c:Class {name: 'ProfessionalServiceAgreement'}) SET c.comment = 'A contract for services provided by professionals like managers, attorneys, business managers.';
+
+MATCH (c:Class {name: 'ProfessionalServiceAgreement'}) SET c.rdfs_label = 'Professional Service Agreement';
+
+// Class: ProducerAgreement
+CREATE (:Class {
+name: 'ProducerAgreement',
+iri: 'http://www.autonomousrecordlabel.com/ontology#ProducerAgreement',
+label: 'ProducerAgreement',
+ontology: 'ContractsAndLegalOntology'
+});
+
+MATCH (c:Class {name: 'ProducerAgreement'}) SET c.comment = 'A contract between an artist/label and a music producer for their services in creating recordings.';
+
+MATCH (c:Class {name: 'ProducerAgreement'}) SET c.rdfs_label = 'Producer Agreement';
+
+// Class: MixerAgreement
+CREATE (:Class {
+name: 'MixerAgreement',
+iri: 'http://www.autonomousrecordlabel.com/ontology#MixerAgreement',
+label: 'MixerAgreement',
+ontology: 'ContractsAndLegalOntology'
+});
+
+MATCH (c:Class {name: 'MixerAgreement'}) SET c.comment = 'A contract for services of a mix engineer.';
+
+MATCH (c:Class {name: 'MixerAgreement'}) SET c.rdfs_label = 'Mixer Agreement';
+
+// Class: MerchandisingAgreement
+CREATE (:Class {
+name: 'MerchandisingAgreement',
+iri: 'http://www.autonomousrecordlabel.com/ontology#MerchandisingAgreement',
+label: 'MerchandisingAgreement',
+ontology: 'ContractsAndLegalOntology'
+});
+
+MATCH (c:Class {name: 'MerchandisingAgreement'}) SET c.comment = 'A contract granting rights to create and sell merchandise bearing an artist\'s name/likeness.';
+
+MATCH (c:Class {name: 'MerchandisingAgreement'}) SET c.rdfs_label = 'Merchandising Agreement';
+
+// Class: DistributionDeal
+CREATE (:Class {
+name: 'DistributionDeal',
+iri: 'http://www.autonomousrecordlabel.com/ontology#DistributionDeal',
+label: 'DistributionDeal',
+ontology: 'ContractsAndLegalOntology'
+});
+
+MATCH (c:Class {name: 'DistributionDeal'}) SET c.comment = 'An agreement where a company distributes an artist\'s or label\'s recordings without full label services.';
+
+MATCH (c:Class {name: 'DistributionDeal'}) SET c.rdfs_label = 'Distribution Deal';
+
+// Class: MusicGroupInternalAgreement
+CREATE (:Class {
+name: 'MusicGroupInternalAgreement',
+iri: 'http://www.autonomousrecordlabel.com/ontology#MusicGroupInternalAgreement',
+label: 'MusicGroupInternalAgreement',
+ontology: 'ContractsAndLegalOntology'
+});
+
+MATCH (c:Class {name: 'MusicGroupInternalAgreement'}) SET c.comment = 'An agreement between members of a music group defining their rights, responsibilities, profit splits, etc.';
+
+MATCH (c:Class {name: 'MusicGroupInternalAgreement'}) SET c.rdfs_label = 'Music Group Internal Agreement';
+
+// Class: ContractTerm
+CREATE (:Class {
+name: 'ContractTerm',
+iri: 'http://www.autonomousrecordlabel.com/ontology#ContractTerm',
+label: 'ContractTerm',
+ontology: 'ContractsAndLegalOntology'
+});
+
+MATCH (c:Class {name: 'ContractTerm'}) SET c.comment = 'A general term or condition within a contract, broader than just the duration/DealTerm.';
+
+MATCH (c:Class {name: 'ContractTerm'}) SET c.rdfs_label = 'Contract Term (General)';
+
+// Class: ContractTermProposal
+CREATE (:Class {
+name: 'ContractTermProposal',
+iri: 'http://www.autonomousrecordlabel.com/ontology#ContractTermProposal',
+label: 'ContractTermProposal',
+ontology: 'ContractsAndLegalOntology'
+});
+
+MATCH (c:Class {name: 'ContractTermProposal'}) SET c.comment = 'Represents a specific term or clause being proposed, countered, or evaluated during contract negotiation.';
+
+MATCH (c:Class {name: 'ContractTermProposal'}) SET c.rdfs_label = 'Contract Term Proposal';
+
+// Class: LegalObligation
+CREATE (:Class {
+name: 'LegalObligation',
+iri: 'http://www.autonomousrecordlabel.com/ontology#LegalObligation',
+label: 'LegalObligation',
+ontology: 'ContractsAndLegalOntology'
+});
+
+MATCH (c:Class {name: 'LegalObligation'}) SET c.comment = 'A duty or commitment imposed by a contract or law.';
+
+MATCH (c:Class {name: 'LegalObligation'}) SET c.rdfs_label = 'Legal Obligation';
+
+// Class: ControlledCompositionClause
+CREATE (:Class {
+name: 'ControlledCompositionClause',
+iri: 'http://www.autonomousrecordlabel.com/ontology#ControlledCompositionClause',
+label: 'ControlledCompositionClause',
+ontology: 'ContractsAndLegalOntology'
+});
+
+MATCH (c:Class {name: 'ControlledCompositionClause'}) SET c.rdfs_label = 'Controlled Composition Clause';
+
+// Class: PayOrPlayProvision
+CREATE (:Class {
+name: 'PayOrPlayProvision',
+iri: 'http://www.autonomousrecordlabel.com/ontology#PayOrPlayProvision',
+label: 'PayOrPlayProvision',
+ontology: 'ContractsAndLegalOntology'
+});
+
+MATCH (c:Class {name: 'PayOrPlayProvision'}) SET c.rdfs_label = 'Pay Or Play Provision';
+
+// Class: ThreeSixtyRightProvision
+CREATE (:Class {
+name: 'ThreeSixtyRightProvision',
+iri: 'http://www.autonomousrecordlabel.com/ontology#ThreeSixtyRightProvision',
+label: 'ThreeSixtyRightProvision',
+ontology: 'ContractsAndLegalOntology'
+});
+
+MATCH (c:Class {name: 'ThreeSixtyRightProvision'}) SET c.rdfs_label = '360 Right Provision';
+
+// Class: ReversionClause
+CREATE (:Class {
+name: 'ReversionClause',
+iri: 'http://www.autonomousrecordlabel.com/ontology#ReversionClause',
+label: 'ReversionClause',
+ontology: 'ContractsAndLegalOntology'
+});
+
+MATCH (c:Class {name: 'ReversionClause'}) SET c.rdfs_label = 'Reversion Clause';
+
+// Class: KeyMemberProvision
+CREATE (:Class {
+name: 'KeyMemberProvision',
+iri: 'http://www.autonomousrecordlabel.com/ontology#KeyMemberProvision',
+label: 'KeyMemberProvision',
+ontology: 'ContractsAndLegalOntology'
+});
+
+MATCH (c:Class {name: 'KeyMemberProvision'}) SET c.rdfs_label = 'Key Member Provision';
+
+// Class: LeavingMemberProvision
+CREATE (:Class {
+name: 'LeavingMemberProvision',
+iri: 'http://www.autonomousrecordlabel.com/ontology#LeavingMemberProvision',
+label: 'LeavingMemberProvision',
+ontology: 'ContractsAndLegalOntology'
+});
+
+MATCH (c:Class {name: 'LeavingMemberProvision'}) SET c.rdfs_label = 'Leaving Member Provision';
+
+// Class: ExclusivityProvision
+CREATE (:Class {
+name: 'ExclusivityProvision',
+iri: 'http://www.autonomousrecordlabel.com/ontology#ExclusivityProvision',
+label: 'ExclusivityProvision',
+ontology: 'ContractsAndLegalOntology'
+});
+
+MATCH (c:Class {name: 'ExclusivityProvision'}) SET c.rdfs_label = 'Exclusivity Provision';
+
+// Class: ReRecordingRestrictionClause
+CREATE (:Class {
+name: 'ReRecordingRestrictionClause',
+iri: 'http://www.autonomousrecordlabel.com/ontology#ReRecordingRestrictionClause',
+label: 'ReRecordingRestrictionClause',
+ontology: 'ContractsAndLegalOntology'
+});
+
+MATCH (c:Class {name: 'ReRecordingRestrictionClause'}) SET c.rdfs_label = 'Re-Recording Restriction Clause';
+
+// Class: TerminationRightProvision
+CREATE (:Class {
+name: 'TerminationRightProvision',
+iri: 'http://www.autonomousrecordlabel.com/ontology#TerminationRightProvision',
+label: 'TerminationRightProvision',
+ontology: 'ContractsAndLegalOntology'
+});
+
+MATCH (c:Class {name: 'TerminationRightProvision'}) SET c.rdfs_label = 'Termination Right Provision';
+
+// Class: OptionProvision
+CREATE (:Class {
+name: 'OptionProvision',
+iri: 'http://www.autonomousrecordlabel.com/ontology#OptionProvision',
+label: 'OptionProvision',
+ontology: 'ContractsAndLegalOntology'
+});
+
+MATCH (c:Class {name: 'OptionProvision'}) SET c.rdfs_label = 'Option Provision';
+
+// Class: DeliveryStandardProvision
+CREATE (:Class {
+name: 'DeliveryStandardProvision',
+iri: 'http://www.autonomousrecordlabel.com/ontology#DeliveryStandardProvision',
+label: 'DeliveryStandardProvision',
+ontology: 'ContractsAndLegalOntology'
+});
+
+MATCH (c:Class {name: 'DeliveryStandardProvision'}) SET c.rdfs_label = 'Delivery Standard Provision';
+
+// Class: AuditRightProvision
+CREATE (:Class {
+name: 'AuditRightProvision',
+iri: 'http://www.autonomousrecordlabel.com/ontology#AuditRightProvision',
+label: 'AuditRightProvision',
+ontology: 'ContractsAndLegalOntology'
+});
+
+MATCH (c:Class {name: 'AuditRightProvision'}) SET c.rdfs_label = 'Audit Right Provision';
+
+// Class: LicenseClause
+CREATE (:Class {
+name: 'LicenseClause',
+iri: 'http://www.autonomousrecordlabel.com/ontology#LicenseClause',
+label: 'LicenseClause',
+ontology: 'ContractsAndLegalOntology'
+});
+
+MATCH (c:Class {name: 'LicenseClause'}) SET c.rdfs_label = 'License Clause';
+
+// Hierarchy: PerformanceAgreement -> Contract
+MATCH (child:Class {name: 'PerformanceAgreement'}), (parent:Class {name: 'Contract'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: RecordingContract -> Contract
+MATCH (child:Class {name: 'RecordingContract'}), (parent:Class {name: 'Contract'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: PublishingContract -> Contract
+MATCH (child:Class {name: 'PublishingContract'}), (parent:Class {name: 'Contract'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: SongwriterAgreement -> PublishingContract
+MATCH (child:Class {name: 'SongwriterAgreement'}), (parent:Class {name: 'PublishingContract'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: CoPublishingAgreement -> PublishingContract
+MATCH (child:Class {name: 'CoPublishingAgreement'}), (parent:Class {name: 'PublishingContract'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: AdministrationAgreement -> PublishingContract
+MATCH (child:Class {name: 'AdministrationAgreement'}), (parent:Class {name: 'PublishingContract'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: SubPublishingAgreement -> PublishingContract
+MATCH (child:Class {name: 'SubPublishingAgreement'}), (parent:Class {name: 'PublishingContract'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: LicenseAgreement -> Contract
+MATCH (child:Class {name: 'LicenseAgreement'}), (parent:Class {name: 'Contract'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: ProfessionalServiceAgreement -> Contract
+MATCH (child:Class {name: 'ProfessionalServiceAgreement'}), (parent:Class {name: 'Contract'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: ProducerAgreement -> Contract
+MATCH (child:Class {name: 'ProducerAgreement'}), (parent:Class {name: 'Contract'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: MixerAgreement -> Contract
+MATCH (child:Class {name: 'MixerAgreement'}), (parent:Class {name: 'Contract'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: MerchandisingAgreement -> Contract
+MATCH (child:Class {name: 'MerchandisingAgreement'}), (parent:Class {name: 'Contract'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: DistributionDeal -> Contract
+MATCH (child:Class {name: 'DistributionDeal'}), (parent:Class {name: 'Contract'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: MusicGroupInternalAgreement -> Contract
+MATCH (child:Class {name: 'MusicGroupInternalAgreement'}), (parent:Class {name: 'Contract'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: ContractTerm -> ContractualProvision
+MATCH (child:Class {name: 'ContractTerm'}), (parent:Class {name: 'ContractualProvision'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: ContractTermProposal -> Recommendation
+MATCH (child:Class {name: 'ContractTermProposal'}), (parent:Class {name: 'Recommendation'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: ControlledCompositionClause -> ContractualProvision
+MATCH (child:Class {name: 'ControlledCompositionClause'}), (parent:Class {name: 'ContractualProvision'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: PayOrPlayProvision -> ContractualProvision
+MATCH (child:Class {name: 'PayOrPlayProvision'}), (parent:Class {name: 'ContractualProvision'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: ThreeSixtyRightProvision -> ContractualProvision
+MATCH (child:Class {name: 'ThreeSixtyRightProvision'}), (parent:Class {name: 'ContractualProvision'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: ReversionClause -> ContractualProvision
+MATCH (child:Class {name: 'ReversionClause'}), (parent:Class {name: 'ContractualProvision'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: KeyMemberProvision -> ContractualProvision
+MATCH (child:Class {name: 'KeyMemberProvision'}), (parent:Class {name: 'ContractualProvision'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: LeavingMemberProvision -> ContractualProvision
+MATCH (child:Class {name: 'LeavingMemberProvision'}), (parent:Class {name: 'ContractualProvision'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: ExclusivityProvision -> ContractualProvision
+MATCH (child:Class {name: 'ExclusivityProvision'}), (parent:Class {name: 'ContractualProvision'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: ReRecordingRestrictionClause -> ContractualProvision
+MATCH (child:Class {name: 'ReRecordingRestrictionClause'}), (parent:Class {name: 'ContractualProvision'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: TerminationRightProvision -> ContractualProvision
+MATCH (child:Class {name: 'TerminationRightProvision'}), (parent:Class {name: 'ContractualProvision'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: OptionProvision -> ContractualProvision
+MATCH (child:Class {name: 'OptionProvision'}), (parent:Class {name: 'ContractualProvision'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: DeliveryStandardProvision -> ContractualProvision
+MATCH (child:Class {name: 'DeliveryStandardProvision'}), (parent:Class {name: 'ContractualProvision'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: AuditRightProvision -> ContractualProvision
+MATCH (child:Class {name: 'AuditRightProvision'}), (parent:Class {name: 'ContractualProvision'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Hierarchy: LicenseClause -> ContractualProvision
+MATCH (child:Class {name: 'LicenseClause'}), (parent:Class {name: 'ContractualProvision'})
+CREATE (child)-[:SUBCLASS_OF]->(parent);
+
+// Object Property: contractSpecifiesTerm
+CREATE (:ObjectProperty {
+name: 'contractSpecifiesTerm',
+iri: 'http://www.autonomousrecordlabel.com/ontology#contractSpecifiesTerm',
+ontology: 'ContractsAndLegalOntology'
+});
+
+// Property relationship: Contract -contractSpecifiesTerm-> ContractTerm
+MATCH (d:Class {name: 'Contract'}), (r:Class {name: 'ContractTerm'})
+CREATE (d)-[:CONTRACTSPECIFIESTERM]->(r);
+
+// Object Property: termProposedForContract
+CREATE (:ObjectProperty {
+name: 'termProposedForContract',
+iri: 'http://www.autonomousrecordlabel.com/ontology#termProposedForContract',
+ontology: 'ContractsAndLegalOntology'
+});
+
+// Property relationship: ContractTermProposal -termProposedForContract-> Contract
+MATCH (d:Class {name: 'ContractTermProposal'}), (r:Class {name: 'Contract'})
+CREATE (d)-[:TERMPROPOSEDFORCONTRACT]->(r);
+
+// Object Property: termConcernsClauseType
+CREATE (:ObjectProperty {
+name: 'termConcernsClauseType',
+iri: 'http://www.autonomousrecordlabel.com/ontology#termConcernsClauseType',
+ontology: 'ContractsAndLegalOntology'
+});
+
+// Property relationship: ContractTermProposal -termConcernsClauseType-> ContractualProvision
+MATCH (d:Class {name: 'ContractTermProposal'}), (r:Class {name: 'ContractualProvision'})
+CREATE (d)-[:TERMCONCERNSCLAUSETYPE]->(r);
+
+// Object Property: imposesObligation
+CREATE (:ObjectProperty {
+name: 'imposesObligation',
+iri: 'http://www.autonomousrecordlabel.com/ontology#imposesObligation',
+ontology: 'ContractsAndLegalOntology'
+});
+
+// Property relationship: Contract -imposesObligation-> LegalObligation
+MATCH (d:Class {name: 'Contract'}), (r:Class {name: 'LegalObligation'})
+CREATE (d)-[:IMPOSESOBLIGATION]->(r);
+
+// Object Property: obligationBearer
+CREATE (:ObjectProperty {
+name: 'obligationBearer',
+iri: 'http://www.autonomousrecordlabel.com/ontology#obligationBearer',
+ontology: 'ContractsAndLegalOntology'
+});
+
+// Property relationship: LegalObligation -obligationBearer-> EPMO
+MATCH (d:Class {name: 'LegalObligation'}), (r:Class {name: 'EPMO'})
+CREATE (d)-[:OBLIGATIONBEARER]->(r);
+
+// Data Property: contractTermText
+CREATE (:DataProperty {
+name: 'contractTermText',
+iri: 'http://www.autonomousrecordlabel.com/ontology#contractTermText',
+ontology: 'ContractsAndLegalOntology'
+});
+
+// Data Property: proposalRationale
+CREATE (:DataProperty {
+name: 'proposalRationale',
+iri: 'http://www.autonomousrecordlabel.com/ontology#proposalRationale',
+ontology: 'ContractsAndLegalOntology'
+});
+
+// Data Property: obligationDescription
+CREATE (:DataProperty {
+name: 'obligationDescription',
+iri: 'http://www.autonomousrecordlabel.com/ontology#obligationDescription',
+ontology: 'ContractsAndLegalOntology'
+});
+
+// Data Property: obligationDueDate
+CREATE (:DataProperty {
+name: 'obligationDueDate',
+iri: 'http://www.autonomousrecordlabel.com/ontology#obligationDueDate',
+ontology: 'ContractsAndLegalOntology'
+});
+
+
+// Module: ProductionAndDistributionOntology
+// Source: ProductionAndDistributionOntology.owl
+// Base IRI: file:///Users/tibor.knowles/Desktop/Daisy/OntologyV2/ProductionAndDistributionOntology.owl#
+
+CREATE (:Ontology {
+name: 'ProductionAndDistributionOntology',
+base_iri: 'file:///Users/tibor.knowles/Desktop/Daisy/OntologyV2/ProductionAndDistributionOntology.owl#',
+source_file: 'ProductionAndDistributionOntology.owl'
+});
+
+// Class: MusicProductionProcess
+CREATE (:Class {
+name: 'MusicProductionProcess',
+iri: 'http://www.autonomousrecordlabel.com/ontology#MusicProductionProcess',
+label: 'MusicProductionProcess',
+ontology: 'ProductionAndDistributionOntology'
+});
+
+MATCH (c:Class {name: 'MusicProductionProcess'}) SET c.comment = 'Represents the overall process or a specific stage in creating a sound recording, from songwriting to mastering.';
+
+MATCH (c:Class {name: 'MusicProductionProcess'}) SET c.rdfs_label = 'Music Production Process';
+
+// Class: CreativeBrief
+CREATE (:Class {
+name: 'CreativeBrief',
+iri: 'http://www.autonomousrecordlabel.com/ontology#CreativeBrief',
+label: 'CreativeBrief',
+ontology: 'ProductionAndDistributionOntology'
+});
+
+MATCH (c:Class {name: 'CreativeBrief'}) SET c.comment = 'A document or set of parameters outlining the creative direction, goals, and constraints for a music production task.';
+
+MATCH (c:Class {name: 'CreativeBrief'}) SET c.rdfs_label = 'Creative Brief';
+
+// Class: MusicGenerationTool
+CREATE (:Class {
+name: 'MusicGenerationTool',
+iri: 'http://www.autonomousrecordlabel.com/ontology#MusicGenerationTool',
+label: 'MusicGenerationTool',
+ontology: 'ProductionAndDistributionOntology'
+});
+
+MATCH (c:Class {name: 'MusicGenerationTool'}) SET c.comment = 'An AI tool or system capable of generating original musical content or elements.';
+
+MATCH (c:Class {name: 'MusicGenerationTool'}) SET c.rdfs_label = 'Music Generation Tool';
+
+// Class: RemixingTool
+CREATE (:Class {
+name: 'RemixingTool',
+iri: 'http://www.autonomousrecordlabel.com/ontology#RemixingTool',
+label: 'RemixingTool',
+ontology: 'ProductionAndDistributionOntology'
+});
+
+MATCH (c:Class {name: 'RemixingTool'}) SET c.comment = 'An AI tool or system capable of creating remixes from existing audio material.';
+
+MATCH (c:Class {name: 'RemixingTool'}) SET c.rdfs_label = 'Remixing Tool';
+
+// Class: DAWIntegrationTool
+CREATE (:Class {
+name: 'DAWIntegrationTool',
+iri: 'http://www.autonomousrecordlabel.com/ontology#DAWIntegrationTool',
+label: 'DAWIntegrationTool',
+ontology: 'ProductionAndDistributionOntology'
+});
+
+MATCH (c:Class {name: 'DAWIntegrationTool'}) SET c.comment = 'A tool or plugin that integrates with Digital Audio Workstations.';
+
+MATCH (c:Class {name: 'DAWIntegrationTool'}) SET c.rdfs_label = 'DAW Integration Tool';
+
+// Class: ReleaseCycleStage
+CREATE (:Class {
+name: 'ReleaseCycleStage',
+iri: 'http://www.autonomousrecordlabel.com/ontology#ReleaseCycleStage',
+label: 'ReleaseCycleStage',
+ontology: 'ProductionAndDistributionOntology'
+});
+
+MATCH (c:Class {name: 'ReleaseCycleStage'}) SET c.comment = 'A specific stage in the lifecycle of a music release, from planning to post-release.';
+
+MATCH (c:Class {name: 'ReleaseCycleStage'}) SET c.rdfs_label = 'Release Cycle Stage';
+
+// Class: DistributionChannel
+CREATE (:Class {
+name: 'DistributionChannel',
+iri: 'http://www.autonomousrecordlabel.com/ontology#DistributionChannel',
+label: 'DistributionChannel',
+ontology: 'ProductionAndDistributionOntology'
+});
+
+MATCH (c:Class {name: 'DistributionChannel'}) SET c.comment = 'A platform or method through which music releases are made available to consumers (e.g., DSP, physical retail, direct-to-fan).';
+
+MATCH (c:Class {name: 'DistributionChannel'}) SET c.rdfs_label = 'Distribution Channel';
+
+// Class: DigitalAssetMetadata
+CREATE (:Class {
+name: 'DigitalAssetMetadata',
+iri: 'http://www.autonomousrecordlabel.com/ontology#DigitalAssetMetadata',
+label: 'DigitalAssetMetadata',
+ontology: 'ProductionAndDistributionOntology'
+});
+
+MATCH (c:Class {name: 'DigitalAssetMetadata'}) SET c.comment = 'Descriptive information associated with a digital music asset (recording, release) required for distribution and rights management.';
+
+MATCH (c:Class {name: 'DigitalAssetMetadata'}) SET c.rdfs_label = 'Digital Asset Metadata';
+
+// Class: ProductionA

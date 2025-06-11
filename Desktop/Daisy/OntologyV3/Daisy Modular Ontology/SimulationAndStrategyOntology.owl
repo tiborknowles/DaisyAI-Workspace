@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rdf:RDF xmlns:ns1="http://www.w3.org/2002/07/owl#" xmlns:ns2="http://www.w3.org/2000/01/rdf-schema#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <ns1:Ontology rdf:about="http://www.autonomousrecordlabel.com/ontology#SimulationAndStrategyOntology">
+    <ns2:label>SimulationAndStrategy Ontology</ns2:label>
+    <ns2:comment>Ontology module for SimulationAndStrategy  concepts.</ns2:comment>
+    <ns1:versionInfo>0.1.0</ns1:versionInfo>
+    <ns1:imports rdf:resource="DaisyCoreOntology.owl" />
+    <ns1:imports rdf:resource="GoalAndPerformanceOntology.owl" />
+  </ns1:Ontology>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#StrategicSimulation">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#SimulationRun" />
+    <ns2:label xml:lang="en">Strategic Simulation</ns2:label>
+    <ns2:comment xml:lang="en">A simulation run specifically designed to explore high-level strategic options, test strategic hypotheses, or forecast long-term impacts for the record label.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#OperationalSimulation">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#SimulationRun" />
+    <ns2:label xml:lang="en">Operational Simulation</ns2:label>
+    <ns2:comment xml:lang="en">A simulation run focused on tactical or operational "what-if" scenarios, potentially run by operational agents or to evaluate specific operational changes (e.g., simulating a specific marketing micro-campaign's outcome).</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#SimulatedKPI">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#KPI" />
+    <ns2:label xml:lang="en">Simulated KPI</ns2:label>
+    <ns2:comment xml:lang="en">Represents a Key Performance Indicator's value as predicted or observed within a specific simulation run. This ensures a clear distinction from real-world actual KPI values.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#StrategicHypothesis">
+    <ns2:label xml:lang="en">Strategic Hypothesis</ns2:label>
+    <ns2:comment xml:lang="en">A testable proposition or assumption about the business environment, market dynamics, artist potential, or the impact of certain strategies. Often formulated and tested by MaestroAI.</ns2:comment>
+    <ns2:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#StrategicOption">
+    <ns2:label xml:lang="en">Strategic Option</ns2:label>
+    <ns2:comment xml:lang="en">A high-level strategic choice or course of action that the record label (often guided by MaestroAI) can consider pursuing (e.g., 'InvestInNewGenreX', 'AcquireCompetitorCatalogY').</ns2:comment>
+    <ns2:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#SimulationParameterSet">
+    <ns2:label xml:lang="en">Simulation Parameter Set</ns2:label>
+    <ns2:comment xml:lang="en">A collection of parameters and their values used to configure a specific SimulationRun.</ns2:comment>
+    <ns2:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+  </ns1:Class>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#simulationStatus">
+    <ns2:label xml:lang="en">simulation status</ns2:label>
+    <ns2:comment xml:lang="en">Current status of the simulation (e.g., Planning, Running, Completed, Aborted, Failed).</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#SimulationRun" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#isSandboxEnvironment">
+    <ns2:label xml:lang="en">is sandbox environment</ns2:label>
+    <ns2:comment xml:lang="en">Indicates if the simulation is run in a safe, isolated environment. Should always be true for simulations to prevent unintended real-world actions.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#SimulationRun" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#simulatedOutcomeConfidence">
+    <ns2:label xml:lang="en">simulated outcome confidence</ns2:label>
+    <ns2:comment xml:lang="en">The assessed confidence in the predicted outcomes of the simulation.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#SimulationRun" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal" />
+  </ns1:DatatypeProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#usesSimulationParameters">
+    <ns2:label xml:lang="en">uses simulation parameters</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#SimulationRun" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#SimulationParameterSet" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#predictsOutcome">
+    <ns2:label xml:lang="en">predicts outcome</ns2:label>
+    <ns2:comment xml:lang="en">Links a SimulationRun to the SimulatedKPIs or other predicted outcomes.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#SimulationRun" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#SimulatedKPI" />
+  </ns1:ObjectProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#simulatedValue">
+    <ns2:label xml:lang="en">simulated value</ns2:label>
+    <ns2:comment xml:lang="en">The value of the KPI as predicted or observed within the simulation.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#SimulatedKPI" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal" />
+  </ns1:DatatypeProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#simulatesRealKPI">
+    <ns2:label xml:lang="en">simulates real KPI</ns2:label>
+    <ns2:comment xml:lang="en">Links a SimulatedKPI back to the actual KPI concept it represents in the simulation.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#SimulatedKPI" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#KPI" />
+  </ns1:ObjectProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#hypothesisStatement">
+    <ns2:label xml:lang="en">hypothesis statement</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#StrategicHypothesis" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#evidenceSupportingHypothesis">
+    <ns2:label xml:lang="en">evidence supporting hypothesis</ns2:label>
+    <ns2:comment xml:lang="en">Links a hypothesis to data, facts, or observations that support it.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#StrategicHypothesis" />
+    <ns2:range rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+  </ns1:ObjectProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#hypothesisAssumptions">
+    <ns2:label xml:lang="en">hypothesis assumptions</ns2:label>
+    <ns2:comment xml:lang="en">Key assumptions underlying the hypothesis.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#StrategicHypothesis" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#testedBySimulation">
+    <ns2:label xml:lang="en">tested by simulation</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#StrategicHypothesis" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#SimulationRun" />
+  </ns1:ObjectProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#optionDescription">
+    <ns2:label xml:lang="en">option description</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#StrategicOption" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#optionAssociatedWithGoal">
+    <ns2:label xml:lang="en">option associated with goal</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#StrategicOption" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#LabelGoal" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#optionEvaluatedBySimulation">
+    <ns2:label xml:lang="en">option evaluated by simulation</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#StrategicOption" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#SimulationRun" />
+  </ns1:ObjectProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#requiredResourcesForOption">
+    <ns2:label xml:lang="en">required resources for option</ns2:label>
+    <ns2:comment xml:lang="en">Description of resources (financial, human, technical) needed to pursue this strategic option.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#StrategicOption" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#parameterSetName">
+    <ns2:label xml:lang="en">parameter set name</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#SimulationParameterSet" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#parameterConfigurationJSON">
+    <ns2:label xml:lang="en">parameter configuration JSON</ns2:label>
+    <ns2:comment xml:lang="en">A JSON string representing the set of parameters and their values for a simulation (e.g., market conditions, budget constraints, agent behaviors to simulate).</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#SimulationParameterSet" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#simulatesAction">
+    <ns2:label xml:lang="en">simulates action</ns2:label>
+    <ns2:comment xml:lang="en">Links a simulation run to specific agent actions that are being simulated as part of the scenario.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#SimulationRun" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#AgentAction" />
+  </ns1:ObjectProperty>
+</rdf:RDF>

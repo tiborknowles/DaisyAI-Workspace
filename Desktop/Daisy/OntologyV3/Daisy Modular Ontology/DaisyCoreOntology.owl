@@ -1,0 +1,285 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rdf:RDF xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+  <owl:Ontology rdf:about="http://www.autonomousrecordlabel.com/ontology#DaisyCoreOntology">
+    <rdfs:label>DaisyCore Ontology</rdfs:label>
+    <rdfs:comment>Ontology module for DaisyCore concepts.</rdfs:comment>
+    <owl:versionInfo>0.1.0</owl:versionInfo>
+  </owl:Ontology>
+  
+  <!-- Add missing annotation property -->
+  <owl:AnnotationProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#passmanReference">
+    <rdfs:label xml:lang="en">Passman Reference</rdfs:label>
+    <rdfs:comment xml:lang="en">Reference to Donald Passman's "All You Need to Know About the Music Business" book pages/chapters.</rdfs:comment>
+  </owl:AnnotationProperty>
+  
+  <!-- Core Classes -->
+  <owl:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#EPMO">
+    <rdfs:label xml:lang="en">Entity Provisioning Monetary or Otherwise</rdfs:label>
+    <rdfs:comment xml:lang="en">Abstract superclass for persons or organizations involved in the music business, often dealing with provisions, monetary aspects, or rights. (Inspired by Passman's EPMO).</rdfs:comment>
+  </owl:Class>
+  
+  <owl:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#Human">
+    <rdfs:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#EPMO" />
+    <rdfs:label xml:lang="en">Human</rdfs:label>
+    <rdfs:comment xml:lang="en">Abstract representation of a human user or actor within the Daisy system.</rdfs:comment>
+  </owl:Class>
+  
+  <owl:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#Person">
+    <rdfs:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#EPMO" />
+    <rdfs:label xml:lang="en">Person</rdfs:label>
+    <rdfs:comment xml:lang="en">A human individual.</rdfs:comment>
+  </owl:Class>
+  
+  <owl:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#AIAgent">
+    <rdfs:label xml:lang="en">AI Agent (Abstract)</rdfs:label>
+    <rdfs:comment xml:lang="en">Abstract representation of an Artificial Intelligence agent within the Daisy system.</rdfs:comment>
+  </owl:Class>
+  
+  <owl:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#Goal">
+    <rdfs:label xml:lang="en">Goal (Abstract)</rdfs:label>
+    <rdfs:comment xml:lang="en">Abstract concept of a desired state, outcome, or objective to be achieved.</rdfs:comment>
+  </owl:Class>
+  
+  <owl:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#KPI">
+    <rdfs:label xml:lang="en">Key Performance Indicator (Abstract)</rdfs:label>
+    <rdfs:comment xml:lang="en">Abstract definition of a Key Performance Indicator, a quantifiable measure used to track progress towards a goal.</rdfs:comment>
+  </owl:Class>
+  
+  <owl:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#PerformanceMetric">
+    <rdfs:label xml:lang="en">Performance Metric (Abstract)</rdfs:label>
+    <rdfs:comment xml:lang="en">Abstract definition of a metric used to evaluate performance, often more granular or specific than a KPI.</rdfs:comment>
+  </owl:Class>
+  
+  <owl:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#OrganizationalUnit">
+    <rdfs:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#EPMO" />
+    <rdfs:label xml:lang="en">Organizational Unit (Abstract)</rdfs:label>
+    <rdfs:comment xml:lang="en">Abstract representation of a department, team, or other structural unit within an organization.</rdfs:comment>
+  </owl:Class>
+  
+  <owl:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#Tool">
+    <rdfs:label xml:lang="en">Tool (Abstract)</rdfs:label>
+    <rdfs:comment xml:lang="en">Abstract representation of a capability, resource, or utility that an agent can use to perform actions or tasks.</rdfs:comment>
+  </owl:Class>
+  
+  <owl:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#SimulationRun">
+    <rdfs:label xml:lang="en">Simulation Run (Abstract)</rdfs:label>
+    <rdfs:comment xml:lang="en">Abstract concept for an execution of a simulation or "what-if" scenario.</rdfs:comment>
+  </owl:Class>
+  
+  <owl:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#InteractionArtifact">
+    <rdfs:label xml:lang="en">Interaction Artifact (Abstract)</rdfs:label>
+    <rdfs:comment xml:lang="en">Abstract representation of an object or record generated during human-agent or agent-agent interaction (e.g., an approval request, feedback).</rdfs:comment>
+  </owl:Class>
+  
+  <owl:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#AgentAction">
+    <rdfs:label xml:lang="en">Agent Action (Abstract)</rdfs:label>
+    <rdfs:comment xml:lang="en">Abstract representation of a discrete action that can be performed by an AI Agent.</rdfs:comment>
+  </owl:Class>
+  
+  <owl:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#CreativeWork">
+    <rdfs:label xml:lang="en">Creative Work (Abstract)</rdfs:label>
+    <rdfs:comment xml:lang="en">Abstract representation of an original work of authorship.</rdfs:comment>
+  </owl:Class>
+  
+  <owl:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#ContextualDataFeed">
+    <rdfs:label xml:lang="en">Contextual Data Feed (Abstract)</rdfs:label>
+    <rdfs:comment xml:lang="en">Abstract representation of a source of contextual data for AI Agents.</rdfs:comment>
+  </owl:Class>
+  
+  <owl:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#MarketingConcept">
+    <rdfs:label xml:lang="en">Marketing Concept (Abstract)</rdfs:label>
+    <rdfs:comment xml:lang="en">An abstract high-level concept related to marketing.</rdfs:comment>
+  </owl:Class>
+  
+  <owl:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#FinancialConcept">
+    <rdfs:label xml:lang="en">Financial Concept (Abstract)</rdfs:label>
+    <rdfs:comment xml:lang="en">An abstract high-level concept related to financials.</rdfs:comment>
+  </owl:Class>
+  
+  <owl:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#ArtistCareerState">
+    <rdfs:label xml:lang="en">Artist Career State (Abstract)</rdfs:label>
+    <rdfs:comment xml:lang="en">An abstract snapshot of an artist's career status at a point in time.</rdfs:comment>
+  </owl:Class>
+  
+  <owl:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#MusicReleaseLifecycleState">
+    <rdfs:label xml:lang="en">Music Release Lifecycle State (Abstract)</rdfs:label>
+    <rdfs:comment xml:lang="en">An abstract representation of the current phase of a music release.</rdfs:comment>
+  </owl:Class>
+  
+  <owl:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#ContractualProvision">
+    <rdfs:label xml:lang="en">Contractual Provision (Abstract)</rdfs:label>
+    <rdfs:comment xml:lang="en">An abstract representation of a specific clause or term within a contract or agreement.</rdfs:comment>
+  </owl:Class>
+  
+  <owl:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#Event">
+    <rdfs:label xml:lang="en">Event (Abstract)</rdfs:label>
+    <rdfs:comment xml:lang="en">Abstract representation of an event or happening.</rdfs:comment>
+  </owl:Class>
+  
+  <!-- Datatype Properties -->
+  <owl:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#hasName">
+    <rdfs:label xml:lang="en">has name</rdfs:label>
+    <rdfs:comment xml:lang="en">A human-readable name or label for an entity. Often complements rdfs:label.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </owl:DatatypeProperty>
+  
+  <owl:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#hasDescription">
+    <rdfs:label xml:lang="en">has description</rdfs:label>
+    <rdfs:comment xml:lang="en">A textual description of an entity. Often complements rdfs:comment.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </owl:DatatypeProperty>
+  
+  <owl:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#creationTimestamp">
+    <rdfs:label xml:lang="en">creation timestamp</rdfs:label>
+    <rdfs:comment xml:lang="en">The date and time an entity or artifact was created.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime" />
+  </owl:DatatypeProperty>
+  
+  <owl:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#agentID">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty" />
+    <rdfs:label xml:lang="en">agent ID</rdfs:label>
+    <rdfs:comment xml:lang="en">A unique identifier for an AI agent instance.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#AIAgent" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </owl:DatatypeProperty>
+  
+  <owl:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#agentStatus">
+    <rdfs:label xml:lang="en">agent status</rdfs:label>
+    <rdfs:comment xml:lang="en">The current operational status of an AI agent (e.g., Active, Idle, Error, Training).</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#AIAgent" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </owl:DatatypeProperty>
+  
+  <owl:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#humanName">
+    <rdfs:label xml:lang="en">human name</rdfs:label>
+    <rdfs:comment xml:lang="en">The full name of the human user or actor.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Human" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </owl:DatatypeProperty>
+  
+  <owl:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#humanRole">
+    <rdfs:label xml:lang="en">human role</rdfs:label>
+    <rdfs:comment xml:lang="en">The general role of the human within the system (e.g., Executive, Artist, Manager).</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Human" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </owl:DatatypeProperty>
+  
+  <owl:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#goalDescription">
+    <rdfs:label xml:lang="en">goal description</rdfs:label>
+    <rdfs:comment xml:lang="en">A detailed textual description of the goal.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Goal" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </owl:DatatypeProperty>
+  
+  <owl:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#goalStatus">
+    <rdfs:label xml:lang="en">goal status</rdfs:label>
+    <rdfs:comment xml:lang="en">The current status of the goal (e.g., Proposed, Active, Achieved, Failed, Paused).</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Goal" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </owl:DatatypeProperty>
+  
+  <owl:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#kpiName">
+    <rdfs:label xml:lang="en">KPI name</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#KPI" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </owl:DatatypeProperty>
+  
+  <owl:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#kpiDescription">
+    <rdfs:label xml:lang="en">KPI description</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#KPI" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </owl:DatatypeProperty>
+  
+  <owl:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#toolName">
+    <rdfs:label xml:lang="en">tool name</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Tool" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </owl:DatatypeProperty>
+  
+  <owl:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#toolDescription">
+    <rdfs:label xml:lang="en">tool description</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Tool" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </owl:DatatypeProperty>
+  
+  <owl:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#simulationRunID">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty" />
+    <rdfs:label xml:lang="en">simulation run ID</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#SimulationRun" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </owl:DatatypeProperty>
+  
+  <owl:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#simulationPurpose">
+    <rdfs:label xml:lang="en">simulation purpose</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#SimulationRun" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </owl:DatatypeProperty>
+  
+  <owl:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#artifactTimestamp">
+    <rdfs:label xml:lang="en">artifact timestamp</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#InteractionArtifact" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime" />
+  </owl:DatatypeProperty>
+  
+  <!-- Object Properties -->
+  <owl:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#currentAssignedGoal">
+    <rdfs:label xml:lang="en">current assigned goal</rdfs:label>
+    <rdfs:comment xml:lang="en">The primary goal an AI agent is currently working towards.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#AIAgent" />
+    <rdfs:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#Goal" />
+  </owl:ObjectProperty>
+  
+  <owl:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#performsAction">
+    <rdfs:label xml:lang="en">performs action</rdfs:label>
+    <rdfs:comment xml:lang="en">Relates an AI Agent to an AgentAction it performs.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#AIAgent" />
+    <rdfs:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#AgentAction" />
+    <owl:inverseOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#actionPerformedBy" />
+  </owl:ObjectProperty>
+  
+  <owl:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#actionPerformedBy">
+    <rdfs:label xml:lang="en">action performed by</rdfs:label>
+    <rdfs:comment xml:lang="en">Relates an AgentAction to the AI Agent that performed it. Inverse of performsAction.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#AgentAction" />
+    <rdfs:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#AIAgent" />
+    <owl:inverseOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#performsAction" />
+  </owl:ObjectProperty>
+  
+  <owl:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#createdBy">
+    <rdfs:label xml:lang="en">created by</rdfs:label>
+    <rdfs:comment xml:lang="en">Indicates the entity (Human or AIAgent) that created an artifact.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#InteractionArtifact" />
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.autonomousrecordlabel.com/ontology#AIAgent" />
+          <rdf:Description rdf:about="http://www.autonomousrecordlabel.com/ontology#Human" />
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+  </owl:ObjectProperty>
+  
+  <owl:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#hasAssociatedKPI">
+    <rdfs:label xml:lang="en">has associated KPI</rdfs:label>
+    <rdfs:comment xml:lang="en">Links a Goal to the KPI(s) used to measure its achievement.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Goal" />
+    <rdfs:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#KPI" />
+  </owl:ObjectProperty>
+  
+  <owl:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#usesTool">
+    <rdfs:label xml:lang="en">uses tool</rdfs:label>
+    <rdfs:comment xml:lang="en">Relates an AI Agent (or an AgentAction) to a Tool it utilizes.</rdfs:comment>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.autonomousrecordlabel.com/ontology#AIAgent" />
+          <rdf:Description rdf:about="http://www.autonomousrecordlabel.com/ontology#AgentAction" />
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#Tool" />
+  </owl:ObjectProperty>
+</rdf:RDF>

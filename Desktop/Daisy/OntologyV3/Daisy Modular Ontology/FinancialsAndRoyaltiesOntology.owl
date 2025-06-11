@@ -1,0 +1,229 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rdf:RDF xmlns:ns1="http://www.w3.org/2002/07/owl#" xmlns:ns2="http://www.w3.org/2000/01/rdf-schema#" xmlns:ns3="http://www.autonomousrecordlabel.com/ontology#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <ns1:Ontology rdf:about="http://www.autonomousrecordlabel.com/ontology#FinancialsAndRoyaltiesOntology">
+    <ns2:label>FinancialsAndRoyalties Ontology</ns2:label>
+    <ns2:comment>Ontology module for FinancialsAndRoyalties  concepts.</ns2:comment>
+    <ns1:versionInfo>0.1.0</ns1:versionInfo>
+    <ns1:imports rdf:resource="DaisyCoreOntology.owl" />
+    <ns1:imports rdf:resource="BusinessDomainCoreOntology.owl" />
+  </ns1:Ontology>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#Royalty">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#FinancialConcept" />
+    <ns2:label xml:lang="en">Royalty</ns2:label>
+    <ns2:comment xml:lang="en">A payment made to a rights holder for the ongoing use of their asset, such as copyrighted works.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#RecordRoyalty">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#Royalty" />
+    <ns2:label xml:lang="en">Record Royalty</ns2:label>
+    <ns3:passmanReference>Part II</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#PublishingRoyalty">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#Royalty" />
+    <ns2:label xml:lang="en">Publishing Royalty</ns2:label>
+    <ns3:passmanReference>Part III</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#MechanicalRoyalty">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#PublishingRoyalty" />
+    <ns2:label xml:lang="en">Mechanical Royalty</ns2:label>
+    <ns3:passmanReference>Ch. 15, 21</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#PerformanceRoyalty">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#PublishingRoyalty" />
+    <ns2:label xml:lang="en">Performance Royalty</ns2:label>
+    <ns3:passmanReference>Ch. 15</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#SyncRoyalty">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#PublishingRoyalty" />
+    <ns2:label xml:lang="en">Sync Royalty</ns2:label>
+    <ns3:passmanReference>Ch. 16</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#PrintRoyalty">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#PublishingRoyalty" />
+    <ns2:label xml:lang="en">Print Royalty</ns2:label>
+    <ns3:passmanReference>Ch. 16</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#MerchRoyalty">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#Royalty" />
+    <ns2:label xml:lang="en">Merchandise Royalty</ns2:label>
+    <ns3:passmanReference>Ch. 24</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#RoyaltyStatement">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#FinancialConcept" />
+    <ns2:label xml:lang="en">Royalty Statement</ns2:label>
+    <ns2:comment xml:lang="en">A formal document detailing earnings, deductions, and net royalties payable to a rights holder.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#Advance">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#FinancialConcept" />
+    <ns2:label xml:lang="en">Advance</ns2:label>
+    <ns2:comment xml:lang="en">A sum of money paid to an artist or songwriter upfront, recoupable against future royalties.</ns2:comment>
+    <ns3:passmanReference>p.77, 98</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#SigningAdvance">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#Advance" />
+    <ns2:label xml:lang="en">Signing Advance</ns2:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#AlbumFundAdvance">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#Advance" />
+    <ns2:label xml:lang="en">Album Fund Advance</ns2:label>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#TourSupportAdvance">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#Advance" />
+    <ns2:label xml:lang="en">Tour Support Advance</ns2:label>
+    <ns3:passmanReference>p.103</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#MerchAdvance">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#Advance" />
+    <ns2:label xml:lang="en">Merchandise Advance</ns2:label>
+    <ns3:passmanReference>p.427</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#RecoupableCost">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#FinancialConcept" />
+    <ns2:label xml:lang="en">Recoupable Cost</ns2:label>
+    <ns2:comment xml:lang="en">Expenses incurred by the label that can be deducted from an artist's earnings before royalties are paid.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#RecordingCost">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#RecoupableCost" />
+    <ns2:label xml:lang="en">Recording Cost (Recoupable)</ns2:label>
+    <ns3:passmanReference>p.98</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#VideoProductionCost">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#RecoupableCost" />
+    <ns2:label xml:lang="en">Video Production Cost (Recoupable)</ns2:label>
+    <ns3:passmanReference>p.105</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#MarketingCostRecoupable">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#RecoupableCost" />
+    <ns2:label xml:lang="en">Marketing Cost (Recoupable)</ns2:label>
+    <ns2:comment xml:lang="en">Portion of marketing expenses that are recoupable, as per contract.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#Fund">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#FinancialConcept" />
+    <ns2:label xml:lang="en">Fund (Recording)</ns2:label>
+    <ns2:comment xml:lang="en">An amount of money allocated for a specific purpose, often for recording an album, which may include both recording costs and an artist advance.</ns2:comment>
+    <ns3:passmanReference>p.98</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#RoyaltyTier">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#FinancialConcept" />
+    <ns2:label xml:lang="en">Royalty Tier</ns2:label>
+    <ns2:comment xml:lang="en">A specific level or bracket in a royalty structure, where the royalty rate may change based on achieving certain thresholds (e.g., sales escalations).</ns2:comment>
+    <ns3:passmanReference>p.96-97</ns3:passmanReference>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#PaymentTransaction">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#FinancialConcept" />
+    <ns2:label xml:lang="en">Payment Transaction</ns2:label>
+    <ns2:comment xml:lang="en">Represents a specific instance of a monetary payment.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#DatePeriod">
+    <ns2:label xml:lang="en">Date Period</ns2:label>
+    <ns2:comment xml:lang="en">Represents a period of time defined by a start and end date.</ns2:comment>
+    <ns2:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+  </ns1:Class>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#royaltyPayableTo">
+    <ns2:label xml:lang="en">royalty payable to</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Royalty" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#EPMO" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#royaltyGeneratedBy">
+    <ns2:label xml:lang="en">royalty generated by</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Royalty" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#CreativeWork" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#statementForPayee">
+    <ns2:label xml:lang="en">statement for payee</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#RoyaltyStatement" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#EPMO" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#statementCoversPeriod">
+    <ns2:label xml:lang="en">statement covers period</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#RoyaltyStatement" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#DatePeriod" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#detailsRoyalty">
+    <ns2:label xml:lang="en">details royalty</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#RoyaltyStatement" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#Royalty" />
+  </ns1:ObjectProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#royaltyRateValue">
+    <ns2:label xml:lang="en">royalty rate value</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Royalty" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#royaltyCalculationBasis">
+    <ns2:label xml:lang="en">royalty calculation basis</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Royalty" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#isRecouped">
+    <ns2:label xml:lang="en">is recouped</ns2:label>
+    <ns2:domain>
+      <ns1:Class>
+        <ns1:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.autonomousrecordlabel.com/ontology#Advance" />
+          <rdf:Description rdf:about="http://www.autonomousrecordlabel.com/ontology#RecoupableCost" />
+        </ns1:unionOf>
+      </ns1:Class>
+    </ns2:domain>
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean" />
+  </ns1:DatatypeProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#advanceHasAmount">
+    <ns2:label xml:lang="en">advance has amount</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Advance" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#MonetaryAmount" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#costHasAmount">
+    <ns2:label xml:lang="en">cost has amount</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#RecoupableCost" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#MonetaryAmount" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#fundHasAmount">
+    <ns2:label xml:lang="en">fund has amount</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Fund" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#MonetaryAmount" />
+  </ns1:ObjectProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#royaltyTierRate">
+    <ns2:label xml:lang="en">royalty tier rate</ns2:label>
+    <ns2:comment xml:lang="en">The royalty rate applicable at this specific tier.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#RoyaltyTier" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal" />
+  </ns1:DatatypeProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#royaltyTierTriggeredBy">
+    <ns2:label xml:lang="en">royalty tier triggered by</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#RoyaltyTier" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#PerformanceMetricThreshold" />
+  </ns1:ObjectProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#paymentAmount">
+    <ns2:label xml:lang="en">payment amount</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#PaymentTransaction" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal" />
+  </ns1:DatatypeProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#paymentCurrency">
+    <ns2:label xml:lang="en">payment currency</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#PaymentTransaction" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#CurrencyCode" />
+  </ns1:ObjectProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#paymentDate">
+    <ns2:label xml:lang="en">payment date</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#PaymentTransaction" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#date" />
+  </ns1:DatatypeProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#paymentTo">
+    <ns2:label xml:lang="en">payment to</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#PaymentTransaction" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#EPMO" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#paymentFrom">
+    <ns2:label xml:lang="en">payment from</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#PaymentTransaction" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#EPMO" />
+  </ns1:ObjectProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#periodStartDate">
+    <ns2:label xml:lang="en">period start date</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#DatePeriod" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#date" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#periodEndDate">
+    <ns2:label xml:lang="en">period end date</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#DatePeriod" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#date" />
+  </ns1:DatatypeProperty>
+</rdf:RDF>

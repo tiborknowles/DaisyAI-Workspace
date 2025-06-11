@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rdf:RDF xmlns:ns1="http://www.w3.org/2002/07/owl#" xmlns:ns2="http://www.w3.org/2000/01/rdf-schema#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <ns1:Ontology rdf:about="http://www.autonomousrecordlabel.com/ontology#AgentCognitiveFrameworkOntology">
+    <ns2:label>AgentCognitiveFramework Ontology</ns2:label>
+    <ns2:comment>Ontology module for AgentCognitiveFramework  concepts.</ns2:comment>
+    <ns1:versionInfo>0.1.0</ns1:versionInfo>
+    <ns1:imports rdf:resource="DaisyCoreOntology.owl" />
+    <ns1:imports rdf:resource="AgentDefinitionOntology.owl" />
+    <ns1:imports rdf:resource="ContextAndFeedbackOntology.owl" />
+  </ns1:Ontology>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#CognitiveTask">
+    <ns2:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+    <ns2:label xml:lang="en">Cognitive Task</ns2:label>
+    <ns2:comment xml:lang="en">An abstract representation of a complex task or problem-solving process undertaken by an AI agent, structured around the DPGRW cycle.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#CognitiveTaskPhase">
+    <ns2:label xml:lang="en">Cognitive Task Phase</ns2:label>
+    <ns2:comment xml:lang="en">An abstract phase within the DPGRW cognitive cycle.</ns2:comment>
+    <ns2:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#DefinePhase">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#CognitiveTaskPhase" />
+    <ns2:label xml:lang="en">Define Phase</ns2:label>
+    <ns2:comment xml:lang="en">The phase where the problem or goal is clearly defined, scoped, and understood.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#PlanPhase">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#CognitiveTaskPhase" />
+    <ns2:label xml:lang="en">Plan Phase</ns2:label>
+    <ns2:comment xml:lang="en">The phase where a sequence of actions or sub-tasks is formulated to address the defined problem/goal.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#GatherPhase">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#CognitiveTaskPhase" />
+    <ns2:label xml:lang="en">Gather Phase</ns2:label>
+    <ns2:comment xml:lang="en">The phase where relevant information, data, and context (including MCP factors) are collected.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#RefinePhase">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#CognitiveTaskPhase" />
+    <ns2:label xml:lang="en">Refine Phase</ns2:label>
+    <ns2:comment xml:lang="en">The phase where gathered information is processed, analyzed, hypotheses are tested (possibly via simulation), and plans or outputs are iterated upon, considering feedback.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#ExecutePhase">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#CognitiveTaskPhase" />
+    <ns2:label xml:lang="en">Execute Phase</ns2:label>
+    <ns2:comment xml:lang="en">The phase where the planned actions are carried out, or the final output (e.g., a report, a recommendation, a creative work) is generated/delivered.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#TaskInput">
+    <ns2:label xml:lang="en">Task Input (Abstract)</ns2:label>
+    <ns2:comment xml:lang="en">Abstract representation of inputs to a CognitiveTask or its phases.</ns2:comment>
+    <ns2:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#TaskOutput">
+    <ns2:label xml:lang="en">Task Output (Abstract)</ns2:label>
+    <ns2:comment xml:lang="en">Abstract representation of outputs from a CognitiveTask or its phases.</ns2:comment>
+    <ns2:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+  </ns1:Class>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#isPerformedByAgent">
+    <ns2:label xml:lang="en">is performed by agent</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#CognitiveTask" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#AIAgent" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#hasCurrentPhase">
+    <ns2:label xml:lang="en">has current phase</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#CognitiveTask" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#CognitiveTaskPhase" />
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#hasTaskPhase">
+    <ns2:label xml:lang="en">has task phase</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#CognitiveTask" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#CognitiveTaskPhase" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#phaseOfTask">
+    <ns2:label xml:lang="en">phase of task</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#CognitiveTaskPhase" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#CognitiveTask" />
+    <ns1:inverseOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#hasTaskPhase" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#hasNextPhase">
+    <ns2:label xml:lang="en">has next phase</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#CognitiveTaskPhase" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#CognitiveTaskPhase" />
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty" />
+    <ns1:inverseOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#hasPreviousPhase" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#hasPreviousPhase">
+    <ns2:label xml:lang="en">has previous phase</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#CognitiveTaskPhase" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#CognitiveTaskPhase" />
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty" />
+    <ns1:inverseOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#hasNextPhase" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#taskHasInput">
+    <ns2:label xml:lang="en">task has input</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#CognitiveTask" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#TaskInput" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#taskHasOutput">
+    <ns2:label xml:lang="en">task has output</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#CognitiveTask" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#TaskOutput" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#phaseInput">
+    <ns2:label xml:lang="en">phase input</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#CognitiveTaskPhase" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#TaskInput" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#phaseOutput">
+    <ns2:label xml:lang="en">phase output</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#CognitiveTaskPhase" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#TaskOutput" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#gathersContextualFactor">
+    <ns2:label xml:lang="en">gathers contextual factor</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#GatherPhase" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#MCPContextualFactor" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#refinesBasedOnAgentFeedback">
+    <ns2:label xml:lang="en">refines based on agent feedback</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#RefinePhase" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#AgentFeedback" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#refinesBasedOnHumanFeedback">
+    <ns2:label xml:lang="en">refines based on human feedback</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#RefinePhase" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#HumanFeedback" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#executesAgentAction">
+    <ns2:label xml:lang="en">executes agent action</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#ExecutePhase" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#AgentAction" />
+  </ns1:ObjectProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#taskName">
+    <ns2:label xml:lang="en">task name</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#CognitiveTask" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#taskStatus">
+    <ns2:label xml:lang="en">task status</ns2:label>
+    <ns2:comment xml:lang="en">E.g., Pending, InProgress, Paused, Completed, Failed.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#CognitiveTask" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#phaseStatus">
+    <ns2:label xml:lang="en">phase status</ns2:label>
+    <ns2:comment xml:lang="en">E.g., NotStarted, Active, Completed, Skipped.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#CognitiveTaskPhase" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#phaseStartDate">
+    <ns2:label xml:lang="en">phase start date</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#CognitiveTaskPhase" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#phaseEndDate">
+    <ns2:label xml:lang="en">phase end date</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#CognitiveTaskPhase" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime" />
+  </ns1:DatatypeProperty>
+</rdf:RDF>

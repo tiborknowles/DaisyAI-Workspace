@@ -1,0 +1,155 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rdf:RDF xmlns:ns1="http://www.w3.org/2002/07/owl#" xmlns:ns2="http://www.w3.org/2000/01/rdf-schema#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <ns1:Ontology rdf:about="http://www.autonomousrecordlabel.com/ontology#Web3AndDigitalAssetsOntology">
+    <ns2:label>Web3AndDigitalAssets Ontology</ns2:label>
+    <ns2:comment>Ontology module for Web3AndDigitalAssets  concepts.</ns2:comment>
+    <ns1:versionInfo>0.1.0</ns1:versionInfo>
+    <ns1:imports rdf:resource="DaisyCoreOntology.owl" />
+    <ns1:imports rdf:resource="BusinessDomainCoreOntology.owl" />
+    <ns1:imports rdf:resource="RightsAndLicensingOntology.owl" />
+    <ns1:imports rdf:resource="FinancialsAndRoyaltiesOntology.owl" />
+  </ns1:Ontology>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#Blockchain">
+    <ns2:label xml:lang="en">Blockchain</ns2:label>
+    <ns2:comment xml:lang="en">A specific blockchain network (e.g., Ethereum, Polygon, Flow).</ns2:comment>
+    <ns2:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+  </ns1:Class>
+  <ns1:NamedIndividual rdf:about="http://www.autonomousrecordlabel.com/ontology#Blockchain_Ethereum">
+    <rdf:type rdf:resource="http://www.autonomousrecordlabel.com/ontology#Blockchain" />
+    <ns2:label>Ethereum</ns2:label>
+  </ns1:NamedIndividual>
+  <ns1:NamedIndividual rdf:about="http://www.autonomousrecordlabel.com/ontology#Blockchain_Polygon">
+    <rdf:type rdf:resource="http://www.autonomousrecordlabel.com/ontology#Blockchain" />
+    <ns2:label>Polygon</ns2:label>
+  </ns1:NamedIndividual>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#CryptoWallet">
+    <ns2:label xml:lang="en">Crypto Wallet</ns2:label>
+    <ns2:comment xml:lang="en">A digital wallet used to store, send, and receive cryptocurrencies and NFTs.</ns2:comment>
+    <ns2:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#DigitalAsset_Web3">
+    <ns2:label xml:lang="en">Web3 Digital Asset</ns2:label>
+    <ns2:comment xml:lang="en">An abstract representation of a digital asset managed on a blockchain.</ns2:comment>
+    <ns2:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#NFTAsset">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#DigitalAsset_Web3" />
+    <ns2:label xml:lang="en">NFT Asset (Non-Fungible Token)</ns2:label>
+    <ns2:comment xml:lang="en">A unique digital asset representing ownership of a specific item, which could be a piece of art, a collectible, a right, or a membership.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#IP_NFT">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#NFTAsset" />
+    <ns2:label xml:lang="en">Intellectual Property NFT</ns2:label>
+    <ns2:comment xml:lang="en">An NFT representing ownership or fractional ownership of intellectual property, such as a master recording or publishing rights.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#CollectibleNFT">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#NFTAsset" />
+    <ns2:label xml:lang="en">Collectible NFT</ns2:label>
+    <ns2:comment xml:lang="en">An NFT representing a digital collectible, such as digital art, memorabilia, or unique fan experiences.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#UtilityToken_Label">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#DigitalAsset_Web3" />
+    <ns2:label xml:lang="en">Label Utility Token</ns2:label>
+    <ns2:comment xml:lang="en">A fungible token issued by the record label that may grant access to specific services, governance rights, or other utilities within the label's ecosystem.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#SmartContract">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#Contract" />
+    <ns2:label xml:lang="en">Smart Contract</ns2:label>
+    <ns2:comment xml:lang="en">A self-executing contract with the terms of the agreement directly written into code, residing on a blockchain.</ns2:comment>
+  </ns1:Class>
+  <ns1:Class rdf:about="http://www.autonomousrecordlabel.com/ontology#DAO_Member">
+    <ns2:subClassOf rdf:resource="http://www.autonomousrecordlabel.com/ontology#EPMO" />
+    <ns2:label xml:lang="en">DAO Member</ns2:label>
+    <ns2:comment xml:lang="en">A member of a Decentralized Autonomous Organization, potentially holding governance tokens.</ns2:comment>
+  </ns1:Class>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#blockchainName">
+    <ns2:label xml:lang="en">blockchain name</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#Blockchain" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#walletAddress">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty" />
+    <ns2:label xml:lang="en">wallet address</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#CryptoWallet" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#walletOwnedBy">
+    <ns2:label xml:lang="en">wallet owned by</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#CryptoWallet" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#EPMO" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#assetHeldInWallet">
+    <ns2:label xml:lang="en">asset held in wallet</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#DigitalAsset_Web3" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#CryptoWallet" />
+  </ns1:ObjectProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#tokenID">
+    <ns2:label xml:lang="en">token ID</ns2:label>
+    <ns2:comment xml:lang="en">The unique identifier for an NFT on a blockchain.</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#NFTAsset" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#nftRepresentsIP">
+    <ns2:label xml:lang="en">NFT represents IP</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#IP_NFT" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#Copyright" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#nftAssociatedWithCreativeWork">
+    <ns2:label xml:lang="en">NFT associated with creative work</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#NFTAsset" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#CreativeWork" />
+  </ns1:ObjectProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#nftStandard">
+    <ns2:label xml:lang="en">NFT standard</ns2:label>
+    <ns2:comment xml:lang="en">The token standard used (e.g., ERC-721, ERC-1155).</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#NFTAsset" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#assetDeployedOnBlockchain">
+    <ns2:label xml:lang="en">asset deployed on blockchain</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#DigitalAsset_Web3" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#Blockchain" />
+  </ns1:ObjectProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#smartContractAddress">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty" />
+    <ns2:label xml:lang="en">smart contract address</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#SmartContract" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#smartContractDeployedOn">
+    <ns2:label xml:lang="en">smart contract deployed on</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#SmartContract" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#Blockchain" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#smartContractAutomatesPaymentFor">
+    <ns2:label xml:lang="en">smart contract automates payment for</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#SmartContract" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#Royalty" />
+  </ns1:ObjectProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#utilityTokenSymbol">
+    <ns2:label xml:lang="en">utility token symbol</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#UtilityToken_Label" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </ns1:DatatypeProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#utilityTokenTotalSupply">
+    <ns2:label xml:lang="en">utility token total supply</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#UtilityToken_Label" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal" />
+  </ns1:DatatypeProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#tokenGrantsAccessTo">
+    <ns2:label xml:lang="en">token grants access to</ns2:label>
+    <ns2:comment xml:lang="en">Utility provided by the token (e.g., exclusive content, voting rights).</ns2:comment>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#UtilityToken_Label" />
+    <ns2:range rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+  </ns1:ObjectProperty>
+  <ns1:ObjectProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#daoMemberHoldsToken">
+    <ns2:label xml:lang="en">DAO member holds token</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#DAO_Member" />
+    <ns2:range rdf:resource="http://www.autonomousrecordlabel.com/ontology#UtilityToken_Label" />
+  </ns1:ObjectProperty>
+  <ns1:DatatypeProperty rdf:about="http://www.autonomousrecordlabel.com/ontology#daoMemberVotingPower">
+    <ns2:label xml:lang="en">DAO member voting power</ns2:label>
+    <ns2:domain rdf:resource="http://www.autonomousrecordlabel.com/ontology#DAO_Member" />
+    <ns2:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal" />
+  </ns1:DatatypeProperty>
+</rdf:RDF>
