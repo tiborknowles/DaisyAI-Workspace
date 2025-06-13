@@ -13,76 +13,84 @@
 # Complete agent map based on MASTER_ARCHITECTURE.md:
 agents = {
   # Phase 1: Foundation Infrastructure & Core Agents - ACTIVE
-  daisy-knowledge = {
+  daisy_knowledge = {
     template = "agentic_rag"
     port     = 8502
     enabled  = true
     description = "Knowledge Management & RAG Agent for music industry expertise"
   }
   
-  # Phase 1 - Additional agents (to be enabled next)
-  # daisy_maestro = {
-  #   template = "langgraph_base_react"
-  #   port     = 8501
-  #   enabled  = false
-  #   description = "Central orchestrator and task routing agent"
-  # }
+  # Central Orchestrator Agent
+  daisy_maestro = {
+    template = "langgraph_base_react"
+    port     = 8501
+    enabled  = true
+    description = "Central orchestrator and strategic task routing agent"
+  }
   
-  # Phase 2: Core Business Logic Agents (to be created)
-  # daisy_insights = {
-  #   template = "custom_analytics"
-  #   port     = 8503
-  #   enabled  = false
-  #   description = "Analytics and insights generation agent"
-  # }
-  # daisy_content = {
-  #   template = "content_generation"
+  # A&R and Talent Discovery Agent
+  daisy_talent = {
+    template = "adk_base"
+    port     = 8503
+    enabled  = true
+    description = "A&R discovery, artist analysis, and talent scouting agent"
+  }
+  
+  # Phase 2: Music Business Core Agents (to be created next)
+  # daisy_production = {
+  #   template = "adk_base"
   #   port     = 8504
   #   enabled  = false
-  #   description = "Content creation and management agent"
+  #   description = "Music generation, production, and remixing agent"
   # }
-  # daisy_social = {
-  #   template = "social_media"
+  # 
+  # daisy_marketing = {
+  #   template = "adk_base"
   #   port     = 8505
   #   enabled  = false
-  #   description = "Social media management and engagement agent"
+  #   description = "Campaign management and marketing optimization agent"
   # }
-  # daisy_trends = {
-  #   template = "trend_analysis"
+  # 
+  # daisy_live = {
+  #   template = "live_api"
   #   port     = 8506
   #   enabled  = false
-  #   description = "Market and trend analysis agent"
-  # }
-  # daisy_collab = {
-  #   template = "collaboration"
-  #   port     = 8507
-  #   enabled  = false
-  #   description = "Collaboration and workflow management agent"
+  #   description = "Real-time performance streaming and live event agent"
   # }
   
-  # Phase 3: Specialized Agents (to be created)
-  # daisy_playlist = {
-  #   template = "music_curation"
+  # Phase 3: Business Operations Agents (to be created later)
+  # daisy_venue = {
+  #   template = "adk_base"
+  #   port     = 8507
+  #   enabled  = false
+  #   description = "Tour logistics and venue booking agent"
+  # }
+  # 
+  # daisy_rights = {
+  #   template = "adk_base"
   #   port     = 8508
   #   enabled  = false
-  #   description = "Playlist creation and music curation agent"
+  #   description = "Rights management and royalty tracking agent"
   # }
-  # daisy_discovery = {
-  #   template = "music_discovery"
+  # 
+  # daisy_legal = {
+  #   template = "adk_base"
   #   port     = 8509
   #   enabled  = false
-  #   description = "Music and artist discovery agent"
+  #   description = "Legal compliance and contract management agent"
   # }
-  # daisy_events = {
-  #   template = "event_management"
+  # 
+  # daisy_financial = {
+  #   template = "adk_base"
   #   port     = 8510
   #   enabled  = false
-  #   description = "Event planning and management agent"
+  #   description = "Financial planning and forecasting agent"
   # }
-  # daisy_rights = {
-  #   template = "rights_management"
+  # 
+  # daisy_audience = {
+  #   template = "adk_base"
   #   port     = 8511
   #   enabled  = false
-  #   description = "Rights and licensing management agent"
+  #   description = "Audience analysis and fan behavior tracking agent"
   # }
 } 
