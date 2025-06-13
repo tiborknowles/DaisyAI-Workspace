@@ -1,6 +1,6 @@
 # daisy-knowledge
 
-A base ReAct agent built with Google's Agent Development Kit (ADK)
+ADK RAG agent for document retrieval and Q&A. Includes a data pipeline for ingesting and indexing documents into Vertex AI Search or Vector Search.
 Agent generated with [`googleCloudPlatform/agent-starter-pack`](https://github.com/GoogleCloudPlatform/agent-starter-pack) version `0.5.2`
 
 ## Project Structure
