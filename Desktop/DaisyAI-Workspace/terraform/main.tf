@@ -95,7 +95,7 @@ resource "google_artifact_registry_repository" "agents" {
 resource "google_service_account" "agent_service_accounts" {
   for_each = var.agents
   
-  account_id   = "${each.key}-sa"
+  account_id   = "${replace(each.key, "_", "-")}-sa"
   display_name = "Service Account for ${each.key}"
   description  = "Service account for DaisyAI ${each.key} agent"
   project      = var.project_id
