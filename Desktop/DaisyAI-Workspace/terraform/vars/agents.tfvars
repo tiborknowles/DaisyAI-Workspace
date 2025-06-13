@@ -20,7 +20,16 @@ agents = {
     description = "Knowledge Management & RAG Agent - ASP 0.5.2 compliant with Vertex AI Search datastore"
   }
   
+  # Phase 1B: daisy_maestro - GOLDEN PATH COMPLIANT ✅
+  # Created: agent-starter-pack create daisy_maestro -a 3 (langgraph_base_react)
+  # Validated: make install && make playground ✅
+  daisy_maestro = {
+    template = "langgraph_base_react"
+    port     = 8503
+    enabled  = true
+    description = "Central Orchestrator Agent - ASP 0.5.2 compliant with LangGraph base react framework"
+  }
+  
   # Future agents will be added here following the same Golden Path process
-  # Phase 1B: daisy_maestro (langgraph_base_react) - PENDING
   # Phase 1C: daisy_talent (adk_base) - PENDING
 } 

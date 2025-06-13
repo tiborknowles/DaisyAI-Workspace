@@ -37,23 +37,24 @@ provider "google-beta" {
 data "google_project" "current" {}
 
 # Create GCS bucket for Terraform state (if it doesn't exist)
-resource "google_storage_bucket" "terraform_state" {
-  name     = "${var.project_id}-terraform-state"
-  location = var.region
-  
-  # Prevent accidental deletion
-  lifecycle {
-    prevent_destroy = true
-  }
-  
-  versioning {
-    enabled = true
-  }
-  
-  labels = merge(var.labels, {
-    purpose = "terraform-state"
-  })
-}
+# Terraform state bucket (already exists, commenting out to avoid conflict)
+# resource "google_storage_bucket" "terraform_state" {
+#   name     = "${var.project_id}-terraform-state"
+#   location = var.region
+#   
+#   # Prevent accidental deletion
+#   lifecycle {
+#     prevent_destroy = true
+#   }
+#   
+#   versioning {
+#     enabled = true
+#   }
+#   
+#   labels = merge(var.labels, {
+#     purpose = "terraform-state"
+#   })
+# }
 
 # Enable required APIs
 resource "google_project_service" "required_apis" {
@@ -107,7 +108,7 @@ resource "google_project_iam_member" "agent_permissions" {
     for pair in setproduct(keys(var.agents), [
       "roles/aiplatform.user",
       "roles/storage.admin",
-      "roles/secretmanager.accessor",
+      "roles/secretmanager.secretAccessor",
       "roles/logging.logWriter",
       "roles/monitoring.metricWriter",
       "roles/cloudtrace.agent",
@@ -127,7 +128,7 @@ resource "google_project_iam_member" "agent_permissions" {
 resource "google_cloud_run_v2_service" "agent_services" {
   for_each = var.agents
   
-  name     = each.key
+  name     = replace(each.key, "_", "-")
   location = var.region
   project  = var.project_id
   
@@ -138,12 +139,7 @@ resource "google_cloud_run_v2_service" "agent_services" {
       image = "${var.artifact_registry_location}-docker.pkg.dev/${var.project_id}/daisy-agents/${each.key}:latest"
       
       ports {
-        container_port = each.value.port
-      }
-      
-      env {
-        name  = "PORT"
-        value = tostring(each.value.port)
+        container_port = 8080
       }
       
       env {
@@ -198,7 +194,7 @@ resource "google_vertex_ai_endpoint" "agent_endpoints" {
     if v.template == "agentic_rag" || v.template == "langgraph_base_react"
   }
   
-  name         = "${each.key}-endpoint"
+  name         = "${replace(each.key, "_", "-")}-endpoint"
   display_name = "Vertex AI Endpoint for ${each.key}"
   description  = "Vertex AI endpoint for DaisyAI ${each.key} agent"
   location     = var.vertex_ai_location
@@ -216,7 +212,7 @@ resource "google_vertex_ai_endpoint" "agent_endpoints" {
 resource "google_cloudbuild_trigger" "agent_triggers" {
   for_each = var.agents
   
-  name        = "${each.key}-trigger"
+  name        = "${replace(each.key, "_", "-")}-trigger"
   description = "Build and deploy trigger for ${each.key} agent"
   project     = var.project_id
   
@@ -260,7 +256,7 @@ resource "google_cloudbuild_trigger" "agent_triggers" {
     step {
       name = "gcr.io/cloud-builders/gcloud"
       args = [
-        "run", "deploy", each.key,
+        "run", "deploy", replace(each.key, "_", "-"),
         "--image", "${var.artifact_registry_location}-docker.pkg.dev/${var.project_id}/daisy-agents/${each.key}:$COMMIT_SHA",
         "--region", var.region,
         "--service-account", google_service_account.agent_service_accounts[each.key].email,
