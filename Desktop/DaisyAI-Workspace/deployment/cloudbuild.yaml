@@ -1,0 +1,214 @@
+# DaisyAI Mono-Repo Aware Cloud Build Pipeline
+# This configuration intelligently builds and deploys only changed agents
+
+steps:
+  # Step 1: Initialize and detect changes
+  - name: 'gcr.io/cloud-builders/git'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        echo "Detecting changed agents..."
+        
+        # Get list of changed files in this commit
+        if [ "$_TRIGGER_TYPE" = "github" ]; then
+          # For GitHub triggers, use git diff
+          CHANGED_FILES=$(git diff-tree --no-commit-id --name-only -r $COMMIT_SHA)
+        else
+          # For manual triggers, check all agent directories
+          CHANGED_FILES=$(find . -name "daisy_*" -type d | sed 's|./||')
+        fi
+        
+        echo "Changed files: $CHANGED_FILES"
+        
+        # Identify which agents have changed
+        CHANGED_AGENTS=""
+        for file in $CHANGED_FILES; do
+          if [[ $file =~ ^(daisy_[^/]+)/ ]]; then
+            agent_name=${BASH_REMATCH[1]}
+            if [[ ! $CHANGED_AGENTS =~ $agent_name ]]; then
+              CHANGED_AGENTS="$CHANGED_AGENTS $agent_name"
+            fi
+          fi
+        done
+        
+        # Also check if terraform or deployment configs changed
+        INFRA_CHANGED="false"
+        if echo "$CHANGED_FILES" | grep -E "(terraform/|deployment/)" > /dev/null; then
+          INFRA_CHANGED="true"
+        fi
+        
+        echo "Changed agents: $CHANGED_AGENTS"
+        echo "Infrastructure changed: $INFRA_CHANGED"
+        
+        # Write to substitution file for next steps
+        echo "CHANGED_AGENTS=$CHANGED_AGENTS" > /workspace/build_vars.txt
+        echo "INFRA_CHANGED=$INFRA_CHANGED" >> /workspace/build_vars.txt
+
+  # Step 2: Apply Terraform changes if infrastructure changed
+  - name: 'hashicorp/terraform:1.5'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        source /workspace/build_vars.txt
+        
+        if [ "$INFRA_CHANGED" = "true" ]; then
+          echo "Infrastructure changes detected, applying Terraform..."
+          
+          cd terraform
+          
+          # Initialize Terraform
+          terraform init
+          
+          # Plan changes
+          terraform plan -var-file=vars/staging.tfvars -var-file=vars/agents.tfvars -out=tfplan
+          
+          # Apply changes
+          terraform apply -auto-approve tfplan
+          
+          echo "Terraform applied successfully"
+        else
+          echo "No infrastructure changes detected, skipping Terraform"
+        fi
+
+  # Step 3: Build and deploy changed agents
+  - name: 'gcr.io/cloud-builders/docker'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        source /workspace/build_vars.txt
+        
+        if [ -z "$CHANGED_AGENTS" ]; then
+          echo "No agent changes detected, skipping agent builds"
+          exit 0
+        fi
+        
+        echo "Building changed agents: $CHANGED_AGENTS"
+        
+        for agent in $CHANGED_AGENTS; do
+          if [ -d "$agent" ]; then
+            echo "Building $agent..."
+            
+            # Build Docker image
+            docker build -t ${_REGISTRY_URL}/$agent:$COMMIT_SHA \
+                        -t ${_REGISTRY_URL}/$agent:latest \
+                        $agent/
+            
+            # Push images
+            docker push ${_REGISTRY_URL}/$agent:$COMMIT_SHA
+            docker push ${_REGISTRY_URL}/$agent:latest
+            
+            echo "Built and pushed $agent successfully"
+          else
+            echo "Warning: Agent directory $agent not found"
+          fi
+        done
+
+  # Step 4: Deploy changed agents to Cloud Run
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        source /workspace/build_vars.txt
+        
+        if [ -z "$CHANGED_AGENTS" ]; then
+          echo "No agent changes detected, skipping deployments"
+          exit 0
+        fi
+        
+        echo "Deploying changed agents: $CHANGED_AGENTS"
+        
+        for agent in $CHANGED_AGENTS; do
+          echo "Deploying $agent..."
+          
+          # Deploy to Cloud Run
+          gcloud run deploy $agent \
+            --image ${_REGISTRY_URL}/$agent:$COMMIT_SHA \
+            --region ${_REGION} \
+            --service-account $agent-sa@${PROJECT_ID}.iam.gserviceaccount.com \
+            --allow-unauthenticated \
+            --max-instances 10 \
+            --memory 4Gi \
+            --cpu 2 \
+            --set-env-vars "PROJECT_ID=${PROJECT_ID},REGION=${_REGION},AGENT_NAME=$agent"
+          
+          echo "Deployed $agent successfully"
+        done
+
+  # Step 5: Run integration tests
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        source /workspace/build_vars.txt
+        
+        if [ -z "$CHANGED_AGENTS" ]; then
+          echo "No agent changes detected, skipping tests"
+          exit 0
+        fi
+        
+        echo "Running integration tests for: $CHANGED_AGENTS"
+        
+        # Wait for deployments to be ready
+        sleep 30
+        
+        for agent in $CHANGED_AGENTS; do
+          echo "Testing $agent..."
+          
+          # Get service URL
+          SERVICE_URL=$(gcloud run services describe $agent --region ${_REGION} --format="value(status.url)")
+          
+          # Health check
+          if curl -f "$SERVICE_URL/health" > /dev/null 2>&1; then
+            echo "✅ $agent health check passed"
+          else
+            echo "❌ $agent health check failed"
+            exit 1
+          fi
+        done
+        
+        echo "All integration tests passed!"
+
+  # Step 6: Update Phase Tracker
+  - name: 'gcr.io/cloud-builders/git'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        source /workspace/build_vars.txt
+        
+        if [ ! -z "$CHANGED_AGENTS" ]; then
+          echo "Updating Phase Execution Tracker..."
+          
+          # Update the tracker with deployment status
+          for agent in $CHANGED_AGENTS; do
+            echo "Agent $agent deployed successfully at $(date)" >> deployment_log.txt
+          done
+          
+          echo "Phase tracker updated"
+        fi
+
+# Substitutions for dynamic values
+substitutions:
+  _REGISTRY_URL: '${_REGION}-docker.pkg.dev/${PROJECT_ID}/daisy-agents'
+  _REGION: 'us-central1'
+  _TRIGGER_TYPE: 'github'
+
+# Options
+options:
+  logging: CLOUD_LOGGING_ONLY
+  machineType: 'E2_HIGHCPU_8'
+  substitution_option: 'ALLOW_LOOSE'
+
+# Timeout
+timeout: 3600s
+
+# Tags for organization
+tags:
+  - 'daisy-ai'
+  - 'mono-repo'
+  - 'agents' 
