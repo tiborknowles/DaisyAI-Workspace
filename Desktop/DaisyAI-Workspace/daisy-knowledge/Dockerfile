@@ -8,6 +8,7 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y \
     gcc \
     g++ \
+    curl \
     && rm -rf /var/lib/apt/lists/*
 
 # Install uv for fast Python package management
@@ -21,14 +22,27 @@ RUN uv sync --frozen
 
 # Copy application code
 COPY app/ ./app/
-COPY *.py ./
+
+# Create startup script for dynamic port handling
+RUN echo '#!/bin/bash\nPORT=${PORT:-8080}\nexec uv run adk web --host 0.0.0.0 --port $PORT' > /app/start.sh && \
+    chmod +x /app/start.sh
 
 # Set environment variables
 ENV PYTHONPATH=/app
 ENV GOOGLE_GENAI_USE_VERTEXAI=True
+ENV PORT=8080
+
+# Create non-root user for security
+RUN groupadd -r appuser && useradd -r -g appuser appuser
+RUN chown -R appuser:appuser /app
+USER appuser
 
 # Expose the port (Cloud Run will set PORT automatically)
 EXPOSE 8080
 
-# Run the application
-CMD ["uv", "run", "python", "-m", "app.agent_engine_app"] 
+# Health check (ADK web interface typically responds on root)
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:${PORT}/ || exit 1
+
+# Run the application (ADK web interface)
+CMD ["/app/start.sh"] 

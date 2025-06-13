@@ -16,7 +16,7 @@ steps:
           CHANGED_FILES=$(git diff-tree --no-commit-id --name-only -r $COMMIT_SHA)
         else
           # For manual triggers, check all agent directories
-          CHANGED_FILES=$(find . -name "daisy_*" -type d | sed 's|./||')
+          CHANGED_FILES=$(find . -name "daisy-*" -o -name "daisy_*" -type d | sed 's|./||')
         fi
         
         echo "Changed files: $CHANGED_FILES"
@@ -24,7 +24,7 @@ steps:
         # Identify which agents have changed
         CHANGED_AGENTS=""
         for file in $CHANGED_FILES; do
-          if [[ $file =~ ^(daisy_[^/]+)/ ]]; then
+          if [[ $file =~ ^(daisy[-_][^/]+)/ ]]; then
             agent_name=${BASH_REMATCH[1]}
             if [[ ! $CHANGED_AGENTS =~ $agent_name ]]; then
               CHANGED_AGENTS="$CHANGED_AGENTS $agent_name"
@@ -163,7 +163,7 @@ steps:
           SERVICE_URL=$(gcloud run services describe $agent --region ${_REGION} --format="value(status.url)")
           
           # Health check
-          if curl -f "$SERVICE_URL/health" > /dev/null 2>&1; then
+          if curl -f "$SERVICE_URL/" > /dev/null 2>&1; then
             echo "✅ $agent health check passed"
           else
             echo "❌ $agent health check failed"
