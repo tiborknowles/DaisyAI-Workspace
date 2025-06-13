@@ -30,6 +30,13 @@ agents = {
     description = "Central Orchestrator Agent - ASP 0.5.2 compliant with LangGraph base react framework"
   }
   
-  # Future agents will be added here following the same Golden Path process
-  # Phase 1C: daisy_talent (adk_base) - PENDING
+  # Phase 1C: daisy_talent - GOLDEN PATH COMPLIANT ✅
+  # Created: agent-starter-pack create daisy_talent -a 1 (adk_base)
+  # Validated: make install && make playground ✅
+  daisy_talent = {
+    template = "adk_base"
+    port     = 8504
+    enabled  = true
+    description = "A&R Discovery Agent - ASP 0.5.2 compliant with ADK base framework"
+  }
 } 
