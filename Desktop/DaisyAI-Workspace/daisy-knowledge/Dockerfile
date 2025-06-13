@@ -33,8 +33,9 @@ ENV GOOGLE_GENAI_USE_VERTEXAI=True
 ENV PORT=8080
 
 # Create non-root user for security
-RUN groupadd -r appuser && useradd -r -g appuser appuser
+RUN groupadd -r appuser && useradd -r -g appuser appuser -m
 RUN chown -R appuser:appuser /app
+RUN mkdir -p /home/appuser/.cache && chown -R appuser:appuser /home/appuser
 USER appuser
 
 # Expose the port (Cloud Run will set PORT automatically)
