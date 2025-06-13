@@ -19,61 +19,74 @@ This document tracks the execution of the DaisyAI ecosystem buildout. All activi
 * [x] **Centralized IaC Scaffolding**: The root /terraform and /deployment directories are created and configured.  
 * [x] **Initial IaC Deployment**: terraform apply has been run to create foundational resources.
 
-## **Current Phase: Phase 1 - Foundation Infrastructure**
+## **Current Phase: Phase 1 - Foundation Infrastructure (CLEAN SLATE)**
 
-**Objective**: Migrate existing agents to centralized CI/CD and deploy using the definitive "Golden Path" workflow.
+**Objective**: Execute perfect Golden Path workflow with PhD-level rigor for ASP 0.5.2 compliance.
 
-### **Phase 1 Migration & Deployment Checklist**
-
-#### **🔄 MIGRATION COMPLETED - All Existing Agents**
+### **🔄 CLEAN SLATE EXECUTION - COMPLETED**
 
 **Status**: [x] COMPLETED ✅
 
-* [x] **Directory Naming Compliance**: 
-  * [x] Renamed daisy-knowledge → daisy_knowledge
-  * [x] Renamed daisy-maestro → daisy_maestro  
-  * [x] Renamed daisy-talent → daisy_talent
-* [x] **Centralized IaC Registration**:
-  * [x] Updated terraform/vars/agents.tfvars with all 3 agents
-  * [x] All agents properly configured with correct templates and ports
-* [x] **Container Preparation**:
-  * [x] Created Dockerfile for daisy_maestro
-  * [x] Created Dockerfile for daisy_talent
-  * [x] Verified Dockerfile for daisy_knowledge
-* [x] **Cleanup Agent-Specific Deployment**:
-  * [x] Removed daisy_maestro/deployment/ directory
-  * [x] Removed daisy_talent/deployment/ directory
-* [x] **Terraform Validation**: 
-  * [x] terraform plan executed successfully
-  * [x] All 23 resources ready for creation (service accounts, IAM, Cloud Run, Vertex AI endpoints, triggers)
+* [x] **Compliance Assessment**: Identified non-compliant agents (missing ASP 0.5.2 creation process)
+* [x] **Clean Slate Preparation**: Removed non-compliant agent directories
+* [x] **IaC Reset**: Reset terraform/vars/agents.tfvars to clean state
+* [x] **PHASE_TRACKER Synchronization**: Updated to reflect clean slate status
 
-#### **🚀 READY FOR CI/CD DEPLOYMENT**
+### **🎯 GOLDEN PATH EXECUTION PLAN**
 
-**Status**: [ ] PENDING COMMIT & PUSH
+**Status**: [ ] READY TO EXECUTE
 
-* [ ] **Step 1: Git Commit**:  
-  * [ ] **NEXT STEP**: Commit all migration changes to Git
-  * [ ] Staging: daisy_knowledge, daisy_maestro, daisy_talent
-  * [ ] Infrastructure: Updated agents.tfvars, new Dockerfiles
-* [ ] **Step 2: Push to GitHub**:  
-  * [ ] Push changes to trigger centralized Cloud Build pipeline
-* [ ] **Step 3: Monitor CI/CD Pipeline**:  
-  * [ ] Monitor Cloud Build console for automated deployment
-  * [ ] Verify Terraform apply creates all 23 resources
-  * [ ] Verify Docker image builds for all 3 agents
-  * [ ] Verify Cloud Run deployments succeed
-* [ ] **Step 4: Verify Deployed Agents**:  
-  * [ ] Test daisy_knowledge in Cloud Run console
-  * [ ] Test daisy_maestro in Cloud Run console  
-  * [ ] Test daisy_talent in Cloud Run console
+#### **Phase 1A: daisy_knowledge (Knowledge Management & RAG Agent)**
 
-#### **📊 Agent Status Overview**
+**Status**: [ ] PENDING EXECUTION
 
-| Agent | Directory | IaC Status | Dockerfile | Deployment Status |
-|-------|-----------|-----------|------------|-------------------|
-| daisy_knowledge | ✅ daisy_knowledge/ | ✅ Registered | ✅ Exists | 🔄 Ready for CI/CD |
-| daisy_maestro | ✅ daisy_maestro/ | ✅ Registered | ✅ Created | 🔄 Ready for CI/CD |
-| daisy_talent | ✅ daisy_talent/ | ✅ Registered | ✅ Created | 🔄 Ready for CI/CD |
+* [ ] **Step 1: ASP 0.5.2 Creation**:
+  ```bash
+  agent-starter-pack create daisy_knowledge --template=agentic_rag
+  ```
+* [ ] **Step 2: Local Validation**:
+  ```bash
+  cd daisy_knowledge
+  make install    # MUST succeed
+  make playground # MUST succeed (ADK web interface)
+  ```
+* [ ] **Step 3: IaC Registration**:
+  * [ ] Add daisy_knowledge entry to terraform/vars/agents.tfvars
+* [ ] **Step 4: Git Commit & CI/CD Deploy**:
+  * [ ] Git commit and push to trigger automated deployment
+
+#### **Phase 1B: daisy_maestro (Central Orchestrator Agent)**
+
+**Status**: [ ] PENDING - After daisy_knowledge success
+
+* [ ] **Step 1: ASP 0.5.2 Creation**:
+  ```bash
+  agent-starter-pack create daisy_maestro --template=langgraph_base_react
+  ```
+* [ ] **Step 2: Local Validation**: make install && make playground
+* [ ] **Step 3: IaC Registration**: Add to agents.tfvars
+* [ ] **Step 4: Git Commit & CI/CD Deploy**
+
+#### **Phase 1C: daisy_talent (A&R Discovery Agent)**
+
+**Status**: [ ] PENDING - After daisy_maestro success
+
+* [ ] **Step 1: ASP 0.5.2 Creation**:
+  ```bash
+  agent-starter-pack create daisy_talent --template=adk_base
+  ```
+* [ ] **Step 2: Local Validation**: make install && make playground
+* [ ] **Step 3: IaC Registration**: Add to agents.tfvars
+* [ ] **Step 4: Git Commit & CI/CD Deploy**
+
+### **📊 Golden Path Compliance Checklist**
+
+| Requirement | Status | Validation |
+|-------------|--------|------------|
+| ASP 0.5.2 Creation Command | 🔄 Pending | `agent-starter-pack create` |
+| Local Validation | 🔄 Pending | `make install && make playground` |
+| IaC Registration | 🔄 Pending | agents.tfvars entry |
+| CI/CD Deployment | 🔄 Pending | Cloud Build pipeline |
 
 ## **Upcoming Phases**
 
@@ -83,8 +96,8 @@ This document tracks the execution of the DaisyAI ecosystem buildout. All activi
 
 ## **🎯 Next Immediate Steps**
 
-1. **✅ MIGRATION COMPLETE**: All existing agents successfully migrated to centralized CI/CD system
-2. **🚀 COMMIT & DEPLOY**: Commit changes and push to GitHub to trigger automated deployment
-3. **📊 VERIFY DEPLOYMENT**: Monitor CI/CD pipeline and verify all 3 agents deploy successfully
-4. **🎵 BEGIN PHASE 2**: Start onboarding next batch of agents (daisy_production, daisy_marketing, daisy_live)
-5. **🔗 IMPLEMENT A2A**: Begin testing Agent-to-Agent communication between deployed agents
+1. **🧹 CLEAN SLATE COMPLETE**: Successfully removed non-compliant agents and reset IaC
+2. **🎯 BEGIN GOLDEN PATH**: Execute daisy_knowledge creation using ASP 0.5.2
+3. **✅ VALIDATE LOCALLY**: Ensure make install && make playground work perfectly
+4. **🚀 DEPLOY VIA CI/CD**: Register in IaC and trigger automated deployment
+5. **🔄 REPEAT PROCESS**: Execute same Golden Path for daisy_maestro and daisy_talent
