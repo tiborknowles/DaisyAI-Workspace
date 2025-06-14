@@ -20,8 +20,8 @@ import vertexai
 from google.adk.agents import Agent
 from langchain_google_vertexai import VertexAIEmbeddings
 
-from .retrievers import get_compressor, get_retriever
-from .templates import format_docs
+from retrievers import get_compressor, get_retriever
+from templates import format_docs
 
 EMBEDDING_MODEL = "text-embedding-005"
 LLM_LOCATION = "global"
