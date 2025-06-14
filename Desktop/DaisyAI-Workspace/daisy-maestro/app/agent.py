@@ -71,3 +71,6 @@ workflow.add_edge("tools", "agent")
 
 # 6. Compile the workflow
 agent = workflow.compile()
+
+# Export for Agent Engine deployment
+root_agent = agent

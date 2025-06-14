@@ -24,27 +24,13 @@
    * Agent directories MUST use **underscores (\_)** (e.g., daisy\_knowledge) for Python import compatibility.  
    * The A2A name field in agent.json SHOULD use **hyphens (-)** (e.g., "name": "daisy-knowledge").
 
-**✅ REQUIRED: CORRECT SCALABLE MONO-REPO IMPLEMENTATION:**
-
-DaisyAI-Workspace/  
-├── 📄 .git/  
-├── 🎵 daisy\_knowledge/      \# Agent-specific code only  
-│   ├── 📄 pyproject.toml  
-│   └── 📱 app/  
-├── 🎯 daisy\_maestro/        \# Agent-specific code only  
-│   └── ...  
-│  
-├── 🔥 terraform/             \# \<\<\< ROOT-LEVEL CENTRALIZED IaC  
-│   ├── 📄 main.tf  
-│   ├── 📄 variables.tf  
-│   ├── 📄 triggers.tf  
-│   └── 📁 vars/  
-│       ├── 📄 agents.tfvars  
-│       ├── 📄 staging.tfvars  
-│       └── 📄 production.tfvars  
-│  
-└── 🚀 deployment/          \# Root-level Cloud Build YAML files  
-    └── 📄 cloudbuild.yaml
+🔬 RECOMMENDED AGENT INTERNAL STRUCTURE:  
+To ensure code clarity and maintainability, each agent's app/ directory SHOULD be organized by function, following this best-practice pattern:  
+daisy\_knowledge/  
+└── 📱 app/  
+    ├── 📄 agent.py        \# Main agent entrypoint and orchestration  
+    ├── 📁 tools/           \# Houses individual tool implementations (e.g., search\_tool.py)  
+    └── 📁 services/        \# Handles connections to external APIs or data sources
 
 ### **🎯 "GOLDEN PATH" WORKFLOW (MANDATORY)**
 
@@ -59,16 +45,21 @@ DaisyAI-Workspace/
 
 1. **Create Agent**: From the workspace root, run agent-starter-pack create \[agent\_name\] ....  
 2. **Local Validation**: Run cd \[agent\_name\], make install, and make playground.  
-3. **Register Agent in IaC**: Open the central terraform/vars/agents.tfvars file and add an entry for the new agent.  
-4. **Commit, PR, and Deploy**: Commit the new agent and the configuration change. Merging the PR triggers the CI/CD pipeline, which automatically runs terraform apply and deploys the agent.
+3. **Register Agent in IaC**: Add an entry for the new agent in the central terraform/vars/agents.tfvars file.  
+4. Commit, PR, and Deploy: Commit the new agent and the configuration change. Merging the PR triggers the CI/CD pipeline. The pipeline will:  
+   a. Intelligently detect which agent has changed.  
+   b. Generate a clean requirements.txt from the agent's uv.lock file to ensure a deterministic container build.  
+   c. Build the agent's container image using its Dockerfile.  
+   d. Run terraform apply to provision the necessary triggers.  
+   e. Deploy the new image to Vertex AI Agent Engine.
 
 ## **Executive Summary**
 
-This document outlines the architecture for the DaisyAI multi-agent system, featuring 11 agents within a **scalable mono-repo**, deployed via a **centralized, state-of-the-art Infrastructure as Code (IaC) process** using Terraform and a **mono-repo aware CI/CD pipeline** on Cloud Build.
+This document outlines the architecture for the DaisyAI multi-agent system, featuring 11 agents within a **scalable mono-repo**, deployed via a **centralized, state-of-the-art Infrastructure as Code (IaC) process** and a **mono-repo aware CI/CD pipeline** on Cloud Build.
 
 ## **Architecture Decisions**
 
-* **Agent Deployment**: All agents are deployed exclusively to **Vertex AI Agent Engine** for centralized management and monitoring.  
+* **Agent Deployment**: All agents are deployed exclusively to **Vertex AI Agent Engine**.  
 * **CI/CD & IaC**: A centralized Terraform configuration manages all agent pipelines. The Cloud Build pipeline intelligently builds and deploys only the agents changed in a given pull request.  
 * **Data & Communication**: A centralized Vertex AI Search data layer and A2A/LangGraph for communication.
 
@@ -91,3 +82,32 @@ This document outlines the architecture for the DaisyAI multi-agent system, feat
 ## **4-Phase Master Execution Plan**
 
 (Detailed execution steps and checklists are contained within the PHASE\_EXECUTION \_TRACKER.md document.)
+
+* **Phase 1**: Foundation Infrastructure & Core Agents (daisy\_knowledge, daisy\_maestro)  
+* **Phase 2**: Music Business Core (daisy\_talent, daisy\_production, daisy\_marketing, daisy\_live)  
+* **Phase 3**: Business Operations (daisy\_venue, daisy\_rights, daisy\_legal, daisy\_financial, daisy\_audience)  
+* **Phase 4**: Production Hardening (A2A Integration, Monitoring, Testing, Security)
+
+## **Production Readiness: Testing, Observability & Integration Strategy**
+
+### **🧪 Comprehensive Testing Strategy**
+
+Each agent MUST adhere to a multi-layered testing protocol managed via its Makefile, providing a standard interface for the CI/CD pipeline:
+
+1. **make test-unit**: Runs all unit tests using pytest. Mocks are required for external dependencies.  
+2. **make test-integration**: Runs integration tests against live staging services.  
+3. **make lint**: Runs code linters (e.g., Ruff, Mypy) to check for style issues.  
+4. **make clean**: Removes temporary files and caches.  
+5. **make evaluate**: Runs Vertex AI Model Evaluation jobs to measure response quality.  
+6. **make test-load**: Triggers load tests against the staging environment.
+
+### **📊 Observability & Monitoring Pipeline**
+
+A comprehensive monitoring strategy will be implemented in **Phase 4**, leveraging the native capabilities of the Vertex AI ecosystem.
+
+* **Native Agent Engine Monitoring**: We will leverage the built-in Vertex AI Agent Engine observability for comprehensive monitoring, logging, and performance metrics, providing a unified dashboard for all 11 agents.  
+* **Cross-Agent Tracing**: Agent Engine's native tracing capabilities will be used to track requests across multiple agents.
+
+### **🔌 MCP & External Feeds Integration**
+
+A single, centralized **External Feeds MCP Server** will be developed in **Phase 3** to federate data from all external APIs (Spotify, YouTube, etc.). This provides a single point of access for all agents, simplifying their logic and centralizing cost-management features like rate limiting and caching.

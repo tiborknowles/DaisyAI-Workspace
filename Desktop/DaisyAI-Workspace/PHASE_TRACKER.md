@@ -2,7 +2,7 @@
 
 ## **🚨 CRITICAL: GOVERNANCE & COMPLIANCE SUMMARY**
 
-This document tracks the execution of the DaisyAI ecosystem buildout. All activities MUST adhere to the standards defined in the MASTER_PLAN.md, including:
+This document tracks the execution of the DaisyAI ecosystem buildout. All activities MUST adhere to the standards defined in the MASTER\_ARCHITECTURE.md, including:
 
 * **ASP 0.5.2 Compliance**: Use of official templates and commands.  
 * **Structure**: A mono-repo with root-level agent directories and a centralized /terraform directory.  
@@ -19,90 +19,57 @@ This document tracks the execution of the DaisyAI ecosystem buildout. All activi
 * \[x\] **Centralized IaC Scaffolding**: The root /terraform and /deployment directories are created and configured.  
 * \[x\] **Initial IaC Deployment**: terraform apply has been run to create foundational resources.
 
-## **Current Phase: Phase 1 - Foundation Infrastructure (GOLDEN PATH EXECUTION)**
+## **Current Phase: Phase 1 \- Foundation Infrastructure**
 
-**Objective**: Execute perfect Golden Path workflow with PhD-level rigor for ASP 0.5.2 compliance.
+**Objective**: Onboard the first three foundation agents (daisy\_knowledge, daisy\_maestro, daisy\_talent) using the definitive "Golden Path" workflow.
 
-### **🎯 GOLDEN PATH EXECUTION - DEPLOYMENT REMEDIATION IN PROGRESS**
+### **Phase 1 Checklist**
 
-#### **Phase 1A: daisy_knowledge (Knowledge Management & RAG Agent)**
+#### **🎵 Onboarding daisy\_knowledge**
 
-**Status**: [x] CREATED & CONFIGURED ✅ | [ ] DEPLOYMENT REMEDIATION IN PROGRESS
+**Status**: \[x\] CREATED & CONFIGURED ✅ | \[ \] DEPLOYMENT REMEDIATION IN PROGRESS
 
-* [x] **Step 1: ASP 0.5.2 Creation**:
-  ```bash
-  agent-starter-pack create daisy_knowledge -a 2  # agentic_rag template
-  ```
-* [x] **Step 2: Local Validation**:
-  ```bash
-  cd daisy-knowledge
-  make install    # ✅ SUCCESS - 212 packages installed
-  make playground # ✅ SUCCESS - ADK web server started on port 8501
-  ```
-* [x] **Step 3: IaC Registration**:
-  * [x] Added daisy_knowledge entry to terraform/vars/agents.tfvars
-* [x] **Step 4: Git Commit & Push**: ✅ COMPLETED
-* [ ] **Step 5: Vertex AI Agent Engine Deployment**: 🔄 REMEDIATION IN PROGRESS
-  * [x] Deployment pipeline corrected from Cloud Run to Vertex AI Agent Engine
-  * [x] Agent Engine deployment attempted - needs configuration adjustment
-  * [ ] **NEXT STEP**: Resolve deployment configuration issue and redeploy
+* \[x\] **Step 1: Create Agent**:  
+  * \[x\] Ran: agent-starter-pack create daisy\_knowledge with agentic\_rag template.  
+  * \[x\] **CRITICAL**: Deleted the auto-generated daisy\_knowledge/deployment/ directory.  
+* \[x\] **Step 2: Local Validation & Testing**:  
+  * \[x\] cd daisy\_knowledge/  
+  * \[x\] make install (212 packages installed).  
+  * \[x\] make lint and make test-unit passed.  
+  * \[x\] make playground (ADK Web UI launched successfully).  
+* \[x\] **Step 3: Agent Customization**:  
+  * \[x\] Updated agent.py and organized tools into app/tools/.  
+* \[x\] **Step 4: Register Agent in IaC**:  
+  * \[x\] Updated central terraform/vars/agents.tfvars with the daisy\_knowledge configuration.  
+* \[x\] **Step 5: Git Workflow**:  
+  * \[x\] All changes have been committed and pushed to the main branch.  
+* \[ \] **Step 6: Coordinated Deployment & Verification**:  
+  * \[ \] **NEXT STEP**: Resolve Agent Engine deployment configuration issue.  
+  * \[ \] Trigger a new deployment via a fresh PR merge.  
+  * \[ \] Verify the agent is running in the **Vertex AI Agent Engine console**.
 
-#### **Phase 1B: daisy_maestro (Central Orchestrator Agent)**
+#### **🎯 Onboarding daisy\_maestro**
 
-**Status**: [x] CREATED & CONFIGURED ✅ | [ ] AWAITING DEPLOYMENT
+**Status**: \[x\] CREATED & CONFIGURED ✅ | \[ \] AWAITING DEPLOYMENT
 
-* [x] **Step 1: ASP 0.5.2 Creation**:
-  ```bash
-  agent-starter-pack create daisy_maestro -a 3  # langgraph_base_react template
-  ```
-* [x] **Step 2: Local Validation**:
-  ```bash
-  cd daisy-maestro
-  make install    # ✅ SUCCESS - 284 packages installed
-  make playground # ✅ SUCCESS - Streamlit app launched on localhost:8501
-  ```
-* [x] **Step 3: IaC Registration**:
-  * [x] Added daisy_maestro entry to terraform/vars/agents.tfvars
-* [x] **Step 4: Git Commit & Push**: ✅ COMPLETED
-* [ ] **Step 5: Vertex AI Agent Engine Deployment**: ⏸️ PENDING (after daisy_knowledge success)
+* \[x\] **Step 1: Create Agent**: agent-starter-pack create daisy\_maestro \-d agent\_engine \-a langgraph\_base\_react  
+* \[x\] **Step 2: Local Validation & Testing**: cd daisy\_maestro/, make install, make test-unit, make playground.  
+* \[x\] **Step 3: Register Agent in IaC**: Added daisy\_maestro to terraform/vars/agents.tfvars.  
+* \[x\] **Step 4: Git Workflow**: All changes have been committed.  
+* \[ \] **Step 5: Coordinated Deployment & Verification**: ⏸️ PENDING (after daisy\_knowledge success)
 
-#### **Phase 1C: daisy_talent (A&R Discovery Agent)**
+#### **🎼 Onboarding daisy\_talent**
 
-**Status**: [x] CREATED & CONFIGURED ✅ | [ ] AWAITING DEPLOYMENT
+**Status**: \[x\] CREATED & CONFIGURED ✅ | \[ \] AWAITING DEPLOYMENT
 
-* [x] **Step 1: ASP 0.5.2 Creation**:
-  ```bash
-  agent-starter-pack create daisy_talent -a 1  # adk_base template
-  ```
-* [x] **Step 2: Local Validation**:
-  ```bash
-  cd daisy-talent
-  make install    # ✅ SUCCESS - 178 packages installed
-  make playground # ✅ SUCCESS - ADK web server started
-  ```
-* [x] **Step 3: IaC Registration**:
-  * [x] Added daisy_talent entry to terraform/vars/agents.tfvars
-* [x] **Step 4: Git Commit & Push**: ✅ COMPLETED
-* [ ] **Step 5: Vertex AI Agent Engine Deployment**: ⏸️ PENDING (after daisy_knowledge success)
+* \[x\] **Step 1: Create Agent**: agent-starter-pack create daisy\_talent \-d agent\_engine \-a adk\_base  
+* \[x\] **Step 2: Local Validation & Testing**: cd daisy\_talent/, make install, make test-unit, make playground.  
+* \[x\] **Step 3: Register Agent in IaC**: Added daisy\_talent to terraform/vars/agents.tfvars.  
+* \[x\] **Step 4: Git Workflow**: All changes have been committed.  
+* \[ \] **Step 5: Coordinated Deployment & Verification**: ⏸️ PENDING (after daisy\_knowledge success)
 
 ## **Upcoming Phases**
 
-* **Phase 2 \- Music Business Core**: Onboard daisy\_talent, daisy\_production, daisy\_marketing, daisy\_live.  
-* **Phase 3 \- Business Operations**: Onboard daisy\_venue, daisy\_rights, daisy\_legal, daisy\_financial, daisy\_audience.  
-* **Phase 4 \- Production Hardening**: Implement full observability stack, security audits, and comprehensive load testing.
-
-## **📊 Golden Path Compliance Status**
-
-| Agent | ASP Creation | Local Validation | IaC Registration | Git Commit | Vertex AI Deployment |
-|-------|-------------|------------------|------------------|------------|----------------------|
-| daisy_knowledge | ✅ agentic_rag | ✅ make install/playground | ✅ agents.tfvars | ✅ COMMITTED | 🔄 REMEDIATION |
-| daisy_maestro | ✅ langgraph_base_react | ✅ make install/playground | ✅ agents.tfvars | ✅ COMMITTED | ⏸️ PENDING |
-| daisy_talent | ✅ adk_base | ✅ make install/playground | ✅ agents.tfvars | ✅ COMMITTED | ⏸️ PENDING |
-
-## **🎯 Next Immediate Steps**
-
-1. **🔧 RESOLVE DEPLOYMENT ISSUE**: Fix Agent Engine deployment configuration for daisy_knowledge
-2. **🚀 DEPLOY AGENTS**: Successfully deploy all three agents to Vertex AI Agent Engine
-3. **📊 VERIFY DEPLOYMENT**: Confirm all agents are visible and functional in Vertex AI Agent Engine console
-4. **✅ COMPLETE PHASE 1**: Mark Phase 1 Foundation Infrastructure as fully deployed
-5. **🎯 BEGIN PHASE 2**: Proceed to Music Business Core agents (daisy_production, daisy_marketing, daisy_live)
+* **Phase 2 \- Music Business Core**: Onboard daisy\_production, daisy\_marketing, daisy\_live.  
+* **Phase 3 \- Business Operations**: Onboard daisy\_venue, daisy\_rights, daisy\_legal.  
+* **Phase 4 \- Production Hardening**: Onboard daisy\_financial, daisy\_audience, and implement A2A Integration, Observability, and Security measures.
